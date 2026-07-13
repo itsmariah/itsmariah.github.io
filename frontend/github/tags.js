@@ -5,6 +5,7 @@
 const EXTRA_TAGS = {
   'agenda.ai': ['React'],
   'moneytrack': ['React'],
+  'flappypy': ['Pygame'],
 };
 
 (async function updateProjectTags() {
