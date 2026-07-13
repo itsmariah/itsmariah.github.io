@@ -3,7 +3,8 @@
   if (!grid) return;
 
   // Sempre aparecem independente do que o GitHub detectar
-  const ALWAYS = ['Git', 'GitHub', 'UI/UX', 'Responsividade'];
+  // (C, C#, C++ e SQL foram aprendidas na faculdade, mas ainda sem repositórios publicados)
+  const ALWAYS = ['Git', 'GitHub', 'UI/UX', 'Responsividade', 'C', 'C#', 'C++', 'SQL'];
 
   try {
     const repos = await ghFetch(`/users/${GITHUB_USER}/repos?per_page=100`);

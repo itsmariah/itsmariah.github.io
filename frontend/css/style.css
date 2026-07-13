@@ -1128,14 +1128,10 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 }
 
 .hs-header {
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 8px;
   font-size: 0.9rem;
   font-weight: 600;
 }
-
-.hs-pct { color: var(--primary); }
 
 .hs-bar {
   height: 8px;
