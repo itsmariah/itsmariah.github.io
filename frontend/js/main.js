@@ -288,7 +288,7 @@ function buildLangChart() {
       <div class="lang-bar-track">
         <div class="lang-bar-fill" style="background:${colorMap[lang] || colors[4]}"></div>
       </div>
-      <span class="lang-bar-pct">${count} proj.</span>
+      <span class="lang-bar-pct">${t('projects.langChartCount', { count })}</span>
     `;
     chart.appendChild(row);
   });
@@ -376,14 +376,14 @@ if (contactForm) {
       });
 
       if (res.ok) {
-        feedback.textContent = 'Mensagem enviada com sucesso! Responderei em breve.';
+        feedback.textContent = t('contact.success');
         feedback.classList.add('success');
         contactForm.reset();
       } else {
         throw new Error('server');
       }
     } catch {
-      feedback.textContent = 'Ops! Não foi possível enviar. Tente me contatar diretamente pelo e-mail.';
+      feedback.textContent = t('contact.error');
       feedback.classList.add('error');
     } finally {
       feedback.hidden = false;
@@ -474,12 +474,14 @@ function buildProjectFilters() {
 
   if (tagSet.size === 0) return;
 
+  const ALL_FILTER = '__all__';
+
   function setFilter(tag) {
     btns.forEach(b => b.classList.toggle('active', b.dataset.tag === tag));
 
     cards.forEach(card => {
       const cardTags = Array.from(card.querySelectorAll('.project-tags span')).map(s => s.textContent.trim());
-      const show     = tag === 'Todos' || cardTags.includes(tag);
+      const show     = tag === ALL_FILTER || cardTags.includes(tag);
       const wasHidden = card.classList.contains('proj-out');
 
       card.classList.remove('proj-out', 'proj-in');
@@ -496,12 +498,12 @@ function buildProjectFilters() {
     });
   }
 
-  const allTags = ['Todos', ...tagSet];
+  const allTags = [ALL_FILTER, ...tagSet];
   const btns = allTags.map(tag => {
     const btn = document.createElement('button');
-    btn.className = 'filter-btn' + (tag === 'Todos' ? ' active' : '');
+    btn.className = 'filter-btn' + (tag === ALL_FILTER ? ' active' : '');
     btn.dataset.tag = tag;
-    btn.textContent = tag;
+    btn.textContent = tag === ALL_FILTER ? t('projects.filterAll') : tag;
     btn.addEventListener('click', () => setFilter(tag));
     bar.appendChild(btn);
     return btn;
@@ -519,3 +521,10 @@ function initProjectTagViews() {
 }
 document.addEventListener('project-tags-ready', initProjectTagViews, { once: true });
 setTimeout(initProjectTagViews, 4000);
+
+// Reconstrói o gráfico de linguagens e os filtros ao trocar de idioma
+// (os textos "Todos" e "N proj." só existem dentro do HTML gerado por essas funções)
+window.rebuildDynamicContent = () => {
+  buildLangChart();
+  buildProjectFilters();
+};

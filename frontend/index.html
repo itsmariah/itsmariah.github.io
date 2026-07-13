@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Maria Mariah | Desenvolvedora Front-End</title>
+  <title data-i18n="meta.title">Maria Mariah | Desenvolvedora Front-End</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,33 +28,48 @@
     <div class="container navbar-inner">
       <a href="#" class="logo">itsmariah</a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#skills">Tecnologias</a></li>
-        <li><a href="#projetos">Projetos</a></li>
-        <li><a href="#certificados">Certificados</a></li>
-        <li><a href="#curriculo">Currículo</a></li>
-        <li><a href="#contato">Contato</a></li>
+        <li><a href="#sobre" data-i18n="nav.about">Sobre</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Tecnologias</a></li>
+        <li><a href="#projetos" data-i18n="nav.projects">Projetos</a></li>
+        <li><a href="#certificados" data-i18n="nav.certificates">Certificados</a></li>
+        <li><a href="#curriculo" data-i18n="nav.resume">Currículo</a></li>
+        <li><a href="#contato" data-i18n="nav.contact">Contato</a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="Abrir menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="navbar-actions">
+        <div class="lang-switcher" id="langSwitcher">
+          <button class="lang-switcher-btn" id="langSwitcherBtn" aria-haspopup="listbox" aria-expanded="false">
+            <span class="lang-flag" id="langFlag">🇧🇷</span><span class="lang-code" id="langCode">PT</span><span class="lang-caret">▾</span>
+          </button>
+          <ul class="lang-menu" id="langMenu" role="listbox" hidden>
+            <li role="option" data-lang="pt" aria-selected="true">🇧🇷 Português</li>
+            <li role="option" data-lang="en" aria-selected="false">🇺🇸 English</li>
+            <li role="option" data-lang="es" aria-selected="false">🇪🇸 Español</li>
+            <li role="option" data-lang="fr" aria-selected="false">🇫🇷 Français</li>
+            <li role="option" data-lang="de" aria-selected="false">🇩🇪 Deutsch</li>
+            <li role="option" data-lang="ja" aria-selected="false">🇯🇵 日本語</li>
+          </ul>
+        </div>
+        <button class="hamburger" id="hamburger" data-i18n-aria-label="nav.menuLabel" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </nav>
 
   <header class="hero">
     <div class="hero-content container">
       <div class="hero-text">
-        <p class="tag">Desenvolvedora Front-End em formação</p>
-        <h2 class="typewriter-target">Criando interfaces modernas, interativas e responsivas.</h2>
-        <p class="description">
+        <p class="tag" data-i18n="hero.tag">Desenvolvedora Front-End em formação</p>
+        <h2 class="typewriter-target" data-i18n="hero.title">Criando interfaces modernas, interativas e responsivas.</h2>
+        <p class="description" data-i18n="hero.description">
           Estudante de Ciência da Computação com foco em desenvolvimento web,
           apaixonada por transformar ideias em experiências digitais funcionais e intuitivas.
         </p>
         <div class="hero-buttons">
-          <a href="#projetos" class="btn primary">Ver projetos</a>
-          <a href="#contato" class="btn secondary">Entrar em contato</a>
+          <a href="#projetos" class="btn primary" data-i18n="hero.viewProjects">Ver projetos</a>
+          <a href="#contato" class="btn secondary" data-i18n="hero.contactMe">Entrar em contato</a>
         </div>
       </div>
 
@@ -70,15 +85,15 @@
 
     <!-- ── Sobre ── -->
     <section id="sobre" class="section container">
-      <h2 class="section-title reveal">Sobre mim</h2>
+      <h2 class="section-title reveal" data-i18n="about.title">Sobre mim</h2>
       <div class="sobre-content">
         <div class="sobre-text">
-          <p class="section-text reveal">
+          <p class="section-text reveal" data-i18n="about.p1">
             Sou estudante de Ciência da Computação e tenho direcionado minha trajetória para a área
             de desenvolvimento front-end e web. Gosto de construir interfaces organizadas, bonitas e
             funcionais, com atenção especial à experiência do usuário.
           </p>
-          <p class="section-text reveal">
+          <p class="section-text reveal" data-i18n="about.p2">
             Atualmente, venho desenvolvendo projetos práticos que fortalecem minhas habilidades com
             HTML, CSS, JavaScript e integração entre front-end e back-end, com destaque para o
             SkillUp Dev, plataforma voltada ao desenvolvimento de soft skills para desenvolvedores.
@@ -99,7 +114,7 @@
 
     <!-- ── Skills ── -->
     <section id="skills" class="section container">
-      <h2 class="section-title reveal">Tecnologias</h2>
+      <h2 class="section-title reveal" data-i18n="skills.title">Tecnologias</h2>
       <div class="skills-grid">
         <div class="skill-card reveal">HTML</div>
         <div class="skill-card reveal">CSS</div>
@@ -108,7 +123,7 @@
         <div class="skill-card reveal">Git</div>
         <div class="skill-card reveal">GitHub</div>
         <div class="skill-card reveal">UI/UX</div>
-        <div class="skill-card reveal">Responsividade</div>
+        <div class="skill-card reveal" data-i18n="skills.responsiveness">Responsividade</div>
         <div class="skill-card reveal">C</div>
         <div class="skill-card reveal">C#</div>
         <div class="skill-card reveal">C++</div>
@@ -118,7 +133,7 @@
 
     <!-- ── Projetos ── -->
     <section id="projetos" class="section container">
-      <h2 class="section-title reveal">Projetos</h2>
+      <h2 class="section-title reveal" data-i18n="projects.title">Projetos</h2>
       <div class="filter-bar" id="filterBar"></div>
 
       <div class="projects-grid">
@@ -131,59 +146,59 @@
             </div>
             <div class="slides-track">
               <div class="slide active">
-                <img src="assets/images/projects/skillupdev/skillupdev_lading1.png" alt="SkillUp Dev - Landing" />
+                <img src="assets/images/projects/skillupdev/skillupdev_lading1.png" data-i18n-alt="alt.skillupdev.landing1" alt="SkillUp Dev - Landing" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_landing2.png" alt="SkillUp Dev - Landing 2" />
+                <img src="assets/images/projects/skillupdev/skillupdev_landing2.png" data-i18n-alt="alt.skillupdev.landing2" alt="SkillUp Dev - Landing 2" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_funcionalidades.png" alt="SkillUp Dev - Funcionalidades" />
+                <img src="assets/images/projects/skillupdev/skillupdev_funcionalidades.png" data-i18n-alt="alt.skillupdev.features" alt="SkillUp Dev - Funcionalidades" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_cadastro.png" alt="SkillUp Dev - Cadastro" />
+                <img src="assets/images/projects/skillupdev/skillupdev_cadastro.png" data-i18n-alt="alt.skillupdev.signup" alt="SkillUp Dev - Cadastro" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_login.png" alt="SkillUp Dev - Login" />
+                <img src="assets/images/projects/skillupdev/skillupdev_login.png" data-i18n-alt="alt.skillupdev.login" alt="SkillUp Dev - Login" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_dashboard1.png" alt="SkillUp Dev - Dashboard" />
+                <img src="assets/images/projects/skillupdev/skillupdev_dashboard1.png" data-i18n-alt="alt.skillupdev.dashboard1" alt="SkillUp Dev - Dashboard" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_dashboard2.png" alt="SkillUp Dev - Dashboard 2" />
+                <img src="assets/images/projects/skillupdev/skillupdev_dashboard2.png" data-i18n-alt="alt.skillupdev.dashboard2" alt="SkillUp Dev - Dashboard 2" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_dashboard3.png" alt="SkillUp Dev - Dashboard 3" />
+                <img src="assets/images/projects/skillupdev/skillupdev_dashboard3.png" data-i18n-alt="alt.skillupdev.dashboard3" alt="SkillUp Dev - Dashboard 3" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_desafio_aberto1.png" alt="SkillUp Dev - Desafio aberto" />
+                <img src="assets/images/projects/skillupdev/skillupdev_desafio_aberto1.png" data-i18n-alt="alt.skillupdev.openChallenge1" alt="SkillUp Dev - Desafio aberto" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_desafio_aberto2.png" alt="SkillUp Dev - Desafio aberto 2" />
+                <img src="assets/images/projects/skillupdev/skillupdev_desafio_aberto2.png" data-i18n-alt="alt.skillupdev.openChallenge2" alt="SkillUp Dev - Desafio aberto 2" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_desafio_fechado.png" alt="SkillUp Dev - Desafio fechado" />
+                <img src="assets/images/projects/skillupdev/skillupdev_desafio_fechado.png" data-i18n-alt="alt.skillupdev.closedChallenge" alt="SkillUp Dev - Desafio fechado" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_adm1.png" alt="SkillUp Dev - Administração" />
+                <img src="assets/images/projects/skillupdev/skillupdev_adm1.png" data-i18n-alt="alt.skillupdev.admin1" alt="SkillUp Dev - Administração" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_adm2.png" alt="SkillUp Dev - Administração 2" />
+                <img src="assets/images/projects/skillupdev/skillupdev_adm2.png" data-i18n-alt="alt.skillupdev.admin2" alt="SkillUp Dev - Administração 2" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_adm3.png" alt="SkillUp Dev - Administração 3" />
+                <img src="assets/images/projects/skillupdev/skillupdev_adm3.png" data-i18n-alt="alt.skillupdev.admin3" alt="SkillUp Dev - Administração 3" />
               </div>
             </div>
-            <button class="slide-btn prev" aria-label="Anterior">&#8249;</button>
-            <button class="slide-btn next" aria-label="Próximo">&#8250;</button>
+            <button class="slide-btn prev" data-i18n-aria-label="slideshow.prev" aria-label="Anterior">&#8249;</button>
+            <button class="slide-btn next" data-i18n-aria-label="slideshow.next" aria-label="Próximo">&#8250;</button>
             <div class="slide-dots"></div>
           </div>
           <div class="project-body">
             <div class="project-header">
-              <span class="project-badge">Destaque</span>
-              <span class="status-badge published">Publicado</span>
+              <span class="project-badge" data-i18n="status.featured">Destaque</span>
+              <span class="status-badge published" data-i18n="status.published">Publicado</span>
             </div>
             <h3>SkillUp Dev</h3>
-            <p>
+            <p data-i18n="projects.skillupdev.description">
               Plataforma web gamificada voltada ao desenvolvimento de soft skills para desenvolvedores,
               com desafios interativos e feedback automatizado com apoio de IA.
             </p>
@@ -198,7 +213,7 @@
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
                 GitHub
               </a>
-              <a href="https://skillupdev-production.up.railway.app" target="_blank" class="project-link-btn demo">Ver ao vivo →</a>
+              <a href="https://skillupdev-production.up.railway.app" target="_blank" class="project-link-btn demo" data-i18n="links.viewLive">Ver ao vivo →</a>
             </div>
           </div>
         </article>
@@ -211,25 +226,25 @@
             </div>
             <div class="slides-track">
               <div class="slide active">
-                <img src="assets/images/projects/moneytrack/moneytrack_landing.png" alt="MoneyTrack - Landing" />
+                <img src="assets/images/projects/moneytrack/moneytrack_landing.png" data-i18n-alt="alt.moneytrack.landing" alt="MoneyTrack - Landing" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/moneytrack/moneytrack_dashboard.png" alt="MoneyTrack - Dashboard" />
+                <img src="assets/images/projects/moneytrack/moneytrack_dashboard.png" data-i18n-alt="alt.moneytrack.dashboard" alt="MoneyTrack - Dashboard" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/moneytrack/moneytrack_relatorio.png" alt="MoneyTrack - Relatório" />
+                <img src="assets/images/projects/moneytrack/moneytrack_relatorio.png" data-i18n-alt="alt.moneytrack.report" alt="MoneyTrack - Relatório" />
               </div>
             </div>
-            <button class="slide-btn prev" aria-label="Anterior">&#8249;</button>
-            <button class="slide-btn next" aria-label="Próximo">&#8250;</button>
+            <button class="slide-btn prev" data-i18n-aria-label="slideshow.prev" aria-label="Anterior">&#8249;</button>
+            <button class="slide-btn next" data-i18n-aria-label="slideshow.next" aria-label="Próximo">&#8250;</button>
             <div class="slide-dots"></div>
           </div>
           <div class="project-body">
             <div class="project-header">
-              <span class="status-badge in-progress">Em desenvolvimento</span>
+              <span class="status-badge in-progress" data-i18n="status.inProgress">Em desenvolvimento</span>
             </div>
             <h3>MoneyTrack</h3>
-            <p>
+            <p data-i18n="projects.moneytrack.description">
               Aplicação desenvolvida para organizar e visualizar informações financeiras
               com foco em usabilidade e clareza visual.
             </p>
@@ -255,16 +270,16 @@
                 <span class="slide-emoji">📅</span>
               </div>
             </div>
-            <button class="slide-btn prev" aria-label="Anterior">&#8249;</button>
-            <button class="slide-btn next" aria-label="Próximo">&#8250;</button>
+            <button class="slide-btn prev" data-i18n-aria-label="slideshow.prev" aria-label="Anterior">&#8249;</button>
+            <button class="slide-btn next" data-i18n-aria-label="slideshow.next" aria-label="Próximo">&#8250;</button>
             <div class="slide-dots"></div>
           </div>
           <div class="project-body">
             <div class="project-header">
-              <span class="status-badge in-progress">Em desenvolvimento</span>
+              <span class="status-badge in-progress" data-i18n="status.inProgress">Em desenvolvimento</span>
             </div>
             <h3>Agenda.AI</h3>
-            <p>
+            <p data-i18n="projects.agenda.description">
               Sistema web para cadastro de usuários e gerenciamento de agendamentos,
               simulando aplicações reais de serviços.
             </p>
@@ -291,25 +306,25 @@
             </div>
             <div class="slides-track">
               <div class="slide active">
-                <img src="assets/images/projects/barbearia/barbearia_landing.png" alt="Barbearia Clássica - Landing" />
+                <img src="assets/images/projects/barbearia/barbearia_landing.png" data-i18n-alt="alt.barbearia.landing" alt="Barbearia Clássica - Landing" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/barbearia/barbearia_landing2.png" alt="Barbearia Clássica - Seção 2" />
+                <img src="assets/images/projects/barbearia/barbearia_landing2.png" data-i18n-alt="alt.barbearia.landing2" alt="Barbearia Clássica - Seção 2" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/barbearia/barbearia_agendamento.png" alt="Barbearia Clássica - Agendamento" />
+                <img src="assets/images/projects/barbearia/barbearia_agendamento.png" data-i18n-alt="alt.barbearia.booking" alt="Barbearia Clássica - Agendamento" />
               </div>
             </div>
-            <button class="slide-btn prev" aria-label="Anterior">&#8249;</button>
-            <button class="slide-btn next" aria-label="Próximo">&#8250;</button>
+            <button class="slide-btn prev" data-i18n-aria-label="slideshow.prev" aria-label="Anterior">&#8249;</button>
+            <button class="slide-btn next" data-i18n-aria-label="slideshow.next" aria-label="Próximo">&#8250;</button>
             <div class="slide-dots"></div>
           </div>
           <div class="project-body">
             <div class="project-header">
-              <span class="status-badge published">Publicado</span>
+              <span class="status-badge published" data-i18n="status.published">Publicado</span>
             </div>
             <h3>Barbearia Clássica</h3>
-            <p>
+            <p data-i18n="projects.barbearia.description">
               Site institucional para uma barbearia fictícia com página de serviços,
               galeria e formulário de agendamento online.
             </p>
@@ -323,7 +338,7 @@
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
                 GitHub
               </a>
-              <a href="https://anitandonato.github.io/projeto-aplicacoes-para-internet" target="_blank" class="project-link-btn demo">Ver ao vivo →</a>
+              <a href="https://anitandonato.github.io/projeto-aplicacoes-para-internet" target="_blank" class="project-link-btn demo" data-i18n="links.viewLive">Ver ao vivo →</a>
             </div>
           </div>
         </article>
@@ -336,49 +351,49 @@
             </div>
             <div class="slides-track">
               <div class="slide active">
-                <img src="assets/images/projects/flappypy/menu.png" alt="FlappyPy - Menu" />
+                <img src="assets/images/projects/flappypy/menu.png" data-i18n-alt="alt.flappypy.menu" alt="FlappyPy - Menu" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/menu2.png" alt="FlappyPy - Menu 2" />
+                <img src="assets/images/projects/flappypy/menu2.png" data-i18n-alt="alt.flappypy.menu2" alt="FlappyPy - Menu 2" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/menu3.png" alt="FlappyPy - Menu 3" />
+                <img src="assets/images/projects/flappypy/menu3.png" data-i18n-alt="alt.flappypy.menu3" alt="FlappyPy - Menu 3" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/menu4.png" alt="FlappyPy - Menu 4" />
+                <img src="assets/images/projects/flappypy/menu4.png" data-i18n-alt="alt.flappypy.menu4" alt="FlappyPy - Menu 4" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/config.png" alt="FlappyPy - Configurações" />
+                <img src="assets/images/projects/flappypy/config.png" data-i18n-alt="alt.flappypy.config" alt="FlappyPy - Configurações" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/game.png" alt="FlappyPy - Jogo" />
+                <img src="assets/images/projects/flappypy/game.png" data-i18n-alt="alt.flappypy.game" alt="FlappyPy - Jogo" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/game2.png" alt="FlappyPy - Jogo 2" />
+                <img src="assets/images/projects/flappypy/game2.png" data-i18n-alt="alt.flappypy.game2" alt="FlappyPy - Jogo 2" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/game3.png" alt="FlappyPy - Jogo 3" />
+                <img src="assets/images/projects/flappypy/game3.png" data-i18n-alt="alt.flappypy.game3" alt="FlappyPy - Jogo 3" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/game4.png" alt="FlappyPy - Jogo 4" />
+                <img src="assets/images/projects/flappypy/game4.png" data-i18n-alt="alt.flappypy.game4" alt="FlappyPy - Jogo 4" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/paused.png" alt="FlappyPy - Pausado" />
+                <img src="assets/images/projects/flappypy/paused.png" data-i18n-alt="alt.flappypy.paused" alt="FlappyPy - Pausado" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/ranking.png" alt="FlappyPy - Ranking" />
+                <img src="assets/images/projects/flappypy/ranking.png" data-i18n-alt="alt.flappypy.ranking" alt="FlappyPy - Ranking" />
               </div>
             </div>
-            <button class="slide-btn prev" aria-label="Anterior">&#8249;</button>
-            <button class="slide-btn next" aria-label="Próximo">&#8250;</button>
+            <button class="slide-btn prev" data-i18n-aria-label="slideshow.prev" aria-label="Anterior">&#8249;</button>
+            <button class="slide-btn next" data-i18n-aria-label="slideshow.next" aria-label="Próximo">&#8250;</button>
             <div class="slide-dots"></div>
           </div>
           <div class="project-body">
             <div class="project-header">
-              <span class="status-badge published">Publicado</span>
+              <span class="status-badge published" data-i18n="status.published">Publicado</span>
             </div>
             <h3>FlappyPy</h3>
-            <p>Um clone do clássico Flappy Bird feito em Python com Pygame, construído do zero como projeto de estudo de arquitetura de software aplicada a jogos.</p>
+            <p data-i18n="projects.flappypy.description">Um clone do clássico Flappy Bird feito em Python com Pygame, construído do zero como projeto de estudo de arquitetura de software aplicada a jogos.</p>
             <div class="project-tags">
               <span>Python</span>
               <span>Pygame</span>
@@ -397,15 +412,15 @@
 
       <!-- Gráfico de linguagens -->
       <div class="lang-chart-wrap reveal">
-        <h3 class="lang-chart-title">Linguagens nos meus projetos</h3>
+        <h3 class="lang-chart-title" data-i18n="projects.langChartTitle">Linguagens nos meus projetos</h3>
         <div class="lang-chart" id="langChart"></div>
       </div>
     </section>
 
     <!-- ── Certificados ── -->
     <section id="certificados" class="section container">
-      <h2 class="section-title reveal">Certificados</h2>
-      <p class="section-text reveal">Cursos e certificações que fazem parte da minha formação contínua.</p>
+      <h2 class="section-title reveal" data-i18n="certs.title">Certificados</h2>
+      <p class="section-text reveal" data-i18n="certs.intro">Cursos e certificações que fazem parte da minha formação contínua.</p>
 
       <div class="certs-grid">
 
@@ -413,10 +428,10 @@
           <div class="cert-icon">🏫</div>
           <div class="cert-body">
             <span class="cert-platform">UNIPÊ</span>
-            <h4 class="cert-name">Escola de Computação Solidária — Extensionista</h4>
-            <span class="cert-date">Mar – Jun 2026</span>
+            <h4 class="cert-name" data-i18n="certs.unipe.name">Escola de Computação Solidária — Extensionista</h4>
+            <span class="cert-date" data-i18n="certs.unipe.date">Mar – Jun 2026</span>
           </div>
-          <a href="assets/certificados/Certificado Escola de Computação Solidária - Extensionista 2026.PDF" target="_blank" class="cert-link" title="Ver certificado">
+          <a href="assets/certificados/Certificado Escola de Computação Solidária - Extensionista 2026.PDF" target="_blank" class="cert-link" data-i18n-title="certs.viewCert" title="Ver certificado">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
           </a>
         </div>
@@ -425,10 +440,10 @@
           <div class="cert-icon">🔒</div>
           <div class="cert-body">
             <span class="cert-platform">PUCRS</span>
-            <h4 class="cert-name">Compliance e Proteção de Dados</h4>
-            <span class="cert-date">Jun 2026</span>
+            <h4 class="cert-name" data-i18n="certs.pucrs.name">Compliance e Proteção de Dados</h4>
+            <span class="cert-date" data-i18n="certs.pucrs.date">Jun 2026</span>
           </div>
-          <a href="assets/certificados/Certificado Curso de Extensão Compliance e Proteção de Dados.pdf" target="_blank" class="cert-link" title="Ver certificado">
+          <a href="assets/certificados/Certificado Curso de Extensão Compliance e Proteção de Dados.pdf" target="_blank" class="cert-link" data-i18n-title="certs.viewCert" title="Ver certificado">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
           </a>
         </div>
@@ -437,10 +452,10 @@
           <div class="cert-icon">🤖</div>
           <div class="cert-body">
             <span class="cert-platform">Udemy</span>
-            <h4 class="cert-name">Formação Claude Code 2026 — IA com Claude e Cowork</h4>
-            <span class="cert-date">Jun 2026</span>
+            <h4 class="cert-name" data-i18n="certs.claude.name">Formação Claude Code 2026 — IA com Claude e Cowork</h4>
+            <span class="cert-date" data-i18n="certs.claude.date">Jun 2026</span>
           </div>
-          <a href="assets/certificados/Certificado Formação Claude Code 2026 (IA com Claude e Cowork).pdf" target="_blank" class="cert-link" title="Ver certificado">
+          <a href="assets/certificados/Certificado Formação Claude Code 2026 (IA com Claude e Cowork).pdf" target="_blank" class="cert-link" data-i18n-title="certs.viewCert" title="Ver certificado">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
           </a>
         </div>
@@ -449,10 +464,10 @@
           <div class="cert-icon">💻</div>
           <div class="cert-body">
             <span class="cert-platform">Udemy</span>
-            <h4 class="cert-name">Algoritmos e Lógica de Programação</h4>
-            <span class="cert-date">Abr 2026</span>
+            <h4 class="cert-name" data-i18n="certs.algoritmos.name">Algoritmos e Lógica de Programação</h4>
+            <span class="cert-date" data-i18n="certs.algoritmos.date">Abr 2026</span>
           </div>
-          <a href="assets/certificados/Certificado Algoritmos e Lógica de Programação.pdf" target="_blank" class="cert-link" title="Ver certificado">
+          <a href="assets/certificados/Certificado Algoritmos e Lógica de Programação.pdf" target="_blank" class="cert-link" data-i18n-title="certs.viewCert" title="Ver certificado">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
           </a>
         </div>
@@ -462,13 +477,13 @@
 
     <!-- ── Currículo / Resume ── -->
     <section id="curriculo" class="section container">
-      <h2 class="section-title reveal">Currículo</h2>
+      <h2 class="section-title reveal" data-i18n="resume.title">Currículo</h2>
 
       <div class="resume-tabs reveal" role="tablist">
-        <button class="resume-tab active" data-tab="educacao" role="tab">🎓Educação</button>
-        <button class="resume-tab" data-tab="experiencias" role="tab">💼Experiências</button>
-        <button class="resume-tab" data-tab="hard" role="tab">💻Hard Skills</button>
-        <button class="resume-tab" data-tab="soft" role="tab">🤝Soft Skills</button>
+        <button class="resume-tab active" data-tab="educacao" role="tab" data-i18n="resume.tabs.education">🎓Educação</button>
+        <button class="resume-tab" data-tab="experiencias" role="tab" data-i18n="resume.tabs.experience">💼Experiências</button>
+        <button class="resume-tab" data-tab="hard" role="tab" data-i18n="resume.tabs.hard">💻Hard Skills</button>
+        <button class="resume-tab" data-tab="soft" role="tab" data-i18n="resume.tabs.soft">🤝Soft Skills</button>
       </div>
 
       <!-- Educação -->
@@ -476,9 +491,9 @@
         <div class="resume-item reveal">
           <div class="resume-dot"></div>
           <div class="resume-item-body">
-            <span class="resume-period">2022 – Presente</span>
-            <h4>Bacharelado em Ciência da Computação</h4>
-            <p>UNIPÊ Centro Universitário · João Pessoa, PB</p>
+            <span class="resume-period" data-i18n="resume.education.period">2022 – Presente</span>
+            <h4 data-i18n="resume.education.degree">Bacharelado em Ciência da Computação</h4>
+            <p data-i18n="resume.education.institution">UNIPÊ Centro Universitário · João Pessoa, PB</p>
           </div>
         </div>
         <!-- Adicione mais itens conforme necessário -->
@@ -489,9 +504,9 @@
         <div class="resume-item reveal">
           <div class="resume-dot"></div>
           <div class="resume-item-body">
-            <span class="resume-period">2023 – 2023</span>
-            <h4>Assistente Administrativo</h4>
-            <p>Teeva · Efetivo em venda de produtos online, suporte ao cliente, emissão de documentos e administração de controle de estoque.</p>
+            <span class="resume-period" data-i18n="resume.experience.period">2023 – 2023</span>
+            <h4 data-i18n="resume.experience.role">Assistente Administrativo</h4>
+            <p data-i18n="resume.experience.description">Teeva · Efetivo em venda de produtos online, suporte ao cliente, emissão de documentos e administração de controle de estoque.</p>
           </div>
         </div>
       </div>
@@ -501,49 +516,49 @@
         <div class="hard-skills-list reveal">
           <div class="hard-skill-item">
             <div class="hs-header"><span>HTML &amp; CSS</span></div>
-            <div class="hs-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="HTML e CSS – Avançado">
+            <div class="hs-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" data-i18n-aria-label="hardskills.aria.htmlCss" aria-label="HTML e CSS – Avançado">
               <div class="hs-fill" style="--pct:90%"></div>
             </div>
           </div>
           <div class="hard-skill-item">
             <div class="hs-header"><span>JavaScript</span></div>
-            <div class="hs-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="JavaScript – Intermediário">
+            <div class="hs-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" data-i18n-aria-label="hardskills.aria.javascript" aria-label="JavaScript – Intermediário">
               <div class="hs-fill" style="--pct:75%"></div>
             </div>
           </div>
           <div class="hard-skill-item">
             <div class="hs-header"><span>React</span></div>
-            <div class="hs-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="React – Intermediário">
+            <div class="hs-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" data-i18n-aria-label="hardskills.aria.react" aria-label="React – Intermediário">
               <div class="hs-fill" style="--pct:65%"></div>
             </div>
           </div>
           <div class="hard-skill-item">
             <div class="hs-header"><span>UI/UX Design</span></div>
-            <div class="hs-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="UI/UX Design – Intermediário">
+            <div class="hs-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" data-i18n-aria-label="hardskills.aria.uiux" aria-label="UI/UX Design – Intermediário">
               <div class="hs-fill" style="--pct:65%"></div>
             </div>
           </div>
           <div class="hard-skill-item">
             <div class="hs-header"><span>Node.js</span></div>
-            <div class="hs-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Node.js – Intermediário">
+            <div class="hs-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-i18n-aria-label="hardskills.aria.nodejs" aria-label="Node.js – Intermediário">
               <div class="hs-fill" style="--pct:60%"></div>
             </div>
           </div>
           <div class="hard-skill-item">
             <div class="hs-header"><span>Python</span></div>
-            <div class="hs-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="Python – Intermediário">
+            <div class="hs-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" data-i18n-aria-label="hardskills.aria.python" aria-label="Python – Intermediário">
               <div class="hs-fill" style="--pct:65%"></div>
             </div>
           </div>
           <div class="hard-skill-item">
             <div class="hs-header"><span>Pygame</span></div>
-            <div class="hs-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="Pygame – Intermediário">
+            <div class="hs-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" data-i18n-aria-label="hardskills.aria.pygame" aria-label="Pygame – Intermediário">
               <div class="hs-fill" style="--pct:65%"></div>
             </div>
           </div>
           <div class="hard-skill-item">
             <div class="hs-header"><span>Git &amp; GitHub</span></div>
-            <div class="hs-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Git e GitHub – Avançado">
+            <div class="hs-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" data-i18n-aria-label="hardskills.aria.git" aria-label="Git e GitHub – Avançado">
               <div class="hs-fill" style="--pct:80%"></div>
             </div>
           </div>
@@ -553,22 +568,22 @@
       <!-- Soft Skills -->
       <div class="resume-panel" id="tab-soft">
         <div class="soft-skills-grid reveal">
-          <div class="soft-card">🤝 Trabalho em equipe</div>
-          <div class="soft-card">🧩 Resolução de problemas</div>
-          <div class="soft-card">🗣️ Comunicação</div>
-          <div class="soft-card">⏱️ Gestão de tempo</div>
-          <div class="soft-card">📚 Aprendizado contínuo</div>
-          <div class="soft-card">🎯 Atenção aos detalhes</div>
-          <div class="soft-card">💡 Criatividade</div>
-          <div class="soft-card">🔄 Adaptabilidade</div>
+          <div class="soft-card" data-i18n="softskills.teamwork">🤝 Trabalho em equipe</div>
+          <div class="soft-card" data-i18n="softskills.problemSolving">🧩 Resolução de problemas</div>
+          <div class="soft-card" data-i18n="softskills.communication">🗣️ Comunicação</div>
+          <div class="soft-card" data-i18n="softskills.timeManagement">⏱️ Gestão de tempo</div>
+          <div class="soft-card" data-i18n="softskills.continuousLearning">📚 Aprendizado contínuo</div>
+          <div class="soft-card" data-i18n="softskills.attentionToDetail">🎯 Atenção aos detalhes</div>
+          <div class="soft-card" data-i18n="softskills.creativity">💡 Criatividade</div>
+          <div class="soft-card" data-i18n="softskills.adaptability">🔄 Adaptabilidade</div>
         </div>
       </div>
     </section>
 
     <!-- ── Contato ── -->
     <section id="contato" class="section container">
-      <h2 class="section-title reveal">Contato</h2>
-      <p class="section-text reveal">
+      <h2 class="section-title reveal" data-i18n="contact.title">Contato</h2>
+      <p class="section-text reveal" data-i18n="contact.intro">
         Estou aberta a oportunidades de estágio, networking e conexões na área de tecnologia.
       </p>
 
@@ -584,7 +599,7 @@
         <div class="contact-card email-card reveal">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
           <span>mariamariahqfs@gmail.com</span>
-          <button class="copy-btn" id="copyEmail" title="Copiar e-mail">
+          <button class="copy-btn" id="copyEmail" data-i18n-title="contact.copyEmailTitle" title="Copiar e-mail">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
           </button>
         </div>
@@ -597,32 +612,32 @@
 
       <!-- Formulário de contato -->
       <div class="contact-form-wrap reveal">
-        <h3 class="contact-form-title">Envie uma mensagem</h3>
+        <h3 class="contact-form-title" data-i18n="contact.formTitle">Envie uma mensagem</h3>
         <!--
           Emails recebidos via https://formspree.io
         -->
         <form class="contact-form" id="contactForm" action="https://formspree.io/f/mojzobyk" method="POST">
           <div class="form-row">
             <div class="form-group">
-              <label for="formName">Nome</label>
-              <input type="text" id="formName" name="name" placeholder="Seu nome" required />
+              <label for="formName" data-i18n="contact.form.name">Nome</label>
+              <input type="text" id="formName" name="name" data-i18n-placeholder="contact.form.namePlaceholder" placeholder="Seu nome" required />
             </div>
             <div class="form-group">
-              <label for="formEmail">E-mail</label>
-              <input type="email" id="formEmail" name="email" placeholder="seu@email.com" required />
+              <label for="formEmail" data-i18n="contact.form.email">E-mail</label>
+              <input type="email" id="formEmail" name="email" data-i18n-placeholder="contact.form.emailPlaceholder" placeholder="seu@email.com" required />
             </div>
           </div>
           <div class="form-group">
-            <label for="formSubject">Assunto</label>
-            <input type="text" id="formSubject" name="subject" placeholder="Sobre o que é?" required />
+            <label for="formSubject" data-i18n="contact.form.subject">Assunto</label>
+            <input type="text" id="formSubject" name="subject" data-i18n-placeholder="contact.form.subjectPlaceholder" placeholder="Sobre o que é?" required />
           </div>
           <div class="form-group">
-            <label for="formMessage">Mensagem</label>
-            <textarea id="formMessage" name="message" rows="5" placeholder="Escreva sua mensagem aqui..." required></textarea>
+            <label for="formMessage" data-i18n="contact.form.message">Mensagem</label>
+            <textarea id="formMessage" name="message" rows="5" data-i18n-placeholder="contact.form.messagePlaceholder" placeholder="Escreva sua mensagem aqui..." required></textarea>
           </div>
           <button type="submit" class="btn primary form-submit" id="formSubmit">
-            <span class="submit-text">Enviar mensagem</span>
-            <span class="submit-loading" hidden>Enviando...</span>
+            <span class="submit-text" data-i18n="contact.form.submit">Enviar mensagem</span>
+            <span class="submit-loading" hidden data-i18n="contact.form.submitting">Enviando...</span>
           </button>
           <p class="form-feedback" id="formFeedback" hidden></p>
         </form>
@@ -631,19 +646,21 @@
   </main>
 
   <footer class="footer">
-    <p>© 2026 Maria Mariah Queiroga Fernandes Soares — Portfólio Front-End</p>
+    <p data-i18n="footer.text">© 2026 Maria Mariah Queiroga Fernandes Soares — Portfólio Front-End</p>
   </footer>
 
-  <a href="#" class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</a>
+  <a href="#" class="back-to-top" id="backToTop" data-i18n-aria-label="a11y.backToTop" aria-label="Voltar ao topo">↑</a>
 
   <!-- Lightbox -->
-  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Visualizar imagem em tela cheia">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Fechar">&times;</button>
-    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Anterior">&#8249;</button>
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" data-i18n-aria-label="a11y.lightboxDialog" aria-label="Visualizar imagem em tela cheia">
+    <button class="lightbox-close" id="lightboxClose" data-i18n-aria-label="a11y.lightboxClose" aria-label="Fechar">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" data-i18n-aria-label="slideshow.prev" aria-label="Anterior">&#8249;</button>
     <img id="lightboxImg" src="" alt="" />
-    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Próximo">&#8250;</button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" data-i18n-aria-label="slideshow.next" aria-label="Próximo">&#8250;</button>
   </div>
 
+  <script src="i18n/translations.js"></script>
+  <script src="i18n/i18n.js"></script>
   <script src="github/github-api.js"></script>
   <script src="github/linguagens.js"></script>
   <script src="github/tags.js"></script>

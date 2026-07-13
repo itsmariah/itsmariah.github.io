@@ -236,6 +236,75 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
   box-shadow: 0 0 6px rgba(124,140,255,0.9), 0 0 14px rgba(124,140,255,0.5);
 }
 
+/* ── Idioma ── */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.lang-switcher { position: relative; }
+
+.lang-switcher-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  padding: 6px 12px;
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.lang-switcher-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(124, 140, 255, 0.4);
+}
+
+.lang-flag { font-size: 1rem; line-height: 1; }
+.lang-code { letter-spacing: 0.5px; }
+.lang-caret { font-size: 0.7rem; color: var(--text-soft); }
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 160px;
+  list-style: none;
+  background: rgba(8, 13, 28, 0.97);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  z-index: 200;
+}
+
+.lang-menu[hidden] { display: none; }
+
+.lang-menu li {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.lang-menu li:hover { background: rgba(124, 140, 255, 0.15); color: var(--text); }
+
+.lang-menu li[aria-selected="true"] {
+  color: var(--text);
+  background: rgba(124, 140, 255, 0.12);
+  font-weight: 600;
+}
+
 /* ── Hamburger ── */
 .hamburger {
   display: none;
@@ -1521,6 +1590,10 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 }
 
 @media (max-width: 480px) {
+  .navbar-actions { gap: 8px; }
+  .lang-switcher-btn { padding: 6px 8px; }
+  .lang-code { display: none; }
+
   .section { padding: 50px 0; }
 
   .hero { padding-top: 80px; padding-bottom: 30px; }

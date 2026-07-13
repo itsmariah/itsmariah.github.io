@@ -4,7 +4,8 @@
 
   // Sempre aparecem independente do que o GitHub detectar
   // (C, C#, C++ e SQL foram aprendidas na faculdade, mas ainda sem repositórios publicados)
-  const ALWAYS = ['Git', 'GitHub', 'UI/UX', 'Responsividade', 'C', 'C#', 'C++', 'SQL'];
+  const responsiveness = t('skills.responsiveness');
+  const ALWAYS = ['Git', 'GitHub', 'UI/UX', responsiveness, 'C', 'C#', 'C++', 'SQL'];
 
   try {
     const repos = await ghFetch(`/users/${GITHUB_USER}/repos?per_page=100`);
@@ -24,7 +25,7 @@
     const fromGH = topLanguages(langTotals);
     if (!fromGH.length) return;
 
-    const all = [...fromGH, ...ALWAYS.filter(t => !fromGH.includes(t))];
+    const all = [...fromGH, ...ALWAYS.filter(tag => !fromGH.includes(tag))];
 
     grid.innerHTML = '';
 
@@ -38,6 +39,7 @@
       const el = document.createElement('div');
       el.className = 'skill-card reveal';
       el.textContent = name;
+      if (name === responsiveness) el.dataset.i18n = 'skills.responsiveness';
       grid.appendChild(el);
       obs.observe(el);
     });
