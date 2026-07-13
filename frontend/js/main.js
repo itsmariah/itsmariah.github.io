@@ -262,8 +262,12 @@ function buildLangChart() {
     'linear-gradient(90deg,#f0db4f,#e8c50a)',   // JavaScript
     'linear-gradient(90deg,#68a063,#3d7a38)',   // Node.js
     'linear-gradient(90deg,#7c8cff,#a78bfa)',   // default
-    'linear-gradient(90deg,#06b6d4,#0e7490)',
-    'linear-gradient(90deg,#f472b6,#be185d)',
+    'linear-gradient(90deg,#06b6d4,#0e7490)',   // UI/UX
+    'linear-gradient(90deg,#f472b6,#be185d)',   // Responsividade
+    'linear-gradient(90deg,#61dafb,#21a1c4)',   // React
+    'linear-gradient(90deg,#3178c6,#235a97)',   // TypeScript
+    'linear-gradient(90deg,#4caf50,#2e7d32)',   // Python
+    'linear-gradient(90deg,#0fa968,#0b7a4b)',   // Pygame
   ];
 
   const colorMap = {
@@ -275,6 +279,10 @@ function buildLangChart() {
     'Hub':         colors[4],
     'UI/UX':          colors[5],
     'Responsividade': colors[6],
+    'React':          colors[7],
+    'TypeScript':     colors[8],
+    'Python':         colors[9],
+    'Pygame':         colors[10],
   };
 
   const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
