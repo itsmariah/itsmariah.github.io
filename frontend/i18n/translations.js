@@ -7,15 +7,15 @@ window.I18N = {
       menuLabel: "Abrir menu",
     },
     hero: {
-      tag: "Desenvolvedora Front-End em formação",
+      tag: "Desenvolvedora Front-End",
       title: "Criando interfaces modernas, interativas e responsivas.",
-      description: "Estudante de Ciência da Computação com foco em desenvolvimento web, apaixonada por transformar ideias em experiências digitais funcionais e intuitivas.",
+      description: "Bacharel em Ciência da Computação com foco em desenvolvimento web, apaixonada por transformar ideias em experiências digitais funcionais e intuitivas.",
       viewProjects: "Ver projetos",
       contactMe: "Entrar em contato",
     },
     about: {
       title: "Sobre mim",
-      p1: "Sou estudante de Ciência da Computação e tenho direcionado minha trajetória para a área de desenvolvimento front-end e web. Gosto de construir interfaces organizadas, bonitas e funcionais, com atenção especial à experiência do usuário.",
+      p1: "Sou bacharel em Ciência da Computação e tenho direcionado minha trajetória para a área de desenvolvimento front-end e web. Gosto de construir interfaces organizadas, bonitas e funcionais, com atenção especial à experiência do usuário.",
       p2: "Atualmente, venho desenvolvendo projetos práticos que fortalecem minhas habilidades com HTML, CSS, JavaScript e integração entre front-end e back-end, com destaque para o SkillUp Dev, plataforma voltada ao desenvolvimento de soft skills para desenvolvedores.",
     },
     skills: { title: "Tecnologias", responsiveness: "Responsividade" },
@@ -54,12 +54,17 @@ window.I18N = {
       pucrs: { name: "Compliance e Proteção de Dados", date: "Jun 2026" },
       claude: { name: "Formação Claude Code 2026 — IA com Claude e Cowork", date: "Jun 2026" },
       algoritmos: { name: "Algoritmos e Lógica de Programação", date: "Abr 2026" },
+      web: { name: "Imersão Arquitetura Web com IA", date: "Jul 2026" },
     },
     resume: {
       title: "Currículo",
       tabs: { education: "🎓Educação", experience: "💼Experiências", hard: "💻Hard Skills", soft: "🤝Soft Skills" },
-      education: { period: "2022 – Presente", degree: "Bacharelado em Ciência da Computação", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
-      experience: { period: "2023 – 2023", role: "Assistente Administrativo", description: "Teeva · Efetivo em venda de produtos online, suporte ao cliente, emissão de documentos e administração de controle de estoque." },
+      education: { period: "2022 – 2026", degree: "Bacharelado em Ciência da Computação", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
+      experience: {
+        teeva: { period: "2023 – 2023", role: "Assistente Administrativo", description: "Teeva · Efetivo em venda de produtos online, suporte ao cliente, emissão de documentos e administração de controle de estoque." },
+        centauro: { period: "Nov 2022 – Fev 2023", role: "Assistente de Loja", description: "Centauro · Atendimento ao cliente com foco na experiência de compra, organização da loja e suporte nas operações de caixa." },
+        aec: { period: "Jul 2021 – Jun 2022", role: "Operadora de Call Center", description: "AeC · Atendimento ao cliente em ambiente de alta demanda, com foco em comunicação clara, resolução de problemas e cumprimento de metas." },
+      },
     },
     hardskills: {
       aria: {
@@ -96,15 +101,15 @@ window.I18N = {
       menuLabel: "Open menu",
     },
     hero: {
-      tag: "Front-End Developer in training",
+      tag: "Front-End Developer",
       title: "Building modern, interactive, and responsive interfaces.",
-      description: "Computer Science student focused on web development, passionate about turning ideas into functional and intuitive digital experiences.",
+      description: "Computer Science graduate focused on web development, passionate about turning ideas into functional and intuitive digital experiences.",
       viewProjects: "View projects",
       contactMe: "Get in touch",
     },
     about: {
       title: "About me",
-      p1: "I'm a Computer Science student and I've been steering my path toward front-end and web development. I enjoy building organized, beautiful, and functional interfaces, with special attention to user experience.",
+      p1: "I'm a Computer Science graduate and I've been steering my path toward front-end and web development. I enjoy building organized, beautiful, and functional interfaces, with special attention to user experience.",
       p2: "I'm currently building practical projects that strengthen my skills in HTML, CSS, JavaScript, and front-end/back-end integration, with SkillUp Dev standing out — a platform focused on developing soft skills for developers.",
     },
     skills: { title: "Skills", responsiveness: "Responsiveness" },
@@ -143,12 +148,17 @@ window.I18N = {
       pucrs: { name: "Compliance and Data Protection", date: "Jun 2026" },
       claude: { name: "Claude Code 2026 Training — AI with Claude and Cowork", date: "Jun 2026" },
       algoritmos: { name: "Algorithms and Programming Logic", date: "Apr 2026" },
+      web: { name: "Web Architecture with AI Immersion", date: "Jul 2026" },
     },
     resume: {
       title: "Resume",
       tabs: { education: "🎓Education", experience: "💼Experience", hard: "💻Hard Skills", soft: "🤝Soft Skills" },
-      education: { period: "2022 – Present", degree: "Bachelor's in Computer Science", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
-      experience: { period: "2023 – 2023", role: "Administrative Assistant", description: "Teeva · Handled online product sales, customer support, document issuance, and inventory control management." },
+      education: { period: "2022 – 2026", degree: "Bachelor's in Computer Science", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
+      experience: {
+        teeva: { period: "2023 – 2023", role: "Administrative Assistant", description: "Teeva · Handled online product sales, customer support, document issuance, and inventory control management." },
+        centauro: { period: "Nov 2022 – Feb 2023", role: "Store Assistant", description: "Centauro · Customer service focused on the shopping experience, store organization, and checkout support." },
+        aec: { period: "Jul 2021 – Jun 2022", role: "Call Center Operator", description: "AeC · High-demand customer service focused on clear communication, problem-solving, and meeting performance targets." },
+      },
     },
     hardskills: {
       aria: {
@@ -185,15 +195,15 @@ window.I18N = {
       menuLabel: "Abrir menú",
     },
     hero: {
-      tag: "Desarrolladora Front-End en formación",
+      tag: "Desarrolladora Front-End",
       title: "Creando interfaces modernas, interactivas y responsivas.",
-      description: "Estudiante de Ciencias de la Computación enfocada en desarrollo web, apasionada por convertir ideas en experiencias digitales funcionales e intuitivas.",
+      description: "Licenciada en Ciencias de la Computación enfocada en desarrollo web, apasionada por convertir ideas en experiencias digitales funcionales e intuitivas.",
       viewProjects: "Ver proyectos",
       contactMe: "Ponte en contacto",
     },
     about: {
       title: "Sobre mí",
-      p1: "Soy estudiante de Ciencias de la Computación y he orientado mi trayectoria hacia el desarrollo front-end y web. Me gusta construir interfaces organizadas, bonitas y funcionales, con especial atención a la experiencia del usuario.",
+      p1: "Soy licenciada en Ciencias de la Computación y he orientado mi trayectoria hacia el desarrollo front-end y web. Me gusta construir interfaces organizadas, bonitas y funcionales, con especial atención a la experiencia del usuario.",
       p2: "Actualmente desarrollo proyectos prácticos que fortalecen mis habilidades en HTML, CSS, JavaScript e integración entre front-end y back-end, destacando SkillUp Dev, una plataforma enfocada en el desarrollo de soft skills para desarrolladores.",
     },
     skills: { title: "Tecnologías", responsiveness: "Responsividad" },
@@ -232,12 +242,17 @@ window.I18N = {
       pucrs: { name: "Compliance y Protección de Datos", date: "Jun 2026" },
       claude: { name: "Formación Claude Code 2026 — IA con Claude y Cowork", date: "Jun 2026" },
       algoritmos: { name: "Algoritmos y Lógica de Programación", date: "Abr 2026" },
+      web: { name: "Inmersión en Arquitectura Web con IA", date: "Jul 2026" },
     },
     resume: {
       title: "Currículum",
       tabs: { education: "🎓Educación", experience: "💼Experiencia", hard: "💻Hard Skills", soft: "🤝Soft Skills" },
-      education: { period: "2022 – Presente", degree: "Licenciatura en Ciencias de la Computación", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
-      experience: { period: "2023 – 2023", role: "Asistente Administrativa", description: "Teeva · Encargada de ventas de productos en línea, atención al cliente, emisión de documentos y administración del control de inventario." },
+      education: { period: "2022 – 2026", degree: "Licenciatura en Ciencias de la Computación", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
+      experience: {
+        teeva: { period: "2023 – 2023", role: "Asistente Administrativa", description: "Teeva · Encargada de ventas de productos en línea, atención al cliente, emisión de documentos y administración del control de inventario." },
+        centauro: { period: "Nov 2022 – Feb 2023", role: "Asistente de Tienda", description: "Centauro · Atención al cliente enfocada en la experiencia de compra, organización de la tienda y soporte en caja." },
+        aec: { period: "Jul 2021 – Jun 2022", role: "Operadora de Call Center", description: "AeC · Atención al cliente en un entorno de alta demanda, con enfoque en comunicación clara, resolución de problemas y cumplimiento de metas." },
+      },
     },
     hardskills: {
       aria: {
@@ -274,15 +289,15 @@ window.I18N = {
       menuLabel: "Ouvrir le menu",
     },
     hero: {
-      tag: "Développeuse Front-End en formation",
+      tag: "Développeuse Front-End",
       title: "Je crée des interfaces modernes, interactives et responsives.",
-      description: "Étudiante en informatique spécialisée dans le développement web, passionnée par la transformation d'idées en expériences numériques fonctionnelles et intuitives.",
+      description: "Diplômée en informatique spécialisée dans le développement web, passionnée par la transformation d'idées en expériences numériques fonctionnelles et intuitives.",
       viewProjects: "Voir les projets",
       contactMe: "Me contacter",
     },
     about: {
       title: "À propos de moi",
-      p1: "Je suis étudiante en informatique et j'oriente mon parcours vers le développement front-end et web. J'aime concevoir des interfaces organisées, esthétiques et fonctionnelles, avec une attention particulière à l'expérience utilisateur.",
+      p1: "Je suis diplômée en informatique et j'oriente mon parcours vers le développement front-end et web. J'aime concevoir des interfaces organisées, esthétiques et fonctionnelles, avec une attention particulière à l'expérience utilisateur.",
       p2: "Je développe actuellement des projets concrets qui renforcent mes compétences en HTML, CSS, JavaScript et en intégration front-end/back-end, avec en vedette SkillUp Dev, une plateforme dédiée au développement des soft skills pour les développeurs.",
     },
     skills: { title: "Technologies", responsiveness: "Réactivité" },
@@ -321,12 +336,17 @@ window.I18N = {
       pucrs: { name: "Conformité et Protection des Données", date: "Juin 2026" },
       claude: { name: "Formation Claude Code 2026 — IA avec Claude et Cowork", date: "Juin 2026" },
       algoritmos: { name: "Algorithmes et Logique de Programmation", date: "Avr 2026" },
+      web: { name: "Immersion en Architecture Web avec l'IA", date: "Juil 2026" },
     },
     resume: {
       title: "CV",
       tabs: { education: "🎓Formation", experience: "💼Expérience", hard: "💻Hard Skills", soft: "🤝Soft Skills" },
-      education: { period: "2022 – Présent", degree: "Licence en Informatique", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
-      experience: { period: "2023 – 2023", role: "Assistante Administrative", description: "Teeva · En charge de la vente de produits en ligne, du support client, de l'émission de documents et de la gestion du contrôle des stocks." },
+      education: { period: "2022 – 2026", degree: "Licence en Informatique", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
+      experience: {
+        teeva: { period: "2023 – 2023", role: "Assistante Administrative", description: "Teeva · En charge de la vente de produits en ligne, du support client, de l'émission de documents et de la gestion du contrôle des stocks." },
+        centauro: { period: "Nov 2022 – Fév 2023", role: "Assistante de Vente", description: "Centauro · Service client axé sur l'expérience d'achat, organisation du magasin et support à la caisse." },
+        aec: { period: "Juil 2021 – Juin 2022", role: "Opératrice de Centre d'Appels", description: "AeC · Service client en environnement à forte demande, axé sur une communication claire, la résolution de problèmes et l'atteinte des objectifs." },
+      },
     },
     hardskills: {
       aria: {
@@ -363,15 +383,15 @@ window.I18N = {
       menuLabel: "Menü öffnen",
     },
     hero: {
-      tag: "Front-End-Entwicklerin in Ausbildung",
+      tag: "Front-End-Entwicklerin",
       title: "Ich gestalte moderne, interaktive und responsive Benutzeroberflächen.",
-      description: "Informatikstudentin mit Fokus auf Webentwicklung, begeistert davon, Ideen in funktionale und intuitive digitale Erlebnisse zu verwandeln.",
+      description: "Informatik-Absolventin mit Fokus auf Webentwicklung, begeistert davon, Ideen in funktionale und intuitive digitale Erlebnisse zu verwandeln.",
       viewProjects: "Projekte ansehen",
       contactMe: "Kontakt aufnehmen",
     },
     about: {
       title: "Über mich",
-      p1: "Ich studiere Informatik und richte meinen Weg zunehmend auf Front-End- und Webentwicklung aus. Ich baue gerne übersichtliche, ansprechende und funktionale Benutzeroberflächen mit besonderem Augenmerk auf die Nutzererfahrung.",
+      p1: "Ich habe Informatik studiert und richte meinen Weg zunehmend auf Front-End- und Webentwicklung aus. Ich baue gerne übersichtliche, ansprechende und funktionale Benutzeroberflächen mit besonderem Augenmerk auf die Nutzererfahrung.",
       p2: "Derzeit arbeite ich an praktischen Projekten, die meine Kenntnisse in HTML, CSS, JavaScript sowie in der Front-End-/Back-End-Integration vertiefen — allen voran SkillUp Dev, eine Plattform zur Förderung von Soft Skills für Entwickler:innen.",
     },
     skills: { title: "Technologien", responsiveness: "Responsivität" },
@@ -410,12 +430,17 @@ window.I18N = {
       pucrs: { name: "Compliance und Datenschutz", date: "Jun 2026" },
       claude: { name: "Claude Code 2026 Schulung — KI mit Claude und Cowork", date: "Jun 2026" },
       algoritmos: { name: "Algorithmen und Programmierlogik", date: "Apr 2026" },
+      web: { name: "Immersion in Web-Architektur mit KI", date: "Jul 2026" },
     },
     resume: {
       title: "Lebenslauf",
       tabs: { education: "🎓Ausbildung", experience: "💼Erfahrung", hard: "💻Hard Skills", soft: "🤝Soft Skills" },
-      education: { period: "2022 – Heute", degree: "Bachelor in Informatik", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
-      experience: { period: "2023 – 2023", role: "Verwaltungsassistentin", description: "Teeva · Zuständig für den Online-Produktverkauf, Kundensupport, Dokumentenausstellung und Bestandskontrolle." },
+      education: { period: "2022 – 2026", degree: "Bachelor in Informatik", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
+      experience: {
+        teeva: { period: "2023 – 2023", role: "Verwaltungsassistentin", description: "Teeva · Zuständig für den Online-Produktverkauf, Kundensupport, Dokumentenausstellung und Bestandskontrolle." },
+        centauro: { period: "Nov 2022 – Feb 2023", role: "Verkaufsassistentin", description: "Centauro · Kundenservice mit Fokus auf das Einkaufserlebnis, Ladenorganisation und Unterstützung an der Kasse." },
+        aec: { period: "Jul 2021 – Jun 2022", role: "Call-Center-Mitarbeiterin", description: "AeC · Kundenservice in einem Umfeld mit hoher Nachfrage, mit Fokus auf klare Kommunikation, Problemlösung und das Erreichen von Zielvorgaben." },
+      },
     },
     hardskills: {
       aria: {
@@ -452,15 +477,15 @@ window.I18N = {
       menuLabel: "メニューを開く",
     },
     hero: {
-      tag: "フロントエンド開発者（勉強中）",
+      tag: "フロントエンドデベロッパー",
       title: "モダンでインタラクティブ、レスポンシブなインターフェースを作っています。",
-      description: "Web開発に力を入れているコンピュータサイエンスの学生です。アイデアを機能的で直感的なデジタル体験に変えることに情熱を注いでいます。",
+      description: "Web開発に力を入れているコンピュータサイエンスの卒業生です。アイデアを機能的で直感的なデジタル体験に変えることに情熱を注いでいます。",
       viewProjects: "プロジェクトを見る",
       contactMe: "お問い合わせ",
     },
     about: {
       title: "自己紹介",
-      p1: "コンピュータサイエンスを学ぶ学生で、フロントエンド・Web開発の道に進んでいます。ユーザー体験に特に気を配りながら、整理された美しく機能的なインターフェースを作るのが好きです。",
+      p1: "コンピュータサイエンスを学んだ卒業生で、フロントエンド・Web開発の道に進んでいます。ユーザー体験に特に気を配りながら、整理された美しく機能的なインターフェースを作るのが好きです。",
       p2: "現在は、HTML、CSS、JavaScript、そしてフロントエンドとバックエンドの連携スキルを高める実践的なプロジェクトに取り組んでいます。特に、開発者向けのソフトスキル開発プラットフォーム「SkillUp Dev」に力を入れています。",
     },
     skills: { title: "技術", responsiveness: "レスポンシブ対応" },
@@ -499,12 +524,17 @@ window.I18N = {
       pucrs: { name: "コンプライアンスとデータ保護", date: "2026年6月" },
       claude: { name: "Claude Code 2026研修 — ClaudeとCoworkによるAI活用", date: "2026年6月" },
       algoritmos: { name: "アルゴリズムとプログラミングロジック", date: "2026年4月" },
+      web: { name: "AIによるWebアーキテクチャイマージョン", date: "2026年7月" },
     },
     resume: {
       title: "経歴",
       tabs: { education: "🎓学歴", experience: "💼職歴", hard: "💻ハードスキル", soft: "🤝ソフトスキル" },
-      education: { period: "2022年～現在", degree: "コンピュータサイエンス学士", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
-      experience: { period: "2023年～2023年", role: "事務アシスタント", description: "Teeva · オンライン商品販売、カスタマーサポート、書類発行、在庫管理を担当。" },
+      education: { period: "2022年～2026年", degree: "コンピュータサイエンス学士", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
+      experience: {
+        teeva: { period: "2023年～2023年", role: "事務アシスタント", description: "Teeva · オンライン商品販売、カスタマーサポート、書類発行、在庫管理を担当。" },
+        centauro: { period: "2022年11月～2023年2月", role: "店舗アシスタント", description: "Centauro・購買体験を重視した接客対応、店舗の整理整頓、レジ業務のサポートを担当。" },
+        aec: { period: "2021年7月～2022年6月", role: "コールセンターオペレーター", description: "AeC・高需要環境でのカスタマー対応。明確なコミュニケーション、問題解決、目標達成を重視。" },
+      },
     },
     hardskills: {
       aria: {
