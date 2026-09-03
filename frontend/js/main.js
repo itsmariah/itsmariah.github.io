@@ -89,25 +89,31 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
 // ── Typewriter ──
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const typeTarget = document.querySelector('.typewriter-target');
 const fullText   = typeTarget.textContent.trim();
-typeTarget.textContent = '';
 
-const cursor = document.createElement('span');
-cursor.className = 'cursor';
-typeTarget.appendChild(cursor);
+if (prefersReducedMotion) {
+  typeTarget.textContent = fullText;
+} else {
+  typeTarget.textContent = '';
 
-let i = 0;
-function type() {
-  if (i < fullText.length) {
-    typeTarget.insertBefore(document.createTextNode(fullText[i]), cursor);
-    i++;
-    setTimeout(type, i < 10 ? 120 : 38);
-  } else {
-    setTimeout(() => { cursor.style.display = 'none'; }, 1800);
+  const cursor = document.createElement('span');
+  cursor.className = 'cursor';
+  typeTarget.appendChild(cursor);
+
+  let i = 0;
+  function type() {
+    if (i < fullText.length) {
+      typeTarget.insertBefore(document.createTextNode(fullText[i]), cursor);
+      i++;
+      setTimeout(type, i < 10 ? 120 : 38);
+    } else {
+      setTimeout(() => { cursor.style.display = 'none'; }, 1800);
+    }
   }
+  setTimeout(type, 500);
 }
-setTimeout(type, 500);
 
 // ── Copy email ──
 const copyBtn = document.getElementById('copyEmail');
@@ -164,12 +170,15 @@ if (copyBtn) {
       ctx.fillStyle = `rgba(200, 210, 255, ${Math.abs(s.alpha)})`;
       ctx.fill();
     });
-    requestAnimationFrame(draw);
   }
 
   resize();
   initStarList();
-  draw();
+  if (prefersReducedMotion) {
+    draw();
+  } else {
+    (function loop() { draw(); requestAnimationFrame(loop); })();
+  }
   window.addEventListener('resize', () => { resize(); initStarList(); });
 })();
 

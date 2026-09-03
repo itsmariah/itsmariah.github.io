@@ -5,6 +5,7 @@ window.I18N = {
       about: "Sobre", skills: "Tecnologias", projects: "Projetos",
       certificates: "Certificados", resume: "Currículo", contact: "Contato",
       menuLabel: "Abrir menu",
+      themeToggle: "Alternar tema",
     },
     hero: {
       tag: "Desenvolvedora Front-End",
@@ -99,6 +100,7 @@ window.I18N = {
       about: "About", skills: "Skills", projects: "Projects",
       certificates: "Certificates", resume: "Resume", contact: "Contact",
       menuLabel: "Open menu",
+      themeToggle: "Toggle theme",
     },
     hero: {
       tag: "Front-End Developer",
@@ -193,6 +195,7 @@ window.I18N = {
       about: "Sobre mí", skills: "Tecnologías", projects: "Proyectos",
       certificates: "Certificados", resume: "Currículum", contact: "Contacto",
       menuLabel: "Abrir menú",
+      themeToggle: "Cambiar tema",
     },
     hero: {
       tag: "Desarrolladora Front-End",
@@ -287,6 +290,7 @@ window.I18N = {
       about: "À propos", skills: "Technologies", projects: "Projets",
       certificates: "Certificats", resume: "CV", contact: "Contact",
       menuLabel: "Ouvrir le menu",
+      themeToggle: "Changer de thème",
     },
     hero: {
       tag: "Développeuse Front-End",
@@ -381,6 +385,7 @@ window.I18N = {
       about: "Über mich", skills: "Technologien", projects: "Projekte",
       certificates: "Zertifikate", resume: "Lebenslauf", contact: "Kontakt",
       menuLabel: "Menü öffnen",
+      themeToggle: "Design wechseln",
     },
     hero: {
       tag: "Front-End-Entwicklerin",
@@ -475,6 +480,7 @@ window.I18N = {
       about: "自己紹介", skills: "技術", projects: "プロジェクト",
       certificates: "資格", resume: "経歴", contact: "お問い合わせ",
       menuLabel: "メニューを開く",
+      themeToggle: "テーマを切り替える",
     },
     hero: {
       tag: "フロントエンドデベロッパー",

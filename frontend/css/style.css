@@ -1,4 +1,5 @@
 :root {
+  /* Tema escuro (padrão) */
   --bg: #080d1c;
   --bg-soft: #0e1530;
   --card: rgba(255, 255, 255, 0.06);
@@ -8,6 +9,62 @@
   --primary: #7c8cff;
   --primary-strong: #5b6cff;
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 22px 44px rgba(0, 0, 0, 0.32);
+
+  /* Camadas de superfície (overlays translúcidos sobre --bg) */
+  --surface-1: rgba(255, 255, 255, 0.04);
+  --surface-2: rgba(255, 255, 255, 0.05);
+  --surface-3: rgba(255, 255, 255, 0.07);
+  --surface-3-hover: rgba(255, 255, 255, 0.13);
+  --surface-4: rgba(255, 255, 255, 0.08);
+  --surface-4-hover: rgba(255, 255, 255, 0.16);
+  --surface-btn-hover: rgba(255, 255, 255, 0.1);
+
+  /* Bordas */
+  --border-soft: rgba(255, 255, 255, 0.14);
+
+  /* Fundos sólidos translúcidos (navbar, menus, lightbox) */
+  --overlay-navbar: rgba(8, 13, 28, 0.88);
+  --overlay-strong: rgba(8, 13, 28, 0.97);
+
+  /* Fundo animado (aurora / grid) */
+  --grid-line: rgba(124, 140, 255, 0.06);
+  --grid-dot: rgba(124, 140, 255, 0.55);
+  --grid-dot-mid: rgba(124, 140, 255, 0.15);
+  --aurora-opacity: 1;
+  --chip-text: #d3d8ff;
+}
+
+[data-theme="light"] {
+  --bg: #f4f6fb;
+  --bg-soft: #e9edf9;
+  --card: rgba(28, 34, 64, 0.045);
+  --card-border: rgba(28, 34, 64, 0.12);
+  --text: #14172c;
+  --text-soft: #4c5470;
+  --primary: #5259e8;
+  --primary-strong: #3d43d1;
+  --shadow: 0 10px 30px rgba(30, 41, 82, 0.1);
+  --shadow-lg: 0 22px 44px rgba(30, 41, 82, 0.14);
+
+  --surface-1: rgba(28, 34, 64, 0.035);
+  --surface-2: rgba(28, 34, 64, 0.035);
+  --surface-3: rgba(28, 34, 64, 0.06);
+  --surface-3-hover: rgba(28, 34, 64, 0.1);
+  --surface-4: rgba(28, 34, 64, 0.06);
+  --surface-4-hover: rgba(28, 34, 64, 0.1);
+  --surface-btn-hover: rgba(28, 34, 64, 0.07);
+
+  --border-soft: rgba(28, 34, 64, 0.12);
+
+  --overlay-navbar: rgba(244, 246, 251, 0.86);
+  --overlay-strong: rgba(255, 255, 255, 0.97);
+
+  --grid-line: rgba(82, 89, 232, 0.07);
+  --grid-dot: rgba(82, 89, 232, 0.4);
+  --grid-dot-mid: rgba(82, 89, 232, 0.12);
+  --aurora-opacity: 0.5;
+  --chip-text: #3d43d1;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,6 +77,19 @@ body {
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+/* ══════════════════════════════════════
+   Movimento reduzido
+══════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ══════════════════════════════════════
@@ -31,6 +101,8 @@ body {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  opacity: var(--aurora-opacity);
+  transition: opacity 0.35s ease;
 }
 
 .aurora-blob {
@@ -100,8 +172,8 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(124, 140, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(124, 140, 255, 0.06) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 64px 64px;
   animation: grid-pulse 6s ease-in-out infinite;
 }
@@ -112,8 +184,8 @@ body {
   inset: 0;
   background-image: radial-gradient(
     circle,
-    rgba(124, 140, 255, 0.55) 0px,
-    rgba(124, 140, 255, 0.15) 2px,
+    var(--grid-dot) 0px,
+    var(--grid-dot-mid) 2px,
     transparent 5px
   );
   background-size: 64px 64px;
@@ -167,10 +239,10 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 }
 
 .navbar.scrolled {
-  background: rgba(8, 13, 28, 0.88);
+  background: var(--overlay-navbar);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.07);
+  box-shadow: 0 1px 0 var(--surface-3);
 }
 
 .navbar.scrolled .navbar-inner { padding: 14px 0; }
@@ -198,6 +270,12 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
       0 0 10px rgba(124,140,255,0.3),
       0 0 22px rgba(91,108,255,0.2);
   }
+}
+
+[data-theme="light"] .logo {
+  color: var(--text);
+  animation: none;
+  text-shadow: 0 0 10px rgba(82,89,232,0.22), 0 0 22px rgba(61,67,209,0.12);
 }
 
 .nav-links {
@@ -249,7 +327,7 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--card);
   border: 1px solid var(--card-border);
   border-radius: 999px;
   padding: 6px 12px;
@@ -261,9 +339,34 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 }
 
 .lang-switcher-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--surface-btn-hover);
   border-color: rgba(124, 140, 255, 0.4);
 }
+
+/* ── Toggle de tema ── */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--surface-btn-hover);
+  border-color: rgba(124, 140, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.theme-icon.icon-moon { display: none; }
+[data-theme="light"] .theme-icon.icon-sun { display: none; }
+[data-theme="light"] .theme-icon.icon-moon { display: block; }
 
 .lang-flag { font-size: 1rem; line-height: 1; }
 .lang-code { letter-spacing: 0.5px; }
@@ -275,7 +378,7 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
   right: 0;
   min-width: 160px;
   list-style: none;
-  background: rgba(8, 13, 28, 0.97);
+  background: var(--overlay-strong);
   border: 1px solid var(--card-border);
   border-radius: 12px;
   padding: 6px;
@@ -357,7 +460,7 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 .tag {
   display: inline-block;
   background: rgba(124,140,255,0.12);
-  color: #cfd5ff;
+  color: var(--chip-text);
   border: 1px solid rgba(124,140,255,0.3);
   border-radius: 999px;
   padding: 7px 14px;
@@ -439,11 +542,11 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 .btn.secondary {
   border-color: var(--card-border);
   color: var(--text);
-  background: rgba(255,255,255,0.04);
+  background: var(--surface-1);
 }
 
 .btn.secondary:hover {
-  background: rgba(255,255,255,0.09);
+  background: var(--surface-btn-hover);
   transform: translateY(-2px);
 }
 
@@ -489,6 +592,12 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
       0 0 70px rgba(91,108,255,0.5),
       0 0 120px rgba(91,108,255,0.2);
   }
+}
+
+[data-theme="light"] .photo-ring,
+[data-theme="light"] .sobre-photo-ring {
+  animation: none;
+  box-shadow: var(--shadow-lg);
 }
 
 /* ══════════════════════════════════════
@@ -681,7 +790,7 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 
 .project-card:hover {
   transform: translateY(-7px);
-  box-shadow: 0 22px 44px rgba(0,0,0,0.32);
+  box-shadow: var(--shadow-lg);
   border-color: rgba(124,140,255,0.32);
 }
 
@@ -859,7 +968,7 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 .project-badge {
   display: inline-block;
   background: rgba(124,140,255,0.15);
-  color: #d7dcff;
+  color: var(--chip-text);
   border: 1px solid rgba(124,140,255,0.35);
   padding: 4px 11px;
   border-radius: 999px;
@@ -910,7 +1019,7 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 }
 
 .project-tags span {
-  background: rgba(255,255,255,0.08);
+  background: var(--surface-4);
   padding: 4px 12px;
   border-radius: 999px;
   font-size: 0.8rem;
@@ -938,13 +1047,13 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 }
 
 .project-link-btn.github {
-  background: rgba(255,255,255,0.07);
+  background: var(--surface-3);
   color: var(--text);
   border: 1px solid var(--card-border);
 }
 
 .project-link-btn.github:hover {
-  background: rgba(255,255,255,0.13);
+  background: var(--surface-3-hover);
   transform: translateY(-1px);
 }
 
@@ -999,7 +1108,7 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 
 .lang-bar-track {
   height: 10px;
-  background: rgba(255,255,255,0.07);
+  background: var(--surface-3);
   border-radius: 999px;
   overflow: hidden;
 }
@@ -1204,7 +1313,7 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 
 .hs-bar {
   height: 8px;
-  background: rgba(255,255,255,0.07);
+  background: var(--surface-3);
   border-radius: 999px;
   overflow: hidden;
 }
@@ -1286,8 +1395,8 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 .email-card { cursor: default; }
 
 .copy-btn {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.14);
+  background: var(--surface-4);
+  border: 1px solid var(--border-soft);
   color: var(--text-soft);
   border-radius: 8px;
   width: 28px; height: 28px;
@@ -1299,7 +1408,7 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
   margin-left: 4px;
 }
 
-.copy-btn:hover { background: rgba(255,255,255,0.16); color: var(--primary); }
+.copy-btn:hover { background: var(--surface-4-hover); color: var(--primary); }
 .copy-btn.copied { color: #4ade80; border-color: rgba(74,222,128,0.35); }
 
 /* ── Contact form ── */
@@ -1343,7 +1452,7 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 
 .form-group input,
 .form-group textarea {
-  background: rgba(255,255,255,0.05);
+  background: var(--surface-2);
   border: 1px solid var(--card-border);
   border-radius: 12px;
   padding: 12px 16px;
@@ -1363,7 +1472,8 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: rgba(184,193,217,0.45);
+  color: var(--text-soft);
+  opacity: 0.55;
 }
 
 .form-submit { align-self: flex-start; }
@@ -1563,7 +1673,7 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
     position: absolute;
     top: calc(100% + 1px);
     left: -5%; right: -5%;
-    background: rgba(8,13,28,0.97);
+    background: var(--overlay-strong);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     flex-direction: column;

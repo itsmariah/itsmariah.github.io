@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-i18n="meta.title">Maria Mariah | Desenvolvedora Front-End</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('portfolio-theme');
+        var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -36,6 +45,15 @@
         <li><a href="#contato" data-i18n="nav.contact">Contato</a></li>
       </ul>
       <div class="navbar-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" data-i18n-aria-label="nav.themeToggle" aria-label="Alternar tema">
+          <svg class="theme-icon icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <svg class="theme-icon icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
         <div class="lang-switcher" id="langSwitcher">
           <button class="lang-switcher-btn" id="langSwitcherBtn" aria-haspopup="listbox" aria-expanded="false">
             <span class="lang-flag" id="langFlag">🇧🇷</span><span class="lang-code" id="langCode">PT</span><span class="lang-caret">▾</span>
@@ -689,6 +707,7 @@
     <button class="lightbox-nav lightbox-next" id="lightboxNext" data-i18n-aria-label="slideshow.next" aria-label="Próximo">&#8250;</button>
   </div>
 
+  <script src="js/theme.js"></script>
   <script src="i18n/translations.js"></script>
   <script src="i18n/i18n.js"></script>
   <script src="github/github-api.js"></script>
