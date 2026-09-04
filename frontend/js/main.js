@@ -17,6 +17,8 @@
 const navbar        = document.getElementById('navbar');
 const scrollProgress = document.getElementById('scrollProgress');
 const backToTop     = document.getElementById('backToTop');
+const backToTopRing = document.getElementById('backToTopRing');
+const RING_CIRCUMFERENCE = 119.4;
 const hamburger     = document.getElementById('hamburger');
 const navLinks      = document.getElementById('navLinks');
 
@@ -24,7 +26,9 @@ const navLinks      = document.getElementById('navLinks');
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
   const total   = document.documentElement.scrollHeight - window.innerHeight;
-  scrollProgress.style.width = ((scrollY / total) * 100) + '%';
+  const pct     = total > 0 ? scrollY / total : 0;
+  scrollProgress.style.width = (pct * 100) + '%';
+  backToTopRing.style.strokeDashoffset = RING_CIRCUMFERENCE * (1 - pct);
   navbar.classList.toggle('scrolled', scrollY > 60);
   backToTop.classList.toggle('visible', scrollY > 400);
 });
@@ -297,6 +301,20 @@ document.querySelectorAll('.project-slideshow').forEach((ss) => {
 // ══════════════════════════════════════
 // Language chart (reads project tags from DOM)
 // ══════════════════════════════════════
+
+// Skeleton exibido enquanto aguardamos as tags reais (API do GitHub ou fallback)
+(function renderLangChartSkeleton() {
+  const chart = document.getElementById('langChart');
+  if (!chart) return;
+  chart.innerHTML = Array.from({ length: 5 }).map(() => `
+    <div class="lang-bar-row">
+      <span class="skeleton-block" style="width:80px;height:12px;"></span>
+      <div class="lang-bar-track"><span class="skeleton-block" style="width:100%;height:100%;"></span></div>
+      <span class="skeleton-block" style="width:36px;height:11px;"></span>
+    </div>
+  `).join('');
+})();
+
 function buildLangChart() {
   const chart = document.getElementById('langChart');
   if (!chart) return;
@@ -358,6 +376,32 @@ function buildLangChart() {
 // ══════════════════════════════════════
 // Resume tabs
 // ══════════════════════════════════════
+
+// Posiciona a linha da timeline exatamente do centro do 1º ao último ponto
+function positionResumeTimeline(panel) {
+  if (!panel) return;
+  const dots = panel.querySelectorAll('.resume-dot');
+  if (dots.length < 2) {
+    panel.classList.add('no-timeline');
+    return;
+  }
+  panel.classList.remove('no-timeline');
+  const panelRect = panel.getBoundingClientRect();
+  const firstRect  = dots[0].getBoundingClientRect();
+  const lastRect   = dots[dots.length - 1].getBoundingClientRect();
+  const top    = (firstRect.top + firstRect.height / 2) - panelRect.top;
+  const bottom = panelRect.bottom - (lastRect.top + lastRect.height / 2);
+  panel.style.setProperty('--tl-top', top + 'px');
+  panel.style.setProperty('--tl-bottom', bottom + 'px');
+}
+
+const timelinePanels = ['tab-educacao', 'tab-experiencias']
+  .map((id) => document.getElementById(id))
+  .filter(Boolean);
+
+positionResumeTimeline(document.getElementById('tab-educacao'));
+window.addEventListener('resize', () => timelinePanels.forEach(positionResumeTimeline));
+
 document.querySelectorAll('.resume-tab').forEach((tab) => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.resume-tab').forEach((t) => t.classList.remove('active'));
@@ -373,6 +417,9 @@ document.querySelectorAll('.resume-tab').forEach((tab) => {
           const pct = fill.style.getPropertyValue('--pct');
           setTimeout(() => { fill.style.width = pct; }, idx * 120 + 50);
         });
+      }
+      if (tab.dataset.tab === 'educacao' || tab.dataset.tab === 'experiencias') {
+        requestAnimationFrame(() => positionResumeTimeline(panel));
       }
     }
   });
@@ -578,4 +625,5 @@ setTimeout(initProjectTagViews, 4000);
 window.rebuildDynamicContent = () => {
   buildLangChart();
   buildProjectFilters();
+  requestAnimationFrame(() => timelinePanels.forEach(positionResumeTimeline));
 };

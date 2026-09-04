@@ -1186,6 +1186,19 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
   transition: width 1s cubic-bezier(0.4, 0, 0.2, 1), filter 0.2s ease;
 }
 
+.skeleton-block {
+  display: block;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--surface-3) 25%, var(--surface-4) 50%, var(--surface-3) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 .lang-bar-pct {
   font-size: 0.82rem;
   color: var(--text-soft);
@@ -1324,17 +1337,34 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+#tab-educacao, #tab-experiencias {
+  position: relative;
+}
+
+#tab-educacao::before, #tab-experiencias::before {
+  content: '';
+  position: absolute;
+  top: var(--tl-top, 0);
+  bottom: var(--tl-bottom, 0);
+  left: 5px;
+  width: 2px;
+  background: var(--card-border);
+}
+
+#tab-educacao.no-timeline::before, #tab-experiencias.no-timeline::before {
+  display: none;
+}
+
 .resume-item {
   display: flex;
   gap: 20px;
   align-items: flex-start;
   padding: 20px 0;
-  border-bottom: 1px solid var(--card-border);
 }
 
-.resume-item:last-child { border-bottom: none; }
-
 .resume-dot {
+  position: relative;
+  z-index: 1;
   width: 12px; height: 12px;
   border-radius: 50%;
   background: var(--primary);
@@ -1573,7 +1603,7 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
   background: var(--primary-strong);
   color: white;
   text-decoration: none;
-  border-radius: 12px;
+  border-radius: 50%;
   display: flex;
   align-items: center; justify-content: center;
   font-size: 1.1rem;
@@ -1588,6 +1618,36 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 
 .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
 .back-to-top:hover   { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(91,108,255,0.6); }
+
+.back-to-top-ring {
+  position: absolute;
+  inset: 0;
+  width: 44px;
+  height: 44px;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+.back-to-top-ring .ring-track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.28);
+  stroke-width: 3;
+}
+
+.back-to-top-ring .ring-fill {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 119.4;
+  stroke-dashoffset: 119.4;
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+.back-to-top-arrow {
+  position: relative;
+  z-index: 1;
+}
 
 /* ══════════════════════════════════════
    Footer
