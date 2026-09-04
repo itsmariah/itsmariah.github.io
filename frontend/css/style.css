@@ -568,6 +568,8 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
     0 0 44px rgba(91,108,255,0.28),
     0 0 80px rgba(91,108,255,0.1);
   animation: photo-glow 3s ease-in-out infinite;
+  transition: transform 0.2s ease-out;
+  will-change: transform;
 }
 
 .profile-photo {

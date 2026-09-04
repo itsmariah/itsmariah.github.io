@@ -90,6 +90,7 @@ document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el))
 
 // ── Typewriter ──
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const canHoverFine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 const typeTarget = document.querySelector('.typewriter-target');
 const fullText   = typeTarget.textContent.trim();
 
@@ -113,6 +114,36 @@ if (prefersReducedMotion) {
     }
   }
   setTimeout(type, 500);
+}
+
+// ── Hero photo: tilt ao mover o mouse (só em dispositivos com mouse) ──
+if (canHoverFine && !prefersReducedMotion) {
+  const heroPhoto = document.querySelector('.hero-photo');
+  const photoRing = document.querySelector('.hero-photo .photo-ring');
+  if (heroPhoto && photoRing) {
+    const MAX_TILT = 14;
+    heroPhoto.addEventListener('mousemove', (e) => {
+      const rect = heroPhoto.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5;
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      photoRing.style.transform = `perspective(700px) rotateX(${(-py * MAX_TILT).toFixed(2)}deg) rotateY(${(px * MAX_TILT).toFixed(2)}deg)`;
+    });
+    heroPhoto.addEventListener('mouseleave', () => { photoRing.style.transform = ''; });
+  }
+}
+
+// ── Botões do hero: efeito magnético ──
+if (canHoverFine && !prefersReducedMotion) {
+  const MAGNET_STRENGTH = 0.25;
+  document.querySelectorAll('.hero-buttons .btn').forEach((btn) => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = (e.clientX - rect.left - rect.width / 2) * MAGNET_STRENGTH;
+      const y = (e.clientY - rect.top - rect.height / 2) * MAGNET_STRENGTH;
+      btn.style.transform = `translate(${x.toFixed(2)}px, ${(y - 2).toFixed(2)}px)`;
+    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+  });
 }
 
 // ── Copy email ──
