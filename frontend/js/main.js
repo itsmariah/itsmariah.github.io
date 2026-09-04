@@ -146,6 +146,20 @@ if (canHoverFine && !prefersReducedMotion) {
   });
 }
 
+// ── Cards de projeto: tilt 3D ao mover o mouse ──
+if (canHoverFine && !prefersReducedMotion) {
+  const CARD_MAX_TILT = 5;
+  document.querySelectorAll('.project-card').forEach((card) => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5;
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(1000px) rotateX(${(-py * CARD_MAX_TILT).toFixed(2)}deg) rotateY(${(px * CARD_MAX_TILT).toFixed(2)}deg) translateY(-7px)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+}
+
 // ── Copy email ──
 const copyBtn = document.getElementById('copyEmail');
 if (copyBtn) {
@@ -296,34 +310,18 @@ function buildLangChart() {
 
   const total = Math.max(...Object.values(counts));
 
-  const colors = [
-    'linear-gradient(90deg,#e34c26,#f06529)',   // HTML
-    'linear-gradient(90deg,#264de4,#2965f1)',   // CSS
-    'linear-gradient(90deg,#f0db4f,#e8c50a)',   // JavaScript
-    'linear-gradient(90deg,#68a063,#3d7a38)',   // Node.js
-    'linear-gradient(90deg,#7c8cff,#a78bfa)',   // default
-    'linear-gradient(90deg,#06b6d4,#0e7490)',   // UI/UX
-    'linear-gradient(90deg,#f472b6,#be185d)',   // Responsividade
-    'linear-gradient(90deg,#61dafb,#21a1c4)',   // React
-    'linear-gradient(90deg,#3178c6,#235a97)',   // TypeScript
-    'linear-gradient(90deg,#4caf50,#2e7d32)',   // Python
-    'linear-gradient(90deg,#0fa968,#0b7a4b)',   // Pygame
-  ];
-
+  // Paleta categórica validada (CVD-safe) — ver var(--lang-*) em style.css
   const colorMap = {
-    'HTML':           colors[0],
-    'CSS':            colors[1],
-    'JavaScript':     colors[2],
-    'Node.js':        colors[3],
-    'Git':            colors[4],
-    'Hub':         colors[4],
-    'UI/UX':          colors[5],
-    'Responsividade': colors[6],
-    'React':          colors[7],
-    'TypeScript':     colors[8],
-    'Python':         colors[9],
-    'Pygame':         colors[10],
+    'TypeScript': 'var(--lang-blue)',
+    'HTML':       'var(--lang-orange)',
+    'React':      'var(--lang-aqua)',
+    'JavaScript': 'var(--lang-yellow)',
+    'Pygame':     'var(--lang-magenta)',
+    'Node.js':    'var(--lang-green)',
+    'CSS':        'var(--lang-violet)',
+    'Python':     'var(--lang-red)',
   };
+  const fallbackColor = 'var(--primary)';
 
   const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
 
@@ -334,7 +332,7 @@ function buildLangChart() {
     row.innerHTML = `
       <span class="lang-bar-label">${lang}</span>
       <div class="lang-bar-track">
-        <div class="lang-bar-fill" style="background:${colorMap[lang] || colors[4]}"></div>
+        <div class="lang-bar-fill" style="background:${colorMap[lang] || fallbackColor}"></div>
       </div>
       <span class="lang-bar-pct">${t('projects.langChartCount', { count })}</span>
     `;
@@ -530,18 +528,23 @@ function buildProjectFilters() {
     cards.forEach(card => {
       const cardTags = Array.from(card.querySelectorAll('.project-tags span')).map(s => s.textContent.trim());
       const show     = tag === ALL_FILTER || cardTags.includes(tag);
-      const wasHidden = card.classList.contains('proj-out');
-
-      card.classList.remove('proj-out', 'proj-in');
+      const isHidden = card.classList.contains('proj-out');
 
       if (show) {
-        if (wasHidden) {
+        if (isHidden) {
+          card.classList.remove('proj-out', 'proj-hiding');
           void card.offsetWidth;
           card.classList.add('proj-in');
           card.addEventListener('animationend', () => card.classList.remove('proj-in'), { once: true });
         }
-      } else {
-        card.classList.add('proj-out');
+      } else if (!isHidden && !card.classList.contains('proj-hiding')) {
+        card.classList.remove('proj-in');
+        card.style.transform = '';
+        card.classList.add('proj-hiding');
+        card.addEventListener('transitionend', () => {
+          card.classList.add('proj-out');
+          card.classList.remove('proj-hiding');
+        }, { once: true });
       }
     });
   }
