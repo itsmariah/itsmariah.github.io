@@ -993,6 +993,7 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 .thumbnail-agenda    { background: linear-gradient(135deg, #14422a 0%, #22863a 55%, #4ade80 100%); }
 .thumbnail-barbearia { background: linear-gradient(135deg, #1a1008 0%, #5c3a1e 55%, #c8a26b 100%); }
 .thumbnail-flappypy  { background: linear-gradient(135deg, #0f2c4a 0%, #3a8fd9 55%, #ffd166 100%); }
+.thumbnail-mistydoces { background: linear-gradient(135deg, #3f6ba8 0%, #a3c0e8 55%, #8e6fb3 100%); }
 
 /* thumbnail overlay (shown by default, fades on hover for cards with real images) */
 .project-thumb {
