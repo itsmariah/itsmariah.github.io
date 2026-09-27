@@ -23,15 +23,23 @@ const hamburger     = document.getElementById('hamburger');
 const navLinks      = document.getElementById('navLinks');
 
 // ── Scroll handler ──
-window.addEventListener('scroll', () => {
+// Agrupa os eventos de scroll em no máximo uma atualização por frame
+let scrollTicking = false;
+function updateOnScroll() {
   const scrollY = window.scrollY;
   const total   = document.documentElement.scrollHeight - window.innerHeight;
   const pct     = total > 0 ? scrollY / total : 0;
-  scrollProgress.style.width = (pct * 100) + '%';
+  scrollProgress.style.transform = `scaleX(${pct})`;
   backToTopRing.style.strokeDashoffset = RING_CIRCUMFERENCE * (1 - pct);
   navbar.classList.toggle('scrolled', scrollY > 60);
   backToTop.classList.toggle('visible', scrollY > 400);
-});
+  scrollTicking = false;
+}
+window.addEventListener('scroll', () => {
+  if (scrollTicking) return;
+  scrollTicking = true;
+  requestAnimationFrame(updateOnScroll);
+}, { passive: true });
 
 // ── Back to top ──
 backToTop.addEventListener('click', (e) => {
@@ -201,7 +209,8 @@ if (copyBtn) {
       y:       Math.random() * canvas.height,
       r:       Math.random() * 1.4 + 0.3,
       alpha:   Math.random(),
-      dAlpha:  (Math.random() * 0.004 + 0.001) * (Math.random() < 0.5 ? 1 : -1),
+      // dobro do passo original, porque o canvas agora desenha a ~30fps
+      dAlpha:  (Math.random() * 0.008 + 0.002) * (Math.random() < 0.5 ? 1 : -1),
     };
   }
 
@@ -221,14 +230,41 @@ if (copyBtn) {
     });
   }
 
+  // Pausa o brilho das estrelas enquanto a página rola, para liberar o frame pro scroll
+  let scrolling = false;
+  let scrollIdle = null;
+  window.addEventListener('scroll', () => {
+    scrolling = true;
+    clearTimeout(scrollIdle);
+    scrollIdle = setTimeout(() => { scrolling = false; }, 150);
+  }, { passive: true });
+
   resize();
   initStarList();
   if (prefersReducedMotion) {
     draw();
   } else {
-    (function loop() { draw(); requestAnimationFrame(loop); })();
+    const FRAME_MS = 1000 / 30;
+    let lastDraw = 0;
+    (function loop(now) {
+      if (!scrolling && now - lastDraw >= FRAME_MS) {
+        draw();
+        lastDraw = now;
+      }
+      requestAnimationFrame(loop);
+    })(0);
   }
-  window.addEventListener('resize', () => { resize(); initStarList(); });
+
+  // No mobile a barra de endereço muda a altura durante o scroll;
+  // só recria o campo de estrelas quando a largura muda de verdade
+  let lastWidth = window.innerWidth;
+  window.addEventListener('resize', () => {
+    if (window.innerWidth === lastWidth) return;
+    lastWidth = window.innerWidth;
+    resize();
+    initStarList();
+    if (prefersReducedMotion) draw();
+  });
 })();
 
 // ══════════════════════════════════════
