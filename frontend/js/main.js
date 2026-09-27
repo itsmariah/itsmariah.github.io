@@ -410,37 +410,12 @@ document.querySelectorAll('.resume-tab').forEach((tab) => {
     const panel = document.getElementById('tab-' + tab.dataset.tab);
     if (panel) {
       panel.classList.add('active');
-      // Re-animate hard skill bars when switching to that tab
-      if (tab.dataset.tab === 'hard') {
-        panel.querySelectorAll('.hs-fill').forEach((fill, idx) => {
-          fill.style.width = '0%';
-          const pct = fill.style.getPropertyValue('--pct');
-          setTimeout(() => { fill.style.width = pct; }, idx * 120 + 50);
-        });
-      }
       if (tab.dataset.tab === 'educacao' || tab.dataset.tab === 'experiencias') {
         requestAnimationFrame(() => positionResumeTimeline(panel));
       }
     }
   });
 });
-
-// Animate hard skill bars on first reveal
-const hardPanel = document.getElementById('tab-hard');
-if (hardPanel) {
-  const hsObs = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.querySelectorAll('.hs-fill').forEach((fill, idx) => {
-        const pct = fill.style.getPropertyValue('--pct') ||
-          (fill.getAttribute('style') || '').match(/--pct:\s*([\d%]+)/)?.[1] || '0%';
-        setTimeout(() => { fill.style.width = pct; }, idx * 120 + 50);
-      });
-      hsObs.unobserve(entry.target);
-    });
-  }, { threshold: 0.3 });
-  hsObs.observe(hardPanel);
-}
 
 // ══════════════════════════════════════
 // Contact form

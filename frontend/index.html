@@ -90,21 +90,29 @@
   <header class="hero">
     <div class="hero-content container">
       <div class="hero-text">
-        <p class="tag" data-i18n="hero.tag">Desenvolvedora Front-End</p>
-        <h2 class="typewriter-target" data-i18n="hero.title">Criando interfaces modernas, interativas e responsivas.</h2>
+        <p class="tag available" data-i18n="hero.tag">Disponível para vagas Front-End Júnior</p>
+        <h1 class="hero-title">
+          Maria Mariah
+          <span class="hero-role" data-i18n="hero.role">Desenvolvedora Front-End</span>
+        </h1>
+        <p class="hero-slogan typewriter-target" data-i18n="hero.title">Criando interfaces modernas, interativas e responsivas.</p>
         <p class="description" data-i18n="hero.description">
           Bacharel em Ciência da Computação com foco em desenvolvimento web,
           apaixonada por transformar ideias em experiências digitais funcionais e intuitivas.
         </p>
         <div class="hero-buttons">
           <a href="#projetos" class="btn primary" data-i18n="hero.viewProjects">Ver projetos</a>
+          <a href="assets/curriculo/Curriculo_Maria_Mariah.pdf" class="btn secondary btn-icon" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span data-i18n="hero.downloadCv">Baixar CV</span>
+          </a>
           <a href="#contato" class="btn secondary" data-i18n="hero.contactMe">Entrar em contato</a>
         </div>
       </div>
 
       <div class="hero-photo">
         <div class="photo-ring">
-          <img src="assets/images/foto_profissional.jpg" alt="Maria Mariah" class="profile-photo" />
+          <img src="assets/images/foto_profissional.jpg" alt="Maria Mariah" class="profile-photo" width="729" height="729" fetchpriority="high" />
         </div>
       </div>
     </div>
@@ -129,12 +137,13 @@
           </p>
         </div>
         <div class="sobre-media reveal">
-          <!-- Substitua src pela sua foto ou gif -->
           <div class="sobre-photo-ring">
             <img
-              src="assets/images/foto_mariah.png"
+              src="assets/images/foto_mariah.jpg"
               alt="Maria Mariah"
               class="sobre-photo"
+              width="440" height="439"
+              loading="lazy" decoding="async"
             />
           </div>
         </div>
@@ -144,19 +153,42 @@
     <!-- ── Skills ── -->
     <section id="skills" class="section container">
       <h2 class="section-title reveal" data-i18n="skills.title">Tecnologias</h2>
-      <div class="skills-grid">
-        <div class="skill-card reveal">HTML</div>
-        <div class="skill-card reveal">CSS</div>
-        <div class="skill-card reveal">JavaScript</div>
-        <div class="skill-card reveal">Node.js</div>
-        <div class="skill-card reveal">Git</div>
-        <div class="skill-card reveal">GitHub</div>
-        <div class="skill-card reveal">UI/UX</div>
-        <div class="skill-card reveal" data-i18n="skills.responsiveness">Responsividade</div>
-        <div class="skill-card reveal">C</div>
-        <div class="skill-card reveal">C#</div>
-        <div class="skill-card reveal">C++</div>
-        <div class="skill-card reveal">SQL</div>
+      <div class="skills-groups">
+        <div class="skill-group">
+          <h3 class="skill-group-title" data-i18n="skills.groups.frontend">Front-end</h3>
+          <ul class="skills-grid">
+            <li class="skill-card reveal">HTML</li>
+            <li class="skill-card reveal">CSS</li>
+            <li class="skill-card reveal">JavaScript</li>
+            <li class="skill-card reveal">React</li>
+            <li class="skill-card reveal" data-i18n="skills.responsiveness">Responsividade</li>
+            <li class="skill-card reveal">UI/UX</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3 class="skill-group-title" data-i18n="skills.groups.backend">Back-end e dados</h3>
+          <ul class="skills-grid">
+            <li class="skill-card reveal">Node.js</li>
+            <li class="skill-card reveal">SQL</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3 class="skill-group-title" data-i18n="skills.groups.tools">Ferramentas</h3>
+          <ul class="skills-grid">
+            <li class="skill-card reveal">Git</li>
+            <li class="skill-card reveal">GitHub</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3 class="skill-group-title" data-i18n="skills.groups.other">Outras linguagens</h3>
+          <ul class="skills-grid">
+            <li class="skill-card reveal">Python</li>
+            <li class="skill-card reveal">Pygame</li>
+            <li class="skill-card reveal">C</li>
+            <li class="skill-card reveal">C#</li>
+            <li class="skill-card reveal">C++</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -175,46 +207,46 @@
             </div>
             <div class="slides-track">
               <div class="slide active">
-                <img src="assets/images/projects/skillupdev/skillupdev_lading1.png" data-i18n-alt="alt.skillupdev.landing1" alt="SkillUp Dev - Landing" />
+                <img src="assets/images/projects/skillupdev/skillupdev_lading1.webp" loading="lazy" decoding="async" data-i18n-alt="alt.skillupdev.landing1" alt="SkillUp Dev - Landing" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_landing2.png" data-i18n-alt="alt.skillupdev.landing2" alt="SkillUp Dev - Landing 2" />
+                <img src="assets/images/projects/skillupdev/skillupdev_landing2.webp" loading="lazy" decoding="async" data-i18n-alt="alt.skillupdev.landing2" alt="SkillUp Dev - Landing 2" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_funcionalidades.png" data-i18n-alt="alt.skillupdev.features" alt="SkillUp Dev - Funcionalidades" />
+                <img src="assets/images/projects/skillupdev/skillupdev_funcionalidades.webp" loading="lazy" decoding="async" data-i18n-alt="alt.skillupdev.features" alt="SkillUp Dev - Funcionalidades" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_cadastro.png" data-i18n-alt="alt.skillupdev.signup" alt="SkillUp Dev - Cadastro" />
+                <img src="assets/images/projects/skillupdev/skillupdev_cadastro.webp" loading="lazy" decoding="async" data-i18n-alt="alt.skillupdev.signup" alt="SkillUp Dev - Cadastro" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_login.png" data-i18n-alt="alt.skillupdev.login" alt="SkillUp Dev - Login" />
+                <img src="assets/images/projects/skillupdev/skillupdev_login.webp" loading="lazy" decoding="async" data-i18n-alt="alt.skillupdev.login" alt="SkillUp Dev - Login" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_dashboard1.png" data-i18n-alt="alt.skillupdev.dashboard1" alt="SkillUp Dev - Dashboard" />
+                <img src="assets/images/projects/skillupdev/skillupdev_dashboard1.webp" loading="lazy" decoding="async" data-i18n-alt="alt.skillupdev.dashboard1" alt="SkillUp Dev - Dashboard" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_dashboard2.png" data-i18n-alt="alt.skillupdev.dashboard2" alt="SkillUp Dev - Dashboard 2" />
+                <img src="assets/images/projects/skillupdev/skillupdev_dashboard2.webp" loading="lazy" decoding="async" data-i18n-alt="alt.skillupdev.dashboard2" alt="SkillUp Dev - Dashboard 2" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_dashboard3.png" data-i18n-alt="alt.skillupdev.dashboard3" alt="SkillUp Dev - Dashboard 3" />
+                <img src="assets/images/projects/skillupdev/skillupdev_dashboard3.webp" loading="lazy" decoding="async" data-i18n-alt="alt.skillupdev.dashboard3" alt="SkillUp Dev - Dashboard 3" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_desafio_aberto1.png" data-i18n-alt="alt.skillupdev.openChallenge1" alt="SkillUp Dev - Desafio aberto" />
+                <img src="assets/images/projects/skillupdev/skillupdev_desafio_aberto1.webp" loading="lazy" decoding="async" data-i18n-alt="alt.skillupdev.openChallenge1" alt="SkillUp Dev - Desafio aberto" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_desafio_aberto2.png" data-i18n-alt="alt.skillupdev.openChallenge2" alt="SkillUp Dev - Desafio aberto 2" />
+                <img src="assets/images/projects/skillupdev/skillupdev_desafio_aberto2.webp" loading="lazy" decoding="async" data-i18n-alt="alt.skillupdev.openChallenge2" alt="SkillUp Dev - Desafio aberto 2" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_desafio_fechado.png" data-i18n-alt="alt.skillupdev.closedChallenge" alt="SkillUp Dev - Desafio fechado" />
+                <img src="assets/images/projects/skillupdev/skillupdev_desafio_fechado.webp" loading="lazy" decoding="async" data-i18n-alt="alt.skillupdev.closedChallenge" alt="SkillUp Dev - Desafio fechado" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_adm1.png" data-i18n-alt="alt.skillupdev.admin1" alt="SkillUp Dev - Administração" />
+                <img src="assets/images/projects/skillupdev/skillupdev_adm1.webp" loading="lazy" decoding="async" data-i18n-alt="alt.skillupdev.admin1" alt="SkillUp Dev - Administração" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_adm2.png" data-i18n-alt="alt.skillupdev.admin2" alt="SkillUp Dev - Administração 2" />
+                <img src="assets/images/projects/skillupdev/skillupdev_adm2.webp" loading="lazy" decoding="async" data-i18n-alt="alt.skillupdev.admin2" alt="SkillUp Dev - Administração 2" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/skillupdev/skillupdev_adm3.png" data-i18n-alt="alt.skillupdev.admin3" alt="SkillUp Dev - Administração 3" />
+                <img src="assets/images/projects/skillupdev/skillupdev_adm3.webp" loading="lazy" decoding="async" data-i18n-alt="alt.skillupdev.admin3" alt="SkillUp Dev - Administração 3" />
               </div>
             </div>
             <button class="slide-btn prev" data-i18n-aria-label="slideshow.prev" aria-label="Anterior">&#8249;</button>
@@ -255,13 +287,13 @@
             </div>
             <div class="slides-track">
               <div class="slide active">
-                <img src="assets/images/projects/moneytrack/moneytrack_landing.png" data-i18n-alt="alt.moneytrack.landing" alt="MoneyTrack - Landing" />
+                <img src="assets/images/projects/moneytrack/moneytrack_landing.webp" loading="lazy" decoding="async" data-i18n-alt="alt.moneytrack.landing" alt="MoneyTrack - Landing" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/moneytrack/moneytrack_dashboard.png" data-i18n-alt="alt.moneytrack.dashboard" alt="MoneyTrack - Dashboard" />
+                <img src="assets/images/projects/moneytrack/moneytrack_dashboard.webp" loading="lazy" decoding="async" data-i18n-alt="alt.moneytrack.dashboard" alt="MoneyTrack - Dashboard" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/moneytrack/moneytrack_relatorio.png" data-i18n-alt="alt.moneytrack.report" alt="MoneyTrack - Relatório" />
+                <img src="assets/images/projects/moneytrack/moneytrack_relatorio.webp" loading="lazy" decoding="async" data-i18n-alt="alt.moneytrack.report" alt="MoneyTrack - Relatório" />
               </div>
             </div>
             <button class="slide-btn prev" data-i18n-aria-label="slideshow.prev" aria-label="Anterior">&#8249;</button>
@@ -336,13 +368,13 @@
             </div>
             <div class="slides-track">
               <div class="slide active">
-                <img src="assets/images/projects/barbearia/barbearia_landing.png" data-i18n-alt="alt.barbearia.landing" alt="Barbearia Clássica - Landing" />
+                <img src="assets/images/projects/barbearia/barbearia_landing.webp" loading="lazy" decoding="async" data-i18n-alt="alt.barbearia.landing" alt="Barbearia Clássica - Landing" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/barbearia/barbearia_landing2.png" data-i18n-alt="alt.barbearia.landing2" alt="Barbearia Clássica - Seção 2" />
+                <img src="assets/images/projects/barbearia/barbearia_landing2.webp" loading="lazy" decoding="async" data-i18n-alt="alt.barbearia.landing2" alt="Barbearia Clássica - Seção 2" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/barbearia/barbearia_agendamento.png" data-i18n-alt="alt.barbearia.booking" alt="Barbearia Clássica - Agendamento" />
+                <img src="assets/images/projects/barbearia/barbearia_agendamento.webp" loading="lazy" decoding="async" data-i18n-alt="alt.barbearia.booking" alt="Barbearia Clássica - Agendamento" />
               </div>
             </div>
             <button class="slide-btn prev" data-i18n-aria-label="slideshow.prev" aria-label="Anterior">&#8249;</button>
@@ -381,37 +413,37 @@
             </div>
             <div class="slides-track">
               <div class="slide active">
-                <img src="assets/images/projects/flappypy/menu.png" data-i18n-alt="alt.flappypy.menu" alt="FlappyPy - Menu" />
+                <img src="assets/images/projects/flappypy/menu.png" loading="lazy" decoding="async" data-i18n-alt="alt.flappypy.menu" alt="FlappyPy - Menu" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/menu2.png" data-i18n-alt="alt.flappypy.menu2" alt="FlappyPy - Menu 2" />
+                <img src="assets/images/projects/flappypy/menu2.png" loading="lazy" decoding="async" data-i18n-alt="alt.flappypy.menu2" alt="FlappyPy - Menu 2" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/menu3.png" data-i18n-alt="alt.flappypy.menu3" alt="FlappyPy - Menu 3" />
+                <img src="assets/images/projects/flappypy/menu3.png" loading="lazy" decoding="async" data-i18n-alt="alt.flappypy.menu3" alt="FlappyPy - Menu 3" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/menu4.png" data-i18n-alt="alt.flappypy.menu4" alt="FlappyPy - Menu 4" />
+                <img src="assets/images/projects/flappypy/menu4.png" loading="lazy" decoding="async" data-i18n-alt="alt.flappypy.menu4" alt="FlappyPy - Menu 4" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/config.png" data-i18n-alt="alt.flappypy.config" alt="FlappyPy - Configurações" />
+                <img src="assets/images/projects/flappypy/config.png" loading="lazy" decoding="async" data-i18n-alt="alt.flappypy.config" alt="FlappyPy - Configurações" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/game.png" data-i18n-alt="alt.flappypy.game" alt="FlappyPy - Jogo" />
+                <img src="assets/images/projects/flappypy/game.png" loading="lazy" decoding="async" data-i18n-alt="alt.flappypy.game" alt="FlappyPy - Jogo" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/game2.png" data-i18n-alt="alt.flappypy.game2" alt="FlappyPy - Jogo 2" />
+                <img src="assets/images/projects/flappypy/game2.png" loading="lazy" decoding="async" data-i18n-alt="alt.flappypy.game2" alt="FlappyPy - Jogo 2" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/game3.png" data-i18n-alt="alt.flappypy.game3" alt="FlappyPy - Jogo 3" />
+                <img src="assets/images/projects/flappypy/game3.png" loading="lazy" decoding="async" data-i18n-alt="alt.flappypy.game3" alt="FlappyPy - Jogo 3" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/game4.png" data-i18n-alt="alt.flappypy.game4" alt="FlappyPy - Jogo 4" />
+                <img src="assets/images/projects/flappypy/game4.png" loading="lazy" decoding="async" data-i18n-alt="alt.flappypy.game4" alt="FlappyPy - Jogo 4" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/paused.png" data-i18n-alt="alt.flappypy.paused" alt="FlappyPy - Pausado" />
+                <img src="assets/images/projects/flappypy/paused.png" loading="lazy" decoding="async" data-i18n-alt="alt.flappypy.paused" alt="FlappyPy - Pausado" />
               </div>
               <div class="slide">
-                <img src="assets/images/projects/flappypy/ranking.png" data-i18n-alt="alt.flappypy.ranking" alt="FlappyPy - Ranking" />
+                <img src="assets/images/projects/flappypy/ranking.png" loading="lazy" decoding="async" data-i18n-alt="alt.flappypy.ranking" alt="FlappyPy - Ranking" />
               </div>
             </div>
             <button class="slide-btn prev" data-i18n-aria-label="slideshow.prev" aria-label="Anterior">&#8249;</button>
@@ -525,7 +557,6 @@
       <div class="resume-tabs reveal" role="tablist">
         <button class="resume-tab active" data-tab="educacao" role="tab" data-i18n="resume.tabs.education">🎓Educação</button>
         <button class="resume-tab" data-tab="experiencias" role="tab" data-i18n="resume.tabs.experience">💼Experiências</button>
-        <button class="resume-tab" data-tab="hard" role="tab" data-i18n="resume.tabs.hard">💻Hard Skills</button>
         <button class="resume-tab" data-tab="soft" role="tab" data-i18n="resume.tabs.soft">🤝Soft Skills</button>
       </div>
 
@@ -570,60 +601,6 @@
         </div>
       </div>
 
-      <!-- Hard Skills -->
-      <div class="resume-panel" id="tab-hard">
-        <div class="hard-skills-list reveal">
-          <div class="hard-skill-item">
-            <div class="hs-header"><span>HTML &amp; CSS</span></div>
-            <div class="hs-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" data-i18n-aria-label="hardskills.aria.htmlCss" aria-label="HTML e CSS – Avançado">
-              <div class="hs-fill" style="--pct:90%"></div>
-            </div>
-          </div>
-          <div class="hard-skill-item">
-            <div class="hs-header"><span>JavaScript</span></div>
-            <div class="hs-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" data-i18n-aria-label="hardskills.aria.javascript" aria-label="JavaScript – Intermediário">
-              <div class="hs-fill" style="--pct:75%"></div>
-            </div>
-          </div>
-          <div class="hard-skill-item">
-            <div class="hs-header"><span>React</span></div>
-            <div class="hs-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" data-i18n-aria-label="hardskills.aria.react" aria-label="React – Intermediário">
-              <div class="hs-fill" style="--pct:65%"></div>
-            </div>
-          </div>
-          <div class="hard-skill-item">
-            <div class="hs-header"><span>UI/UX Design</span></div>
-            <div class="hs-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" data-i18n-aria-label="hardskills.aria.uiux" aria-label="UI/UX Design – Intermediário">
-              <div class="hs-fill" style="--pct:65%"></div>
-            </div>
-          </div>
-          <div class="hard-skill-item">
-            <div class="hs-header"><span>Node.js</span></div>
-            <div class="hs-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-i18n-aria-label="hardskills.aria.nodejs" aria-label="Node.js – Intermediário">
-              <div class="hs-fill" style="--pct:60%"></div>
-            </div>
-          </div>
-          <div class="hard-skill-item">
-            <div class="hs-header"><span>Python</span></div>
-            <div class="hs-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" data-i18n-aria-label="hardskills.aria.python" aria-label="Python – Intermediário">
-              <div class="hs-fill" style="--pct:65%"></div>
-            </div>
-          </div>
-          <div class="hard-skill-item">
-            <div class="hs-header"><span>Pygame</span></div>
-            <div class="hs-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" data-i18n-aria-label="hardskills.aria.pygame" aria-label="Pygame – Intermediário">
-              <div class="hs-fill" style="--pct:65%"></div>
-            </div>
-          </div>
-          <div class="hard-skill-item">
-            <div class="hs-header"><span>Git &amp; GitHub</span></div>
-            <div class="hs-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" data-i18n-aria-label="hardskills.aria.git" aria-label="Git e GitHub – Avançado">
-              <div class="hs-fill" style="--pct:80%"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- Soft Skills -->
       <div class="resume-panel" id="tab-soft">
         <div class="soft-skills-grid reveal">
@@ -643,7 +620,7 @@
     <section id="contato" class="section container">
       <h2 class="section-title reveal" data-i18n="contact.title">Contato</h2>
       <p class="section-text reveal" data-i18n="contact.intro">
-        Estou aberta a oportunidades de estágio, networking e conexões na área de tecnologia.
+        Estou disponível para vagas de Desenvolvedora Front-End Júnior e aberta a networking e conexões na área de tecnologia.
       </p>
 
       <div class="contact-links">
@@ -728,7 +705,6 @@
   <script src="i18n/translations.js"></script>
   <script src="i18n/i18n.js"></script>
   <script src="github/github-api.js"></script>
-  <script src="github/linguagens.js"></script>
   <script src="github/tags.js"></script>
   <script src="js/main.js"></script>
 </body>

@@ -8,18 +8,22 @@ window.I18N = {
       themeToggle: "Alternar tema",
     },
     hero: {
-      tag: "Desenvolvedora Front-End",
+      tag: "Disponível para vagas Front-End Júnior",
+      role: "Desenvolvedora Front-End",
       title: "Criando interfaces modernas, interativas e responsivas.",
       description: "Bacharel em Ciência da Computação com foco em desenvolvimento web, apaixonada por transformar ideias em experiências digitais funcionais e intuitivas.",
       viewProjects: "Ver projetos",
       contactMe: "Entrar em contato",
+      downloadCv: "Baixar CV",
     },
     about: {
       title: "Sobre mim",
       p1: "Sou bacharel em Ciência da Computação e tenho direcionado minha trajetória para a área de desenvolvimento front-end e web. Gosto de construir interfaces organizadas, bonitas e funcionais, com atenção especial à experiência do usuário.",
       p2: "Atualmente, venho desenvolvendo projetos práticos que fortalecem minhas habilidades com HTML, CSS, JavaScript e integração entre front-end e back-end, com destaque para o SkillUp Dev, plataforma voltada ao desenvolvimento de soft skills para desenvolvedores.",
     },
-    skills: { title: "Tecnologias", responsiveness: "Responsividade" },
+    skills: { title: "Tecnologias", responsiveness: "Responsividade",
+      groups: { frontend: "Front-end", backend: "Back-end e dados", tools: "Ferramentas", other: "Outras linguagens" },
+    },
     projects: {
       title: "Projetos", filterAll: "Todos",
       langChartTitle: "Linguagens nos meus projetos", langChartCount: "{count} proj.",
@@ -59,19 +63,12 @@ window.I18N = {
     },
     resume: {
       title: "Currículo",
-      tabs: { education: "🎓Educação", experience: "💼Experiências", hard: "💻Hard Skills", soft: "🤝Soft Skills" },
+      tabs: { education: "🎓Educação", experience: "💼Experiências", soft: "🤝Soft Skills" },
       education: { period: "2022 – 2026", degree: "Bacharelado em Ciência da Computação", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
       experience: {
         teeva: { period: "2023 – 2023", role: "Assistente Administrativo", description: "Teeva · Efetivo em venda de produtos online, suporte ao cliente, emissão de documentos e administração de controle de estoque." },
         centauro: { period: "Nov 2022 – Fev 2023", role: "Assistente de Loja", description: "Centauro · Atendimento ao cliente com foco na experiência de compra, organização da loja e suporte nas operações de caixa." },
         aec: { period: "Jul 2021 – Jun 2022", role: "Operadora de Call Center", description: "AeC · Atendimento ao cliente em ambiente de alta demanda, com foco em comunicação clara, resolução de problemas e cumprimento de metas." },
-      },
-    },
-    hardskills: {
-      aria: {
-        htmlCss: "HTML e CSS – Avançado", javascript: "JavaScript – Intermediário", react: "React – Intermediário",
-        uiux: "UI/UX Design – Intermediário", nodejs: "Node.js – Intermediário", python: "Python – Intermediário",
-        pygame: "Pygame – Intermediário", git: "Git e GitHub – Avançado",
       },
     },
     softskills: {
@@ -80,7 +77,7 @@ window.I18N = {
       creativity: "💡 Criatividade", adaptability: "🔄 Adaptabilidade",
     },
     contact: {
-      title: "Contato", intro: "Estou aberta a oportunidades de estágio, networking e conexões na área de tecnologia.",
+      title: "Contato", intro: "Estou disponível para vagas de Desenvolvedora Front-End Júnior e aberta a networking e conexões na área de tecnologia.",
       copyEmailTitle: "Copiar e-mail", formTitle: "Envie uma mensagem",
       form: {
         name: "Nome", email: "E-mail", subject: "Assunto", message: "Mensagem",
@@ -103,18 +100,22 @@ window.I18N = {
       themeToggle: "Toggle theme",
     },
     hero: {
-      tag: "Front-End Developer",
+      tag: "Open to Junior Front-End roles",
+      role: "Front-End Developer",
       title: "Building modern, interactive, and responsive interfaces.",
       description: "Computer Science graduate focused on web development, passionate about turning ideas into functional and intuitive digital experiences.",
       viewProjects: "View projects",
       contactMe: "Get in touch",
+      downloadCv: "Download CV",
     },
     about: {
       title: "About me",
       p1: "I'm a Computer Science graduate and I've been steering my path toward front-end and web development. I enjoy building organized, beautiful, and functional interfaces, with special attention to user experience.",
       p2: "I'm currently building practical projects that strengthen my skills in HTML, CSS, JavaScript, and front-end/back-end integration, with SkillUp Dev standing out — a platform focused on developing soft skills for developers.",
     },
-    skills: { title: "Skills", responsiveness: "Responsiveness" },
+    skills: { title: "Skills", responsiveness: "Responsiveness",
+      groups: { frontend: "Front-end", backend: "Back-end & data", tools: "Tools", other: "Other languages" },
+    },
     projects: {
       title: "Projects", filterAll: "All",
       langChartTitle: "Languages across my projects", langChartCount: "{count} proj.",
@@ -154,19 +155,12 @@ window.I18N = {
     },
     resume: {
       title: "Resume",
-      tabs: { education: "🎓Education", experience: "💼Experience", hard: "💻Hard Skills", soft: "🤝Soft Skills" },
+      tabs: { education: "🎓Education", experience: "💼Experience", soft: "🤝Soft Skills" },
       education: { period: "2022 – 2026", degree: "Bachelor's in Computer Science", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
       experience: {
         teeva: { period: "2023 – 2023", role: "Administrative Assistant", description: "Teeva · Handled online product sales, customer support, document issuance, and inventory control management." },
         centauro: { period: "Nov 2022 – Feb 2023", role: "Store Assistant", description: "Centauro · Customer service focused on the shopping experience, store organization, and checkout support." },
         aec: { period: "Jul 2021 – Jun 2022", role: "Call Center Operator", description: "AeC · High-demand customer service focused on clear communication, problem-solving, and meeting performance targets." },
-      },
-    },
-    hardskills: {
-      aria: {
-        htmlCss: "HTML and CSS – Advanced", javascript: "JavaScript – Intermediate", react: "React – Intermediate",
-        uiux: "UI/UX Design – Intermediate", nodejs: "Node.js – Intermediate", python: "Python – Intermediate",
-        pygame: "Pygame – Intermediate", git: "Git and GitHub – Advanced",
       },
     },
     softskills: {
@@ -175,7 +169,7 @@ window.I18N = {
       creativity: "💡 Creativity", adaptability: "🔄 Adaptability",
     },
     contact: {
-      title: "Contact", intro: "I'm open to internship opportunities, networking, and connections in tech.",
+      title: "Contact", intro: "I'm available for Junior Front-End Developer roles and open to networking and connections in tech.",
       copyEmailTitle: "Copy email", formTitle: "Send a message",
       form: {
         name: "Name", email: "Email", subject: "Subject", message: "Message",
@@ -198,18 +192,22 @@ window.I18N = {
       themeToggle: "Cambiar tema",
     },
     hero: {
-      tag: "Desarrolladora Front-End",
+      tag: "Disponible para vacantes Front-End Junior",
+      role: "Desarrolladora Front-End",
       title: "Creando interfaces modernas, interactivas y responsivas.",
       description: "Licenciada en Ciencias de la Computación enfocada en desarrollo web, apasionada por convertir ideas en experiencias digitales funcionales e intuitivas.",
       viewProjects: "Ver proyectos",
       contactMe: "Ponte en contacto",
+      downloadCv: "Descargar CV",
     },
     about: {
       title: "Sobre mí",
       p1: "Soy licenciada en Ciencias de la Computación y he orientado mi trayectoria hacia el desarrollo front-end y web. Me gusta construir interfaces organizadas, bonitas y funcionales, con especial atención a la experiencia del usuario.",
       p2: "Actualmente desarrollo proyectos prácticos que fortalecen mis habilidades en HTML, CSS, JavaScript e integración entre front-end y back-end, destacando SkillUp Dev, una plataforma enfocada en el desarrollo de soft skills para desarrolladores.",
     },
-    skills: { title: "Tecnologías", responsiveness: "Responsividad" },
+    skills: { title: "Tecnologías", responsiveness: "Responsividad",
+      groups: { frontend: "Front-end", backend: "Back-end y datos", tools: "Herramientas", other: "Otros lenguajes" },
+    },
     projects: {
       title: "Proyectos", filterAll: "Todos",
       langChartTitle: "Lenguajes en mis proyectos", langChartCount: "{count} proy.",
@@ -249,19 +247,12 @@ window.I18N = {
     },
     resume: {
       title: "Currículum",
-      tabs: { education: "🎓Educación", experience: "💼Experiencia", hard: "💻Hard Skills", soft: "🤝Soft Skills" },
+      tabs: { education: "🎓Educación", experience: "💼Experiencia", soft: "🤝Soft Skills" },
       education: { period: "2022 – 2026", degree: "Licenciatura en Ciencias de la Computación", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
       experience: {
         teeva: { period: "2023 – 2023", role: "Asistente Administrativa", description: "Teeva · Encargada de ventas de productos en línea, atención al cliente, emisión de documentos y administración del control de inventario." },
         centauro: { period: "Nov 2022 – Feb 2023", role: "Asistente de Tienda", description: "Centauro · Atención al cliente enfocada en la experiencia de compra, organización de la tienda y soporte en caja." },
         aec: { period: "Jul 2021 – Jun 2022", role: "Operadora de Call Center", description: "AeC · Atención al cliente en un entorno de alta demanda, con enfoque en comunicación clara, resolución de problemas y cumplimiento de metas." },
-      },
-    },
-    hardskills: {
-      aria: {
-        htmlCss: "HTML y CSS – Avanzado", javascript: "JavaScript – Intermedio", react: "React – Intermedio",
-        uiux: "UI/UX Design – Intermedio", nodejs: "Node.js – Intermedio", python: "Python – Intermedio",
-        pygame: "Pygame – Intermedio", git: "Git y GitHub – Avanzado",
       },
     },
     softskills: {
@@ -270,7 +261,7 @@ window.I18N = {
       creativity: "💡 Creatividad", adaptability: "🔄 Adaptabilidad",
     },
     contact: {
-      title: "Contacto", intro: "Estoy abierta a oportunidades de prácticas, networking y conexiones en el área de tecnología.",
+      title: "Contacto", intro: "Estoy disponible para vacantes de Desarrolladora Front-End Junior y abierta a networking y conexiones en el área de tecnología.",
       copyEmailTitle: "Copiar correo", formTitle: "Envía un mensaje",
       form: {
         name: "Nombre", email: "Correo electrónico", subject: "Asunto", message: "Mensaje",
@@ -293,18 +284,22 @@ window.I18N = {
       themeToggle: "Changer de thème",
     },
     hero: {
-      tag: "Développeuse Front-End",
+      tag: "Disponible pour des postes Front-End Junior",
+      role: "Développeuse Front-End",
       title: "Je crée des interfaces modernes, interactives et responsives.",
       description: "Diplômée en informatique spécialisée dans le développement web, passionnée par la transformation d'idées en expériences numériques fonctionnelles et intuitives.",
       viewProjects: "Voir les projets",
       contactMe: "Me contacter",
+      downloadCv: "Télécharger le CV",
     },
     about: {
       title: "À propos de moi",
       p1: "Je suis diplômée en informatique et j'oriente mon parcours vers le développement front-end et web. J'aime concevoir des interfaces organisées, esthétiques et fonctionnelles, avec une attention particulière à l'expérience utilisateur.",
       p2: "Je développe actuellement des projets concrets qui renforcent mes compétences en HTML, CSS, JavaScript et en intégration front-end/back-end, avec en vedette SkillUp Dev, une plateforme dédiée au développement des soft skills pour les développeurs.",
     },
-    skills: { title: "Technologies", responsiveness: "Réactivité" },
+    skills: { title: "Technologies", responsiveness: "Réactivité",
+      groups: { frontend: "Front-end", backend: "Back-end et données", tools: "Outils", other: "Autres langages" },
+    },
     projects: {
       title: "Projets", filterAll: "Tous",
       langChartTitle: "Langages utilisés dans mes projets", langChartCount: "{count} proj.",
@@ -344,19 +339,12 @@ window.I18N = {
     },
     resume: {
       title: "CV",
-      tabs: { education: "🎓Formation", experience: "💼Expérience", hard: "💻Hard Skills", soft: "🤝Soft Skills" },
+      tabs: { education: "🎓Formation", experience: "💼Expérience", soft: "🤝Soft Skills" },
       education: { period: "2022 – 2026", degree: "Licence en Informatique", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
       experience: {
         teeva: { period: "2023 – 2023", role: "Assistante Administrative", description: "Teeva · En charge de la vente de produits en ligne, du support client, de l'émission de documents et de la gestion du contrôle des stocks." },
         centauro: { period: "Nov 2022 – Fév 2023", role: "Assistante de Vente", description: "Centauro · Service client axé sur l'expérience d'achat, organisation du magasin et support à la caisse." },
         aec: { period: "Juil 2021 – Juin 2022", role: "Opératrice de Centre d'Appels", description: "AeC · Service client en environnement à forte demande, axé sur une communication claire, la résolution de problèmes et l'atteinte des objectifs." },
-      },
-    },
-    hardskills: {
-      aria: {
-        htmlCss: "HTML et CSS – Avancé", javascript: "JavaScript – Intermédiaire", react: "React – Intermédiaire",
-        uiux: "UI/UX Design – Intermédiaire", nodejs: "Node.js – Intermédiaire", python: "Python – Intermédiaire",
-        pygame: "Pygame – Intermédiaire", git: "Git et GitHub – Avancé",
       },
     },
     softskills: {
@@ -365,7 +353,7 @@ window.I18N = {
       creativity: "💡 Créativité", adaptability: "🔄 Adaptabilité",
     },
     contact: {
-      title: "Contact", intro: "Je suis ouverte aux opportunités de stage, au networking et aux connexions dans le domaine de la technologie.",
+      title: "Contact", intro: "Je suis disponible pour des postes de Développeuse Front-End Junior et ouverte au networking et aux connexions dans le domaine de la technologie.",
       copyEmailTitle: "Copier l'e-mail", formTitle: "Envoyer un message",
       form: {
         name: "Nom", email: "E-mail", subject: "Sujet", message: "Message",
@@ -388,18 +376,22 @@ window.I18N = {
       themeToggle: "Design wechseln",
     },
     hero: {
-      tag: "Front-End-Entwicklerin",
+      tag: "Offen für Junior-Frontend-Stellen",
+      role: "Front-End-Entwicklerin",
       title: "Ich gestalte moderne, interaktive und responsive Benutzeroberflächen.",
       description: "Informatik-Absolventin mit Fokus auf Webentwicklung, begeistert davon, Ideen in funktionale und intuitive digitale Erlebnisse zu verwandeln.",
       viewProjects: "Projekte ansehen",
       contactMe: "Kontakt aufnehmen",
+      downloadCv: "Lebenslauf herunterladen",
     },
     about: {
       title: "Über mich",
       p1: "Ich habe Informatik studiert und richte meinen Weg zunehmend auf Front-End- und Webentwicklung aus. Ich baue gerne übersichtliche, ansprechende und funktionale Benutzeroberflächen mit besonderem Augenmerk auf die Nutzererfahrung.",
       p2: "Derzeit arbeite ich an praktischen Projekten, die meine Kenntnisse in HTML, CSS, JavaScript sowie in der Front-End-/Back-End-Integration vertiefen — allen voran SkillUp Dev, eine Plattform zur Förderung von Soft Skills für Entwickler:innen.",
     },
-    skills: { title: "Technologien", responsiveness: "Responsivität" },
+    skills: { title: "Technologien", responsiveness: "Responsivität",
+      groups: { frontend: "Frontend", backend: "Backend & Daten", tools: "Tools", other: "Weitere Sprachen" },
+    },
     projects: {
       title: "Projekte", filterAll: "Alle",
       langChartTitle: "Sprachen in meinen Projekten", langChartCount: "{count} Proj.",
@@ -439,19 +431,12 @@ window.I18N = {
     },
     resume: {
       title: "Lebenslauf",
-      tabs: { education: "🎓Ausbildung", experience: "💼Erfahrung", hard: "💻Hard Skills", soft: "🤝Soft Skills" },
+      tabs: { education: "🎓Ausbildung", experience: "💼Erfahrung", soft: "🤝Soft Skills" },
       education: { period: "2022 – 2026", degree: "Bachelor in Informatik", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
       experience: {
         teeva: { period: "2023 – 2023", role: "Verwaltungsassistentin", description: "Teeva · Zuständig für den Online-Produktverkauf, Kundensupport, Dokumentenausstellung und Bestandskontrolle." },
         centauro: { period: "Nov 2022 – Feb 2023", role: "Verkaufsassistentin", description: "Centauro · Kundenservice mit Fokus auf das Einkaufserlebnis, Ladenorganisation und Unterstützung an der Kasse." },
         aec: { period: "Jul 2021 – Jun 2022", role: "Call-Center-Mitarbeiterin", description: "AeC · Kundenservice in einem Umfeld mit hoher Nachfrage, mit Fokus auf klare Kommunikation, Problemlösung und das Erreichen von Zielvorgaben." },
-      },
-    },
-    hardskills: {
-      aria: {
-        htmlCss: "HTML und CSS – Fortgeschritten", javascript: "JavaScript – Mittelstufe", react: "React – Mittelstufe",
-        uiux: "UI/UX Design – Mittelstufe", nodejs: "Node.js – Mittelstufe", python: "Python – Mittelstufe",
-        pygame: "Pygame – Mittelstufe", git: "Git und GitHub – Fortgeschritten",
       },
     },
     softskills: {
@@ -460,7 +445,7 @@ window.I18N = {
       creativity: "💡 Kreativität", adaptability: "🔄 Anpassungsfähigkeit",
     },
     contact: {
-      title: "Kontakt", intro: "Ich bin offen für Praktikumsmöglichkeiten, Networking und Kontakte im Technologiebereich.",
+      title: "Kontakt", intro: "Ich bin offen für Stellen als Junior-Frontend-Entwicklerin sowie für Networking und Kontakte im Technologiebereich.",
       copyEmailTitle: "E-Mail kopieren", formTitle: "Nachricht senden",
       form: {
         name: "Name", email: "E-Mail", subject: "Betreff", message: "Nachricht",
@@ -483,18 +468,22 @@ window.I18N = {
       themeToggle: "テーマを切り替える",
     },
     hero: {
-      tag: "フロントエンドデベロッパー",
+      tag: "ジュニアフロントエンド職を探しています",
+      role: "フロントエンドデベロッパー",
       title: "モダンでインタラクティブ、レスポンシブなインターフェースを作っています。",
       description: "Web開発に力を入れているコンピュータサイエンスの卒業生です。アイデアを機能的で直感的なデジタル体験に変えることに情熱を注いでいます。",
       viewProjects: "プロジェクトを見る",
       contactMe: "お問い合わせ",
+      downloadCv: "履歴書をダウンロード",
     },
     about: {
       title: "自己紹介",
       p1: "コンピュータサイエンスを学んだ卒業生で、フロントエンド・Web開発の道に進んでいます。ユーザー体験に特に気を配りながら、整理された美しく機能的なインターフェースを作るのが好きです。",
       p2: "現在は、HTML、CSS、JavaScript、そしてフロントエンドとバックエンドの連携スキルを高める実践的なプロジェクトに取り組んでいます。特に、開発者向けのソフトスキル開発プラットフォーム「SkillUp Dev」に力を入れています。",
     },
-    skills: { title: "技術", responsiveness: "レスポンシブ対応" },
+    skills: { title: "技術", responsiveness: "レスポンシブ対応",
+      groups: { frontend: "フロントエンド", backend: "バックエンド・データ", tools: "ツール", other: "その他の言語" },
+    },
     projects: {
       title: "プロジェクト", filterAll: "すべて",
       langChartTitle: "プロジェクトで使用している言語", langChartCount: "{count}件",
@@ -534,19 +523,12 @@ window.I18N = {
     },
     resume: {
       title: "経歴",
-      tabs: { education: "🎓学歴", experience: "💼職歴", hard: "💻ハードスキル", soft: "🤝ソフトスキル" },
+      tabs: { education: "🎓学歴", experience: "💼職歴", soft: "🤝ソフトスキル" },
       education: { period: "2022年～2026年", degree: "コンピュータサイエンス学士", institution: "UNIPÊ Centro Universitário · João Pessoa, PB" },
       experience: {
         teeva: { period: "2023年～2023年", role: "事務アシスタント", description: "Teeva · オンライン商品販売、カスタマーサポート、書類発行、在庫管理を担当。" },
         centauro: { period: "2022年11月～2023年2月", role: "店舗アシスタント", description: "Centauro・購買体験を重視した接客対応、店舗の整理整頓、レジ業務のサポートを担当。" },
         aec: { period: "2021年7月～2022年6月", role: "コールセンターオペレーター", description: "AeC・高需要環境でのカスタマー対応。明確なコミュニケーション、問題解決、目標達成を重視。" },
-      },
-    },
-    hardskills: {
-      aria: {
-        htmlCss: "HTMLとCSS – 上級", javascript: "JavaScript – 中級", react: "React – 中級",
-        uiux: "UI/UXデザイン – 中級", nodejs: "Node.js – 中級", python: "Python – 中級",
-        pygame: "Pygame – 中級", git: "GitとGitHub – 上級",
       },
     },
     softskills: {
@@ -555,7 +537,7 @@ window.I18N = {
       creativity: "💡 創造力", adaptability: "🔄 適応力",
     },
     contact: {
-      title: "お問い合わせ", intro: "インターンシップの機会やネットワーキング、テクノロジー分野でのつながりを歓迎します。",
+      title: "お問い合わせ", intro: "ジュニアフロントエンド開発者としてのポジションを探しています。ネットワーキングやテクノロジー分野でのつながりも歓迎します。",
       copyEmailTitle: "メールアドレスをコピー", formTitle: "メッセージを送る",
       form: {
         name: "お名前", email: "メールアドレス", subject: "件名", message: "メッセージ",
