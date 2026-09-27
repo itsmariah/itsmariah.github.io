@@ -35,7 +35,7 @@ window.I18N = {
     },
     status: { published: "Publicado", inProgress: "Em desenvolvimento", featured: "Destaque" },
     links: { viewLive: "Ver ao vivo →" },
-    slideshow: { prev: "Anterior", next: "Próximo" },
+    slideshow: { prev: "Anterior", next: "Próximo", goTo: "Ir para imagem {n} de {total}" },
     alt: {
       skillupdev: {
         landing1: "SkillUp Dev - Landing", landing2: "SkillUp Dev - Landing 2", features: "SkillUp Dev - Funcionalidades",
@@ -127,7 +127,7 @@ window.I18N = {
     },
     status: { published: "Published", inProgress: "In progress", featured: "Featured" },
     links: { viewLive: "View live →" },
-    slideshow: { prev: "Previous", next: "Next" },
+    slideshow: { prev: "Previous", next: "Next", goTo: "Go to image {n} of {total}" },
     alt: {
       skillupdev: {
         landing1: "SkillUp Dev - Landing", landing2: "SkillUp Dev - Landing 2", features: "SkillUp Dev - Features",
@@ -219,7 +219,7 @@ window.I18N = {
     },
     status: { published: "Publicado", inProgress: "En desarrollo", featured: "Destacado" },
     links: { viewLive: "Ver en vivo →" },
-    slideshow: { prev: "Anterior", next: "Siguiente" },
+    slideshow: { prev: "Anterior", next: "Siguiente", goTo: "Ir a la imagen {n} de {total}" },
     alt: {
       skillupdev: {
         landing1: "SkillUp Dev - Landing", landing2: "SkillUp Dev - Landing 2", features: "SkillUp Dev - Funcionalidades",
@@ -311,7 +311,7 @@ window.I18N = {
     },
     status: { published: "Publié", inProgress: "En développement", featured: "En vedette" },
     links: { viewLive: "Voir en ligne →" },
-    slideshow: { prev: "Précédent", next: "Suivant" },
+    slideshow: { prev: "Précédent", next: "Suivant", goTo: "Aller à l'image {n} sur {total}" },
     alt: {
       skillupdev: {
         landing1: "SkillUp Dev - Landing", landing2: "SkillUp Dev - Landing 2", features: "SkillUp Dev - Fonctionnalités",
@@ -403,7 +403,7 @@ window.I18N = {
     },
     status: { published: "Veröffentlicht", inProgress: "In Entwicklung", featured: "Hervorgehoben" },
     links: { viewLive: "Live ansehen →" },
-    slideshow: { prev: "Zurück", next: "Weiter" },
+    slideshow: { prev: "Zurück", next: "Weiter", goTo: "Zu Bild {n} von {total}" },
     alt: {
       skillupdev: {
         landing1: "SkillUp Dev - Startseite", landing2: "SkillUp Dev - Startseite 2", features: "SkillUp Dev - Funktionen",
@@ -495,7 +495,7 @@ window.I18N = {
     },
     status: { published: "公開済み", inProgress: "開発中", featured: "注目" },
     links: { viewLive: "サイトを見る →" },
-    slideshow: { prev: "前へ", next: "次へ" },
+    slideshow: { prev: "前へ", next: "次へ", goTo: "{total}枚中{n}枚目の画像へ" },
     alt: {
       skillupdev: {
         landing1: "SkillUp Dev - トップページ", landing2: "SkillUp Dev - トップページ2", features: "SkillUp Dev - 機能紹介",

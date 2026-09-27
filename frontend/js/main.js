@@ -248,18 +248,22 @@ document.querySelectorAll('.project-slideshow').forEach((ss) => {
     // single dot still shown for aesthetics
     const dot = document.createElement('span');
     dot.className = 'dot active';
+    dot.setAttribute('aria-hidden', 'true');
     dotsWrap.appendChild(dot);
     return;
   }
 
   let current = 0;
-  let autoTimer = null;
 
-  // Build dots
+  // Build dots (botões para funcionar com teclado e leitor de tela)
   slides.forEach((_, idx) => {
-    const dot = document.createElement('span');
+    const dot = document.createElement('button');
+    dot.type = 'button';
     dot.className = 'dot' + (idx === 0 ? ' active' : '');
-    dot.addEventListener('click', () => goTo(idx));
+    dot.dataset.idx = idx + 1;
+    dot.setAttribute('aria-label', t('slideshow.goTo', { n: idx + 1, total: slides.length }));
+    if (idx === 0) dot.setAttribute('aria-current', 'true');
+    dot.addEventListener('click', (e) => { e.stopPropagation(); goTo(idx); });
     dotsWrap.appendChild(dot);
   });
 
@@ -271,23 +275,15 @@ document.querySelectorAll('.project-slideshow').forEach((ss) => {
     } else {
       track.style.transform = `translateX(-${current * 100}%)`;
     }
-    dotsWrap.querySelectorAll('.dot').forEach((d, i) =>
-      d.classList.toggle('active', i === current)
-    );
-    resetAuto();
-  }
-
-  function resetAuto() {
-    clearInterval(autoTimer);
-    autoTimer = setInterval(() => goTo(current + 1), 3500);
+    dotsWrap.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+      if (i === current) d.setAttribute('aria-current', 'true');
+      else d.removeAttribute('aria-current');
+    });
   }
 
   if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); goTo(current - 1); });
   if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); goTo(current + 1); });
-
-  // Auto-play on hover
-  ss.addEventListener('mouseenter', resetAuto);
-  ss.addEventListener('mouseleave', () => clearInterval(autoTimer));
 
   // Touch swipe
   let touchStartX = 0;
@@ -600,5 +596,9 @@ setTimeout(initProjectTagViews, 4000);
 window.rebuildDynamicContent = () => {
   buildLangChart();
   buildProjectFilters();
+  document.querySelectorAll('.slide-dots button.dot').forEach((dot) => {
+    const total = dot.parentElement.children.length;
+    dot.setAttribute('aria-label', t('slideshow.goTo', { n: dot.dataset.idx, total }));
+  });
   requestAnimationFrame(() => timelinePanels.forEach(positionResumeTimeline));
 };

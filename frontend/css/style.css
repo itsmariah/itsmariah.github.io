@@ -1040,12 +1040,24 @@ nav, header, main, footer, .scroll-progress, .back-to-top {
 }
 
 .slide-dots .dot {
+  position: relative;
   width: 6px; height: 6px;
+  padding: 0;
+  border: 0;
   border-radius: 50%;
   background: rgba(255,255,255,0.4);
   transition: background 0.25s, transform 0.25s;
   cursor: pointer;
 }
+
+/* Área de clique/toque maior sem mudar o visual */
+button.dot::before {
+  content: '';
+  position: absolute;
+  inset: -6px -3px;
+}
+
+.slide-dots .dot:focus-visible { outline-offset: 2px; }
 
 .slide-dots .dot.active {
   background: white;
