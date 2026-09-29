@@ -60,6 +60,7 @@ export const en: Dictionary = {
     highlights: 'What I built',
     stack: 'Tech stack',
     team: 'Team project',
+    origin: 'How it started:',
     noImages: 'Screenshots coming soon',
     close: 'Close',
   },

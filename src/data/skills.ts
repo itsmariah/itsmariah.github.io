@@ -1,6 +1,7 @@
 import {
-  siC, siCplusplus, siCss, siGit, siGithub, siHtml5, siJavascript, siNextdotjs,
-  siNodedotjs, siPostgresql, siPython, siReact, siTailwindcss, siTypescript,
+  siC, siCplusplus, siCss, siElectron, siExpress, siGit, siGithub, siHtml5, siJavascript,
+  siNextdotjs, siNodedotjs, siPostgresql, siPrisma, siPython, siReact, siTailwindcss,
+  siTypescript, siVitest,
   type SimpleIcon,
 } from 'simple-icons';
 import type { Localized } from '../i18n/I18nProvider';
@@ -33,7 +34,11 @@ export const skillTiers: { id: 'daily' | 'familiar'; skills: Skill[] }[] = [
       { name: 'Tailwind CSS', icon: siTailwindcss },
       { name: 'Next.js', icon: siNextdotjs },
       { name: 'Node.js', icon: siNodedotjs },
+      { name: 'Express', icon: siExpress },
       { name: 'SQL · PostgreSQL', icon: siPostgresql, tag: 'PostgreSQL' },
+      { name: 'Prisma', icon: siPrisma },
+      { name: 'Electron', icon: siElectron },
+      { name: 'Vitest', icon: siVitest },
       { name: 'Python', icon: siPython },
       { name: 'Pygame', monogram: 'Pg' },
       { name: 'C', icon: siC },

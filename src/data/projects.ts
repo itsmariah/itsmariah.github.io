@@ -14,6 +14,10 @@ export interface Project {
   featured?: boolean;
   /** Projeto feito em grupo (ex.: trabalho da faculdade) */
   team?: boolean;
+  /** Como o projeto começou/evoluiu — aparece no destaque e no modal */
+  origin?: Localized;
+  /** Selos extras, como "em breve" ou "app em desenvolvimento" */
+  notes?: Localized[];
   description: Localized;
   /** O que foi construído — aparece no destaque e no modal */
   highlights: Localized[];
@@ -69,16 +73,26 @@ export const projects: Project[] = [
     name: 'MoneyTrack',
     status: 'published',
     featured: true,
+    origin: {
+      pt: 'Começou como projeto em grupo na disciplina de Programação de Computadores. Decidi dar continuidade sozinha e hoje desenvolvo e mantenho o MoneyTrack como produto.',
+      en: 'It started as a group project in a Computer Programming course. I chose to keep building it on my own, and today I develop and maintain MoneyTrack as a product.',
+    },
+    notes: [
+      { pt: 'Em breve: GeldTrack', en: 'Coming soon: GeldTrack' },
+      { pt: 'App mobile em desenvolvimento', en: 'Mobile app in progress' },
+    ],
     description: {
-      pt: 'Aplicação desenvolvida para organizar e visualizar informações financeiras com foco em usabilidade e clareza visual.',
-      en: 'An application built to organize and visualize financial information with a focus on usability and visual clarity.',
+      pt: 'Plataforma de gestão financeira pessoal e compartilhada: contas, sincronização bancária via Open Finance, relatórios, metas, orçamentos e divisão de despesas em grupo. Funciona na web, como PWA e como app desktop.',
+      en: 'A personal and shared finance platform: accounts, bank sync via Open Finance, reports, goals, budgets, and group expense splitting. Runs on the web, as a PWA, and as a desktop app.',
     },
     highlights: [
-      { pt: 'Dashboard para visualizar as finanças', en: 'Dashboard to visualize finances' },
-      { pt: 'Relatórios financeiros', en: 'Financial reports' },
-      { pt: 'Interface em React com foco em usabilidade', en: 'React interface focused on usability' },
+      { pt: 'Sincronização bancária via Open Finance (Pluggy)', en: 'Bank sync via Open Finance (Pluggy)' },
+      { pt: 'Metas, orçamentos por categoria com alerta por e-mail e transações recorrentes', en: 'Goals, per-category budgets with email alerts, and recurring transactions' },
+      { pt: 'Modo família e grupos estilo Splitwise para dividir despesas', en: 'Family mode and Splitwise-style groups to split expenses' },
+      { pt: 'Relatórios com gráficos, eventos e categorias personalizadas', en: 'Charts-based reports, events, and custom categories' },
+      { pt: 'API em Node.js/Express com PostgreSQL, Prisma, JWT e testes de integração', en: 'Node.js/Express API with PostgreSQL, Prisma, JWT, and integration tests' },
     ],
-    tags: ['JavaScript', 'CSS', 'React'],
+    tags: ['React', 'JavaScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'Electron', 'Vitest'],
     liveUrl: 'https://moneytrack-m4dd.vercel.app',
     repoUrl: 'https://github.com/itsmariah/moneytrack',
     accent: '#1a77c4',

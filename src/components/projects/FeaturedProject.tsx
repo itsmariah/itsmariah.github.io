@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { useI18n } from '../../i18n/I18nProvider';
 import type { Project } from '../../data/projects';
 import { GitHubIcon } from '../Icons';
-import { ProjectBadges, TagList } from './ProjectBadges';
+import { ProjectBadges, ProjectOrigin, TagList } from './ProjectBadges';
 import { ProjectCover } from './ProjectCover';
 
 interface FeaturedProjectProps {
@@ -31,6 +31,7 @@ export function FeaturedProject({ project, reversed, onOpen }: FeaturedProjectPr
         <ProjectBadges project={project} showFeatured />
         <h3 className="feature-title">{project.name}</h3>
         <p className="feature-description">{l(project.description)}</p>
+        <ProjectOrigin project={project} />
 
         <ul className="highlights">
           {project.highlights.map((h) => (

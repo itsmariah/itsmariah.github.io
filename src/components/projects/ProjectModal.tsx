@@ -5,7 +5,7 @@ import { format, useI18n } from '../../i18n/I18nProvider';
 import type { Project } from '../../data/projects';
 import { useModal } from '../../hooks/useModal';
 import { GitHubIcon } from '../Icons';
-import { ProjectBadges, TagList } from './ProjectBadges';
+import { ProjectBadges, ProjectOrigin, TagList } from './ProjectBadges';
 import { EmptyCover, Frame } from './ProjectCover';
 
 function Gallery({ project }: { project: Project }) {
@@ -135,6 +135,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             <ProjectBadges project={project} showFeatured />
             <h2 id={titleId} className="modal-title">{project.name}</h2>
             <p className="modal-description">{l(project.description)}</p>
+            <ProjectOrigin project={project} />
 
             <h3 className="modal-subtitle">{t.projects.highlights}</h3>
             <ul className="highlights">

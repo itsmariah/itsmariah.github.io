@@ -59,6 +59,7 @@ export const pt = {
     highlights: 'O que construí',
     stack: 'Tecnologias',
     team: 'Projeto em equipe',
+    origin: 'Como começou:',
     noImages: 'Imagens em breve',
     close: 'Fechar',
   },
