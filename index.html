@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maria Mariah | Desenvolvedora Front-End</title>
+  <meta name="description" content="Bacharel em Ciência da Computação com foco em desenvolvimento web, apaixonada por transformar ideias em experiências digitais funcionais e intuitivas." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://itsmariah.github.io/" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="Maria Mariah | Desenvolvedora Front-End" />
+  <meta property="og:description" content="Bacharel em Ciência da Computação com foco em desenvolvimento web, apaixonada por transformar ideias em experiências digitais funcionais e intuitivas." />
+  <meta property="og:image" content="https://itsmariah.github.io/assets/images/foto_profissional.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Maria Mariah | Desenvolvedora Front-End" />
+  <meta name="twitter:description" content="Bacharel em Ciência da Computação com foco em desenvolvimento web, apaixonada por transformar ideias em experiências digitais funcionais e intuitivas." />
+  <meta name="twitter:image" content="https://itsmariah.github.io/assets/images/foto_profissional.jpg" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <!-- Aplica tema e idioma antes do primeiro paint (evita flash) -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('portfolio-theme');
+        var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+        if (localStorage.getItem('portfolio-lang') === 'en') document.documentElement.lang = 'en';
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>

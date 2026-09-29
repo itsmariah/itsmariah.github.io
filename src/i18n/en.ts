@@ -1,0 +1,82 @@
+import type { Dictionary } from './pt';
+
+export const en: Dictionary = {
+  meta: { title: 'Maria Mariah | Front-End Developer' },
+  nav: {
+    about: 'About',
+    skills: 'Skills',
+    projects: 'Projects',
+    certificates: 'Certificates',
+    resume: 'Resume',
+    contact: 'Contact',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
+    themeToggle: 'Toggle theme',
+    language: 'Language',
+  },
+  hero: {
+    tag: 'Open to Junior Front-End roles',
+    role: 'Front-End Developer',
+    title: 'Building modern, interactive, and responsive interfaces.',
+    description:
+      'Computer Science graduate focused on web development, passionate about turning ideas into functional and intuitive digital experiences.',
+    viewProjects: 'View projects',
+    contactMe: 'Get in touch',
+    downloadCv: 'Download CV',
+  },
+  about: {
+    title: 'About me',
+    p1: "I'm a Computer Science graduate and I've been steering my path toward front-end and web development. I enjoy building organized, beautiful, and functional interfaces, with special attention to user experience.",
+    p2: "I'm currently building practical projects that strengthen my skills in HTML, CSS, JavaScript, and front-end/back-end integration, with SkillUp Dev standing out — a platform focused on developing soft skills for developers.",
+  },
+  skills: { title: 'Skills' },
+  projects: {
+    title: 'Projects',
+    filterAll: 'All',
+    filterLabel: 'Filter projects by technology',
+    viewLive: 'View live →',
+  },
+  status: { published: 'Published', inProgress: 'In progress', featured: 'Featured' },
+  slideshow: {
+    prev: 'Previous',
+    next: 'Next',
+    goTo: 'Go to image {n} of {total}',
+    open: 'Enlarge image',
+  },
+  certs: {
+    title: 'Certificates',
+    intro: 'Courses and certifications that are part of my continuous learning.',
+    viewCert: 'View certificate',
+  },
+  resume: {
+    title: 'Resume',
+    tabs: { education: '🎓Education', experience: '💼Experience', soft: '🤝Soft Skills' },
+  },
+  contact: {
+    title: 'Contact',
+    intro: "I'm available for Junior Front-End Developer roles and open to networking and connections in tech.",
+    copyEmail: 'Copy email',
+    copied: 'Email copied',
+    formTitle: 'Send a message',
+    form: {
+      name: 'Name',
+      email: 'Email',
+      subject: 'Subject',
+      message: 'Message',
+      namePlaceholder: 'Your name',
+      emailPlaceholder: 'your@email.com',
+      subjectPlaceholder: "What's it about?",
+      messagePlaceholder: 'Write your message here...',
+      submit: 'Send message',
+      submitting: 'Sending...',
+    },
+    success: "Message sent successfully! I'll get back to you soon.",
+    error: 'Oops! Something went wrong. Try reaching me directly by email.',
+  },
+  footer: { text: 'Maria Mariah Queiroga Fernandes Soares — Front-End Portfolio' },
+  a11y: {
+    backToTop: 'Back to top',
+    lightboxClose: 'Close',
+    lightboxDialog: 'View full-screen image',
+  },
+};
