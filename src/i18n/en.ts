@@ -17,19 +17,34 @@ export const en: Dictionary = {
   hero: {
     tag: 'Open to Junior Front-End roles',
     role: 'Front-End Developer',
-    title: 'Building modern, interactive, and responsive interfaces.',
     description:
       'Computer Science graduate focused on web development, passionate about turning ideas into functional and intuitive digital experiences.',
     viewProjects: 'View projects',
-    contactMe: 'Get in touch',
     downloadCv: 'Download CV',
+    location: 'João Pessoa, Brazil',
+    social: 'Social and contact',
   },
   about: {
     title: 'About me',
     p1: "I'm a Computer Science graduate and I've been steering my path toward front-end and web development. I enjoy building organized, beautiful, and functional interfaces, with special attention to user experience.",
     p2: "I'm currently building practical projects that strengthen my skills in HTML, CSS, JavaScript, and front-end/back-end integration, with SkillUp Dev standing out — a platform focused on developing soft skills for developers.",
+    facts: {
+      education: 'Education',
+      educationValue: "Bachelor's in Computer Science — UNIPÊ",
+      location: 'Location',
+      focus: 'Focus',
+      focusValue: 'Front-end and back-end integration',
+      now: 'Currently',
+      nowValue: 'Building MistyDoces, a system for a real bakery',
+    },
   },
-  skills: { title: 'Skills' },
+  skills: {
+    title: 'Skills',
+    intro: 'Click a technology to see the projects where it shows up.',
+    tiers: { daily: 'Daily drivers', familiar: "I've worked with", practices: 'Practices' },
+    projectCount: { one: '1 project', other: '{count} projects' },
+    showProjects: 'Show projects with {name}',
+  },
   projects: {
     title: 'Projects',
     filterAll: 'All',
@@ -50,7 +65,7 @@ export const en: Dictionary = {
   },
   resume: {
     title: 'Resume',
-    tabs: { education: '🎓Education', experience: '💼Experience', soft: '🤝Soft Skills' },
+    tabs: { education: 'Education', experience: 'Experience', soft: 'Soft Skills' },
   },
   contact: {
     title: 'Contact',

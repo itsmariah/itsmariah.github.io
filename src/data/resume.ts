@@ -1,3 +1,7 @@
+import {
+  BookOpen, Clock, Lightbulb, MessageCircle, Puzzle, RefreshCw, Target, Users,
+  type LucideIcon,
+} from 'lucide-react';
 import type { Localized } from '../i18n/I18nProvider';
 
 export interface TimelineItem {
@@ -46,13 +50,13 @@ export const experience: TimelineItem[] = [
   },
 ];
 
-export const softSkills: Localized[] = [
-  { pt: '🤝 Trabalho em equipe', en: '🤝 Teamwork' },
-  { pt: '🧩 Resolução de problemas', en: '🧩 Problem solving' },
-  { pt: '🗣️ Comunicação', en: '🗣️ Communication' },
-  { pt: '⏱️ Gestão de tempo', en: '⏱️ Time management' },
-  { pt: '📚 Aprendizado contínuo', en: '📚 Continuous learning' },
-  { pt: '🎯 Atenção aos detalhes', en: '🎯 Attention to detail' },
-  { pt: '💡 Criatividade', en: '💡 Creativity' },
-  { pt: '🔄 Adaptabilidade', en: '🔄 Adaptability' },
+export const softSkills: { icon: LucideIcon; label: Localized }[] = [
+  { icon: Users, label: { pt: 'Trabalho em equipe', en: 'Teamwork' } },
+  { icon: Puzzle, label: { pt: 'Resolução de problemas', en: 'Problem solving' } },
+  { icon: MessageCircle, label: { pt: 'Comunicação', en: 'Communication' } },
+  { icon: Clock, label: { pt: 'Gestão de tempo', en: 'Time management' } },
+  { icon: BookOpen, label: { pt: 'Aprendizado contínuo', en: 'Continuous learning' } },
+  { icon: Target, label: { pt: 'Atenção aos detalhes', en: 'Attention to detail' } },
+  { icon: Lightbulb, label: { pt: 'Criatividade', en: 'Creativity' } },
+  { icon: RefreshCw, label: { pt: 'Adaptabilidade', en: 'Adaptability' } },
 ];

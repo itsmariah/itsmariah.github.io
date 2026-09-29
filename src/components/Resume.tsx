@@ -1,10 +1,12 @@
 import { useRef, useState, type KeyboardEvent } from 'react';
+import { Briefcase, GraduationCap, Users, type LucideIcon } from 'lucide-react';
 import { useI18n } from '../i18n/I18nProvider';
 import { education, experience, softSkills, type TimelineItem } from '../data/resume';
 import { reveal } from '../hooks/reveal';
 
 const TABS = ['education', 'experience', 'soft'] as const;
 type Tab = (typeof TABS)[number];
+const TAB_ICONS: Record<Tab, LucideIcon> = { education: GraduationCap, experience: Briefcase, soft: Users };
 
 function Timeline({ items }: { items: TimelineItem[] }) {
   const { l } = useI18n();
@@ -43,22 +45,26 @@ export function Resume() {
       <h2 className="section-title reveal" ref={reveal}>{t.resume.title}</h2>
 
       <div className="resume-tabs reveal" ref={reveal} role="tablist" onKeyDown={onKeyDown}>
-        {TABS.map((tab) => (
-          <button
-            key={tab}
-            ref={(el) => { tabRefs.current[tab] = el; }}
-            type="button"
-            role="tab"
-            id={`tab-${tab}`}
-            aria-selected={active === tab}
-            aria-controls={`panel-${tab}`}
-            tabIndex={active === tab ? 0 : -1}
-            className={`resume-tab${active === tab ? ' active' : ''}`}
-            onClick={() => setActive(tab)}
-          >
-            {t.resume.tabs[tab]}
-          </button>
-        ))}
+        {TABS.map((tab) => {
+          const Icon = TAB_ICONS[tab];
+          return (
+            <button
+              key={tab}
+              ref={(el) => { tabRefs.current[tab] = el; }}
+              type="button"
+              role="tab"
+              id={`tab-${tab}`}
+              aria-selected={active === tab}
+              aria-controls={`panel-${tab}`}
+              tabIndex={active === tab ? 0 : -1}
+              className={`resume-tab${active === tab ? ' active' : ''}`}
+              onClick={() => setActive(tab)}
+            >
+              <Icon size={16} aria-hidden="true" />
+              {t.resume.tabs[tab]}
+            </button>
+          );
+        })}
       </div>
 
       <div
@@ -72,7 +78,12 @@ export function Resume() {
         {active === 'experience' && <Timeline items={experience} />}
         {active === 'soft' && (
           <ul className="soft-skills-grid">
-            {softSkills.map((skill) => <li className="soft-card" key={skill.pt}>{l(skill)}</li>)}
+            {softSkills.map(({ icon: Icon, label }) => (
+              <li className="soft-card" key={label.pt}>
+                <Icon size={18} aria-hidden="true" />
+                {l(label)}
+              </li>
+            ))}
           </ul>
         )}
       </div>

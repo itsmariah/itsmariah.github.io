@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { About } from './components/About';
-import { Background } from './components/Background';
 import { BackToTop } from './components/BackToTop';
 import { Certificates } from './components/Certificates';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
 import { Navbar } from './components/Navbar';
+import { ProjectFilterProvider } from './components/projects/ProjectFilter';
 import { Projects } from './components/projects/Projects';
 import { Resume } from './components/Resume';
 import { Skills } from './components/Skills';
@@ -20,8 +20,7 @@ export function App() {
   }, []);
 
   return (
-    <>
-      <Background />
+    <ProjectFilterProvider>
       <Navbar />
       <Hero />
       <main>
@@ -34,6 +33,6 @@ export function App() {
       </main>
       <Footer />
       <BackToTop />
-    </>
+    </ProjectFilterProvider>
   );
 }

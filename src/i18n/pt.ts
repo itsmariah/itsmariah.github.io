@@ -16,19 +16,34 @@ export const pt = {
   hero: {
     tag: 'Disponível para vagas Front-End Júnior',
     role: 'Desenvolvedora Front-End',
-    title: 'Criando interfaces modernas, interativas e responsivas.',
     description:
       'Bacharel em Ciência da Computação com foco em desenvolvimento web, apaixonada por transformar ideias em experiências digitais funcionais e intuitivas.',
     viewProjects: 'Ver projetos',
-    contactMe: 'Entrar em contato',
     downloadCv: 'Baixar CV',
+    location: 'João Pessoa, PB',
+    social: 'Redes e contato',
   },
   about: {
     title: 'Sobre mim',
     p1: 'Sou bacharel em Ciência da Computação e tenho direcionado minha trajetória para a área de desenvolvimento front-end e web. Gosto de construir interfaces organizadas, bonitas e funcionais, com atenção especial à experiência do usuário.',
     p2: 'Atualmente, venho desenvolvendo projetos práticos que fortalecem minhas habilidades com HTML, CSS, JavaScript e integração entre front-end e back-end, com destaque para o SkillUp Dev, plataforma voltada ao desenvolvimento de soft skills para desenvolvedores.',
+    facts: {
+      education: 'Formação',
+      educationValue: 'Bacharel em Ciência da Computação — UNIPÊ',
+      location: 'Localização',
+      focus: 'Foco',
+      focusValue: 'Front-end e integração com back-end',
+      now: 'Atualmente',
+      nowValue: 'Desenvolvendo o MistyDoces, sistema para uma confeitaria real',
+    },
   },
-  skills: { title: 'Tecnologias' },
+  skills: {
+    title: 'Tecnologias',
+    intro: 'Clique em uma tecnologia para ver os projetos em que ela aparece.',
+    tiers: { daily: 'Uso no dia a dia', familiar: 'Já trabalhei com', practices: 'Práticas' },
+    projectCount: { one: '1 projeto', other: '{count} projetos' },
+    showProjects: 'Ver projetos com {name}',
+  },
   projects: {
     title: 'Projetos',
     filterAll: 'Todos',
@@ -49,7 +64,7 @@ export const pt = {
   },
   resume: {
     title: 'Currículo',
-    tabs: { education: '🎓Educação', experience: '💼Experiências', soft: '🤝Soft Skills' },
+    tabs: { education: 'Educação', experience: 'Experiências', soft: 'Soft Skills' },
   },
   contact: {
     title: 'Contato',

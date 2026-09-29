@@ -1,8 +1,9 @@
+import { Bot, Braces, GraduationCap, Layers, ShieldCheck, type LucideIcon } from 'lucide-react';
 import type { Localized } from '../i18n/I18nProvider';
 
 export interface Certificate {
   id: string;
-  icon: string;
+  icon: LucideIcon;
   platform: string;
   name: Localized;
   date: Localized;
@@ -14,7 +15,7 @@ const CERT_DIR = '/assets/certificados/';
 export const certificates: Certificate[] = [
   {
     id: 'unipe',
-    icon: '🏫',
+    icon: GraduationCap,
     platform: 'UNIPÊ',
     name: { pt: 'Escola de Computação Solidária — Extensionista', en: 'Community Computing School — Extension Program' },
     date: { pt: 'Mar – Jun 2026', en: 'Mar – Jun 2026' },
@@ -22,7 +23,7 @@ export const certificates: Certificate[] = [
   },
   {
     id: 'claude',
-    icon: '🤖',
+    icon: Bot,
     platform: 'Udemy',
     name: { pt: 'Formação Claude Code 2026 — IA com Claude e Cowork', en: 'Claude Code 2026 Training — AI with Claude and Cowork' },
     date: { pt: 'Jun 2026', en: 'Jun 2026' },
@@ -30,7 +31,7 @@ export const certificates: Certificate[] = [
   },
   {
     id: 'algoritmos',
-    icon: '💻',
+    icon: Braces,
     platform: 'Udemy',
     name: { pt: 'Algoritmos e Lógica de Programação', en: 'Algorithms and Programming Logic' },
     date: { pt: 'Abr 2026', en: 'Apr 2026' },
@@ -38,7 +39,7 @@ export const certificates: Certificate[] = [
   },
   {
     id: 'pucrs',
-    icon: '🔒',
+    icon: ShieldCheck,
     platform: 'PUCRS',
     name: { pt: 'Compliance e Proteção de Dados', en: 'Compliance and Data Protection' },
     date: { pt: 'Jun 2026', en: 'Jun 2026' },
@@ -46,7 +47,7 @@ export const certificates: Certificate[] = [
   },
   {
     id: 'web',
-    icon: '🖥️',
+    icon: Layers,
     platform: 'Alura',
     name: { pt: 'Imersão Arquitetura Web com IA', en: 'Web Architecture with AI Immersion' },
     date: { pt: 'Jul 2026', en: 'Jul 2026' },

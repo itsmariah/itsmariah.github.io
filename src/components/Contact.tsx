@@ -2,7 +2,8 @@ import { useEffect, useState, type FormEvent } from 'react';
 import { useI18n } from '../i18n/I18nProvider';
 import { profile } from '../data/profile';
 import { reveal } from '../hooks/reveal';
-import { CheckIcon, CopyIcon, GitHubIcon, LinkedInIcon, MailIcon, WhatsAppIcon } from './Icons';
+import { Check, Copy, Mail } from 'lucide-react';
+import { GitHubIcon, LinkedInIcon, WhatsAppIcon } from './Icons';
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error';
 
@@ -24,7 +25,7 @@ function CopyEmailButton() {
       aria-label={copied ? t.contact.copied : t.contact.copyEmail}
       onClick={() => navigator.clipboard.writeText(profile.email).then(() => setCopied(true), () => {})}
     >
-      {copied ? <CheckIcon size={13} /> : <CopyIcon size={13} />}
+      {copied ? <Check size={14} aria-hidden="true" /> : <Copy size={14} aria-hidden="true" />}
     </button>
   );
 }
@@ -106,7 +107,7 @@ export function Contact() {
           GitHub
         </a>
         <div className="contact-card email-card reveal" ref={reveal}>
-          <MailIcon size={20} />
+          <Mail size={20} aria-hidden="true" />
           <span>{profile.email}</span>
           <CopyEmailButton />
         </div>

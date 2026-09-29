@@ -1,19 +1,19 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useI18n } from '../../i18n/I18nProvider';
 import { projects } from '../../data/projects';
 import { reveal } from '../../hooks/reveal';
 import { ProjectCard } from './ProjectCard';
 import { Lightbox, type LightboxImage } from './Lightbox';
+import { projectCountByTag, useProjectFilter } from './ProjectFilter';
 
-const ALL = '__all__';
+const tags = [...projectCountByTag.keys()];
 
 export function Projects() {
   const { t, l } = useI18n();
-  const [filter, setFilter] = useState(ALL);
+  const { filter, setFilter } = useProjectFilter();
   const [gallery, setGallery] = useState<{ images: LightboxImage[]; index: number } | null>(null);
 
-  const tags = useMemo(() => [...new Set(projects.flatMap((p) => p.tags))], []);
-  const visible = filter === ALL ? projects : projects.filter((p) => p.tags.includes(filter));
+  const visible = filter === null ? projects : projects.filter((p) => p.tags.includes(filter));
 
   const closeGallery = useCallback(() => setGallery(null), []);
   const changeGalleryImage = useCallback(
@@ -26,15 +26,15 @@ export function Projects() {
       <h2 className="section-title reveal" ref={reveal}>{t.projects.title}</h2>
 
       <div className="filter-bar" role="group" aria-label={t.projects.filterLabel}>
-        {[ALL, ...tags].map((tag) => (
+        {[null, ...tags].map((tag) => (
           <button
-            key={tag}
+            key={tag ?? 'all'}
             type="button"
             className={`filter-btn${filter === tag ? ' active' : ''}`}
             aria-pressed={filter === tag}
             onClick={() => setFilter(tag)}
           >
-            {tag === ALL ? t.projects.filterAll : tag}
+            {tag ?? t.projects.filterAll}
           </button>
         ))}
       </div>
