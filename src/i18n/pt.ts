@@ -46,16 +46,28 @@ export const pt = {
   },
   projects: {
     title: 'Projetos',
+    intro: 'Uma seleção do que construí. Abra um projeto para ver imagens e detalhes.',
     filterAll: 'Todos',
     filterLabel: 'Filtrar projetos por tecnologia',
-    viewLive: 'Ver ao vivo →',
+    others: 'Outros projetos',
+    showing: '{count} projetos com {tag}',
+    showingOne: '1 projeto com {tag}',
+    clearFilter: 'Limpar filtro',
+    viewDetails: 'Ver detalhes',
+    viewLive: 'Ver ao vivo',
+    code: 'Código',
+    highlights: 'O que construí',
+    stack: 'Tecnologias',
+    team: 'Projeto em equipe',
+    noImages: 'Imagens em breve',
+    close: 'Fechar',
+    dialog: 'Detalhes do projeto {name}',
   },
   status: { published: 'Publicado', inProgress: 'Em desenvolvimento', featured: 'Destaque' },
   slideshow: {
-    prev: 'Anterior',
-    next: 'Próximo',
-    goTo: 'Ir para imagem {n} de {total}',
-    open: 'Ampliar imagem',
+    prev: 'Imagem anterior',
+    next: 'Próxima imagem',
+    goTo: 'Ver imagem {n} de {total}',
   },
   certs: {
     title: 'Certificados',
@@ -89,11 +101,7 @@ export const pt = {
     error: 'Ops! Não foi possível enviar. Tente me contatar diretamente pelo e-mail.',
   },
   footer: { text: 'Maria Mariah Queiroga Fernandes Soares — Portfólio Front-End' },
-  a11y: {
-    backToTop: 'Voltar ao topo',
-    lightboxClose: 'Fechar',
-    lightboxDialog: 'Visualizar imagem em tela cheia',
-  },
+  a11y: { backToTop: 'Voltar ao topo' },
 };
 
 export type Dictionary = typeof pt;

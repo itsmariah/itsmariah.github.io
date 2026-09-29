@@ -1,46 +1,59 @@
+import type { Ref } from 'react';
+import { ArrowUpRight } from 'lucide-react';
+import { motion } from 'motion/react';
 import { useI18n } from '../../i18n/I18nProvider';
 import type { Project } from '../../data/projects';
-import { reveal } from '../../hooks/reveal';
 import { GitHubIcon } from '../Icons';
-import { Slideshow } from './Slideshow';
+import { ProjectBadges, TagList } from './ProjectBadges';
+import { ProjectCover } from './ProjectCover';
 
 interface ProjectCardProps {
   project: Project;
-  onOpenImage: (index: number) => void;
+  onOpen: () => void;
+  /** O AnimatePresence com mode="popLayout" precisa de ref no filho direto */
+  ref?: Ref<HTMLLIElement>;
 }
 
-export function ProjectCard({ project, onOpenImage }: ProjectCardProps) {
+export function ProjectCard({ project, onOpen, ref }: ProjectCardProps) {
   const { t, l } = useI18n();
-  const published = project.status === 'published';
 
   return (
-    <article className={`project-card reveal${project.featured ? ' destaque' : ''}`} ref={reveal}>
-      <Slideshow project={project} onOpen={onOpenImage} />
+    <motion.li
+      ref={ref}
+      layout
+      className="project-card"
+      initial={{ opacity: 0, scale: 0.96 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.96 }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <ProjectCover project={project} />
 
-      <div className="project-body">
-        <div className="project-header">
-          {project.featured && <span className="project-badge">{t.status.featured}</span>}
-          <span className={`status-badge ${published ? 'published' : 'in-progress'}`}>
-            {published ? t.status.published : t.status.inProgress}
-          </span>
-        </div>
-        <h3>{project.name}</h3>
-        <p>{l(project.description)}</p>
-        <div className="project-tags">
-          {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
-        </div>
-        <div className="project-links">
+      <div className="project-card-body">
+        <ProjectBadges project={project} />
+        <h3 className="project-card-title">
+          {/* O ::after deste botão cobre o card inteiro: clicar em qualquer lugar abre os detalhes */}
+          <button type="button" className="card-open" onClick={onOpen}>
+            {project.name}
+            <span className="visually-hidden"> — {t.projects.viewDetails}</span>
+          </button>
+        </h3>
+        <p className="project-card-description">{l(project.description)}</p>
+        <TagList tags={project.tags} />
+
+        <div className="project-card-links">
           {project.liveUrl && (
-            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="project-link-btn demo">
+            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-link">
               {t.projects.viewLive}
+              <ArrowUpRight size={15} aria-hidden="true" />
             </a>
           )}
-          <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="project-link-btn github">
+          <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="text-link">
             <GitHubIcon size={15} />
-            GitHub
+            {t.projects.code}
           </a>
         </div>
       </div>
-    </article>
+    </motion.li>
   );
 }
