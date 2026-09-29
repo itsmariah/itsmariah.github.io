@@ -6,8 +6,7 @@ export const en: Dictionary = {
     about: 'About',
     skills: 'Skills',
     projects: 'Projects',
-    certificates: 'Certificates',
-    resume: 'Resume',
+    resume: 'Background',
     contact: 'Contact',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
@@ -28,6 +27,7 @@ export const en: Dictionary = {
     title: 'About me',
     p1: "I'm a Computer Science graduate and I've been steering my path toward front-end and web development. I enjoy building organized, beautiful, and functional interfaces, with special attention to user experience.",
     p2: "I'm currently building practical projects that strengthen my skills in HTML, CSS, JavaScript, and front-end/back-end integration, with SkillUp Dev standing out — a platform focused on developing soft skills for developers.",
+    softSkills: 'Soft skills',
     facts: {
       education: 'Education',
       educationValue: "Bachelor's in Computer Science — UNIPÊ",
@@ -62,7 +62,6 @@ export const en: Dictionary = {
     team: 'Team project',
     noImages: 'Screenshots coming soon',
     close: 'Close',
-    dialog: '{name} project details',
   },
   status: { published: 'Published', inProgress: 'In progress', featured: 'Featured' },
   slideshow: {
@@ -70,20 +69,21 @@ export const en: Dictionary = {
     next: 'Next image',
     goTo: 'Show image {n} of {total}',
   },
-  certs: {
-    title: 'Certificates',
-    intro: 'Courses and certifications that are part of my continuous learning.',
-    viewCert: 'View certificate',
-  },
   resume: {
-    title: 'Resume',
-    tabs: { education: 'Education', experience: 'Experience', soft: 'Soft Skills' },
+    title: 'Background',
+    intro: 'Work experience, education, and the courses that complement my studies.',
+    experience: 'Experience',
+    education: 'Education',
+    courses: 'Courses & certificates',
+    viewCert: 'View certificate',
   },
   contact: {
     title: 'Contact',
     intro: "I'm available for Junior Front-End Developer roles and open to networking and connections in tech.",
+    channels: 'Direct channels',
     copyEmail: 'Copy email',
     copied: 'Email copied',
+    whatsapp: 'Direct message',
     formTitle: 'Send a message',
     form: {
       name: 'Name',
@@ -100,6 +100,9 @@ export const en: Dictionary = {
     success: "Message sent successfully! I'll get back to you soon.",
     error: 'Oops! Something went wrong. Try reaching me directly by email.',
   },
-  footer: { text: 'Maria Mariah Queiroga Fernandes Soares — Front-End Portfolio' },
-  a11y: { backToTop: 'Back to top' },
+  footer: {
+    text: 'Maria Mariah Queiroga Fernandes Soares',
+    built: 'Built with React, TypeScript, and Vite',
+  },
+  a11y: { backToTop: 'Back to top', skipToContent: 'Skip to content' },
 };

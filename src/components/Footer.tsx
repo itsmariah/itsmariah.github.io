@@ -4,7 +4,10 @@ export function Footer() {
   const { t } = useI18n();
   return (
     <footer className="footer">
-      <p>© {new Date().getFullYear()} {t.footer.text}</p>
+      <div className="container footer-inner">
+        <p>© {new Date().getFullYear()} {t.footer.text}</p>
+        <p>{t.footer.built}</p>
+      </div>
     </footer>
   );
 }

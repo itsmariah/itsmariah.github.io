@@ -60,10 +60,10 @@ export function Hero() {
 
         <figure className="hero-portrait hero-in" style={stagger(2)}>
           <img
-            src="/assets/images/foto_profissional.jpg"
+            src="/assets/images/foto_profissional.webp"
             alt={profile.name}
-            width={729}
-            height={729}
+            width={720}
+            height={720}
             fetchPriority="high"
           />
           <figcaption className="hero-location">

@@ -5,7 +5,7 @@ import { useActiveSection } from '../hooks/useActiveSection';
 import { useScrolledPast } from '../hooks/useScroll';
 import { useTheme } from '../hooks/useTheme';
 
-const SECTIONS = ['sobre', 'skills', 'projetos', 'certificados', 'curriculo', 'contato'] as const;
+const SECTIONS = ['sobre', 'skills', 'projetos', 'curriculo', 'contato'] as const;
 const LANGS: Lang[] = ['pt', 'en'];
 
 export function Navbar() {
@@ -19,7 +19,6 @@ export function Navbar() {
     sobre: t.nav.about,
     skills: t.nav.skills,
     projetos: t.nav.projects,
-    certificados: t.nav.certificates,
     curriculo: t.nav.resume,
     contato: t.nav.contact,
   };

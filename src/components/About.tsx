@@ -1,9 +1,10 @@
 import { GraduationCap, Hammer, MapPin, Target, type LucideIcon } from 'lucide-react';
 import { useI18n } from '../i18n/I18nProvider';
+import { softSkills } from '../data/resume';
 import { reveal } from '../hooks/reveal';
 
 export function About() {
-  const { t } = useI18n();
+  const { t, l } = useI18n();
   const f = t.about.facts;
 
   const facts: { icon: LucideIcon; label: string; value: string }[] = [
@@ -20,18 +21,29 @@ export function About() {
         <div className="about-text reveal" ref={reveal}>
           <p>{t.about.p1}</p>
           <p>{t.about.p2}</p>
+
+          <h3 className="tier-title about-subtitle">{t.about.softSkills}</h3>
+          <ul className="soft-skills">
+            {softSkills.map(({ icon: Icon, label }) => (
+              <li key={label.pt}>
+                <Icon size={15} aria-hidden="true" />
+                {l(label)}
+              </li>
+            ))}
+          </ul>
         </div>
-        <dl className="facts reveal" ref={reveal}>
+
+        <ul className="facts reveal" ref={reveal}>
           {facts.map(({ icon: Icon, label, value }) => (
-            <div className="fact" key={label}>
+            <li className="fact" key={label}>
               <span className="fact-icon" aria-hidden="true"><Icon size={18} /></span>
               <div>
-                <dt>{label}</dt>
-                <dd>{value}</dd>
+                <span className="fact-label">{label}</span>
+                <span className="fact-value">{value}</span>
               </div>
-            </div>
+            </li>
           ))}
-        </dl>
+        </ul>
       </div>
     </section>
   );

@@ -15,6 +15,7 @@
   <meta name="twitter:title" content="Maria Mariah | Desenvolvedora Front-End" />
   <meta name="twitter:description" content="Bacharel em Ciência da Computação com foco em desenvolvimento web, apaixonada por transformar ideias em experiências digitais funcionais e intuitivas." />
   <meta name="twitter:image" content="https://itsmariah.github.io/assets/images/foto_profissional.jpg" />
+  <link rel="canonical" href="https://itsmariah.github.io/" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <!-- Aplica tema e idioma antes do primeiro paint (evita flash) -->
   <script>
@@ -27,12 +28,17 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <!-- A foto do hero é o maior elemento da primeira tela: começa a baixar antes do JavaScript -->
+  <link rel="preload" as="image" href="/assets/images/foto_profissional.webp" type="image/webp" fetchpriority="high" />
 </head>
 <body>
   <div id="root"></div>
+  <noscript>
+    <p style="font-family: system-ui, sans-serif; padding: 24px;">
+      Este portfólio precisa de JavaScript. Você também pode me encontrar em
+      <a href="https://github.com/itsmariah">github.com/itsmariah</a> ou pelo e-mail mariamariahqfs@gmail.com.
+    </p>
+  </noscript>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>

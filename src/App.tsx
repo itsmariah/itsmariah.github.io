@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { About } from './components/About';
 import { BackToTop } from './components/BackToTop';
-import { Certificates } from './components/Certificates';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
@@ -10,8 +9,11 @@ import { ProjectFilterProvider } from './components/projects/ProjectFilter';
 import { Projects } from './components/projects/Projects';
 import { Resume } from './components/Resume';
 import { Skills } from './components/Skills';
+import { useI18n } from './i18n/I18nProvider';
 
 export function App() {
+  const { t } = useI18n();
+
   // O conteúdo é montado depois do carregamento, então o navegador não acha a âncora
   // de links como /#projetos sozinho — rolamos até ela manualmente.
   useEffect(() => {
@@ -21,13 +23,13 @@ export function App() {
 
   return (
     <ProjectFilterProvider>
+      <a href="#conteudo" className="skip-link">{t.a11y.skipToContent}</a>
       <Navbar />
       <Hero />
-      <main>
+      <main id="conteudo" tabIndex={-1}>
         <About />
         <Skills />
         <Projects />
-        <Certificates />
         <Resume />
         <Contact />
       </main>

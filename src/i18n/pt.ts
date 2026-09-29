@@ -5,8 +5,7 @@ export const pt = {
     about: 'Sobre',
     skills: 'Tecnologias',
     projects: 'Projetos',
-    certificates: 'Certificados',
-    resume: 'Currículo',
+    resume: 'Trajetória',
     contact: 'Contato',
     openMenu: 'Abrir menu',
     closeMenu: 'Fechar menu',
@@ -27,6 +26,7 @@ export const pt = {
     title: 'Sobre mim',
     p1: 'Sou bacharel em Ciência da Computação e tenho direcionado minha trajetória para a área de desenvolvimento front-end e web. Gosto de construir interfaces organizadas, bonitas e funcionais, com atenção especial à experiência do usuário.',
     p2: 'Atualmente, venho desenvolvendo projetos práticos que fortalecem minhas habilidades com HTML, CSS, JavaScript e integração entre front-end e back-end, com destaque para o SkillUp Dev, plataforma voltada ao desenvolvimento de soft skills para desenvolvedores.',
+    softSkills: 'Soft skills',
     facts: {
       education: 'Formação',
       educationValue: 'Bacharel em Ciência da Computação — UNIPÊ',
@@ -61,7 +61,6 @@ export const pt = {
     team: 'Projeto em equipe',
     noImages: 'Imagens em breve',
     close: 'Fechar',
-    dialog: 'Detalhes do projeto {name}',
   },
   status: { published: 'Publicado', inProgress: 'Em desenvolvimento', featured: 'Destaque' },
   slideshow: {
@@ -69,21 +68,22 @@ export const pt = {
     next: 'Próxima imagem',
     goTo: 'Ver imagem {n} de {total}',
   },
-  certs: {
-    title: 'Certificados',
-    intro: 'Cursos e certificações que fazem parte da minha formação contínua.',
-    viewCert: 'Ver certificado',
-  },
   resume: {
-    title: 'Currículo',
-    tabs: { education: 'Educação', experience: 'Experiências', soft: 'Soft Skills' },
+    title: 'Trajetória',
+    intro: 'Experiência profissional, formação e os cursos que complementam meus estudos.',
+    experience: 'Experiência',
+    education: 'Formação',
+    courses: 'Cursos e certificados',
+    viewCert: 'Ver certificado',
   },
   contact: {
     title: 'Contato',
     intro:
       'Estou disponível para vagas de Desenvolvedora Front-End Júnior e aberta a networking e conexões na área de tecnologia.',
+    channels: 'Canais diretos',
     copyEmail: 'Copiar e-mail',
     copied: 'E-mail copiado',
+    whatsapp: 'Mensagem direta',
     formTitle: 'Envie uma mensagem',
     form: {
       name: 'Nome',
@@ -100,8 +100,11 @@ export const pt = {
     success: 'Mensagem enviada com sucesso! Responderei em breve.',
     error: 'Ops! Não foi possível enviar. Tente me contatar diretamente pelo e-mail.',
   },
-  footer: { text: 'Maria Mariah Queiroga Fernandes Soares — Portfólio Front-End' },
-  a11y: { backToTop: 'Voltar ao topo' },
+  footer: {
+    text: 'Maria Mariah Queiroga Fernandes Soares',
+    built: 'Feito com React, TypeScript e Vite',
+  },
+  a11y: { backToTop: 'Voltar ao topo', skipToContent: 'Pular para o conteúdo' },
 };
 
 export type Dictionary = typeof pt;
