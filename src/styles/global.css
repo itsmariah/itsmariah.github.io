@@ -1,6 +1,6 @@
 /* ══════════════════════════════════════
    Design tokens
-   Um único tom de destaque (violeta); o resto é neutro.
+   Violeta é o destaque principal; rosa e ciano só aparecem em gradientes.
 ══════════════════════════════════════ */
 :root {
   --font-display: 'Space Grotesk Variable', 'Inter Variable', system-ui, sans-serif;
@@ -10,6 +10,7 @@
   --radius: 12px;
   --radius-lg: 20px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --gradient-brand: linear-gradient(100deg, var(--accent-text), var(--accent-2) 50%, var(--accent-3));
 
   /* Tema escuro (padrão) */
   --bg: #0b0b12;
@@ -27,6 +28,10 @@
   --accent-text: #b4a9ff;
   --accent-soft: rgba(139, 124, 246, 0.12);
   --accent-border: rgba(139, 124, 246, 0.35);
+  --accent-2: #f472b6;
+  --accent-2-solid: #b5359a;
+  --accent-3: #22d3ee;
+  --accent-glow: rgba(139, 124, 246, 0.45);
   --success: #4ade80;
   --success-soft: rgba(74, 222, 128, 0.1);
   --warning: #fbbf24;
@@ -37,6 +42,13 @@
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
   --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.3), 0 24px 48px rgba(0, 0, 0, 0.35);
   --hero-glow: rgba(139, 124, 246, 0.16);
+
+  /* Fundo: aurora neon, grade de pontos e granulação */
+  --aurora-1: rgba(109, 90, 230, 0.32);
+  --aurora-2: rgba(219, 39, 119, 0.2);
+  --aurora-3: rgba(34, 211, 238, 0.14);
+  --grid-dot: rgba(255, 255, 255, 0.1);
+  --grain-opacity: 0.05;
 
   color-scheme: dark;
 }
@@ -57,6 +69,10 @@
   --accent-text: #5b48d6;
   --accent-soft: rgba(109, 90, 230, 0.09);
   --accent-border: rgba(109, 90, 230, 0.3);
+  --accent-2: #be185d;
+  --accent-2-solid: #a3268a;
+  --accent-3: #0e7490;
+  --accent-glow: rgba(109, 90, 230, 0.3);
   --success: #15803d;
   --success-soft: rgba(21, 128, 61, 0.08);
   --warning: #9a4a0b;
@@ -67,6 +83,13 @@
   --shadow: 0 1px 2px rgba(20, 20, 40, 0.05), 0 8px 24px rgba(20, 20, 40, 0.06);
   --shadow-lg: 0 2px 4px rgba(20, 20, 40, 0.05), 0 24px 48px rgba(20, 20, 40, 0.1);
   --hero-glow: rgba(109, 90, 230, 0.12);
+
+  /* Fundo: tons pastel com textura de papel */
+  --aurora-1: rgba(139, 124, 246, 0.22);
+  --aurora-2: rgba(244, 114, 182, 0.18);
+  --aurora-3: rgba(251, 191, 36, 0.12);
+  --grid-dot: rgba(20, 20, 40, 0.09);
+  --grain-opacity: 0.07;
 
   color-scheme: light;
 }
@@ -115,6 +138,94 @@ ul { list-style: none; }
   margin-inline: auto;
 }
 
+/* Troca de tema: o novo tema se revela num círculo a partir do botão (ver useTheme) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Durante a troca, as transições de cor ficariam "atrasadas" dentro do círculo */
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after { transition: none !important; }
+
+/* ══════════════════════════════════════
+   Fundo (aurora, granulação)
+   Fixo atrás de tudo; só anima transform, então não repinta ao rolar.
+══════════════════════════════════════ */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora-blob {
+  position: absolute;
+  width: 70vmax;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--blob-color), transparent);
+  animation: aurora-drift var(--blob-duration) ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.aurora-blob:nth-child(1) {
+  --blob-color: var(--aurora-1);
+  --blob-duration: 26s;
+  --dx: 1;
+  top: -35vmax;
+  left: -20vmax;
+}
+
+.aurora-blob:nth-child(2) {
+  --blob-color: var(--aurora-2);
+  --blob-duration: 32s;
+  --dx: -1;
+  top: -30vmax;
+  right: -30vmax;
+  animation-delay: -10s;
+}
+
+.aurora-blob:nth-child(3) {
+  --blob-color: var(--aurora-3);
+  --blob-duration: 38s;
+  --dx: 1;
+  bottom: -45vmax;
+  left: 10vw;
+  animation-delay: -18s;
+}
+
+@keyframes aurora-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(calc(var(--dx) * 10vw), 8vh, 0) scale(1.15); }
+  100% { transform: translate3d(calc(var(--dx) * -6vw), 14vh, 0) scale(0.92); }
+}
+
+.backdrop-grain {
+  position: absolute;
+  inset: 0;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1.4 -0.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Texto com o gradiente da marca, passeando devagar */
+.text-gradient {
+  background: var(--gradient-brand);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-pan 8s ease-in-out infinite alternate;
+}
+
+@keyframes gradient-pan {
+  from { background-position: 0% 50%; }
+  to   { background-position: 100% 50%; }
+}
+
 /* ══════════════════════════════════════
    Botões e controles
 ══════════════════════════════════════ */
@@ -131,13 +242,23 @@ ul { list-style: none; }
   font-size: 0.95rem;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s var(--ease);
+  transition: background 0.2s ease, background-position 0.4s var(--ease), border-color 0.2s ease,
+    box-shadow 0.3s ease, transform 0.2s var(--ease);
 }
 
 .btn:active { transform: translateY(1px); }
 
-.btn-primary { background: var(--accent-solid); color: #fff; }
-.btn-primary:hover { background: var(--accent-solid-hover); }
+/* Gradiente violeta → magenta; no hover ele desliza e o brilho aumenta */
+.btn-primary {
+  background: linear-gradient(120deg, var(--accent-solid), var(--accent-2-solid), var(--accent-solid));
+  background-size: 200% 100%;
+  color: #fff;
+  box-shadow: 0 8px 24px -10px var(--accent-glow);
+}
+.btn-primary:hover {
+  background-position: 100% 0;
+  box-shadow: 0 10px 32px -8px var(--accent-glow);
+}
 .btn-primary svg { transition: transform 0.2s var(--ease); }
 .btn-primary:hover svg { transform: translateX(3px); }
 
@@ -185,6 +306,18 @@ ul { list-style: none; }
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
+/* Progresso de leitura: a escala é atualizada pelo Navbar a cada frame de scroll */
+.scroll-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--gradient-brand);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
 .navbar.scrolled {
   background: var(--overlay);
   border-bottom-color: var(--border);
@@ -209,7 +342,12 @@ ul { list-style: none; }
   color: var(--text);
 }
 
-.logo span { color: var(--accent); }
+.logo span {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
 .nav-links {
   display: flex;
@@ -275,20 +413,33 @@ ul { list-style: none; }
   overflow: hidden;
 }
 
-/* Único efeito de fundo: um brilho estático atrás da foto */
-.hero::before {
+/* Grade de pontos que some nas bordas, e um brilho atrás da foto */
+.hero::before,
+.hero::after {
   content: '';
   position: absolute;
+  pointer-events: none;
+}
+
+.hero::before {
+  inset: 0;
+  background-image: radial-gradient(var(--grid-dot) 1.2px, transparent 1.6px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 65% at 60% 40%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 65% at 60% 40%, #000 20%, transparent 75%);
+}
+
+.hero::after {
   top: -20%;
   right: -10%;
   width: 70vw;
   height: 90%;
   background: radial-gradient(closest-side, var(--hero-glow), transparent);
-  pointer-events: none;
 }
 
 .hero-grid {
   position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1.3fr 1fr;
   align-items: center;
@@ -355,7 +506,6 @@ ul { list-style: none; }
   font-size: clamp(1.4rem, 3vw, 2.1rem);
   font-weight: 500;
   letter-spacing: -0.02em;
-  color: var(--accent-text);
 }
 
 .hero-description {

@@ -21,7 +21,7 @@ export function Hero() {
 
           <h1 className="hero-title hero-in" style={stagger(1)}>
             {profile.name}
-            <span className="hero-role">{t.hero.role}</span>
+            <span className="hero-role text-gradient">{t.hero.role}</span>
           </h1>
 
           <p className="hero-description hero-in" style={stagger(2)}>

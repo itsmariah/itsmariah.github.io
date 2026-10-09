@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { About } from './components/About';
+import { Backdrop } from './components/Backdrop';
 import { BackToTop } from './components/BackToTop';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -24,6 +25,7 @@ export function App() {
   return (
     <ProjectFilterProvider>
       <a href="#conteudo" className="skip-link">{t.a11y.skipToContent}</a>
+      <Backdrop />
       <Navbar />
       <Hero />
       <main id="conteudo" tabIndex={-1}>

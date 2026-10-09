@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import { useI18n, type Lang } from '../i18n/I18nProvider';
 import { useActiveSection } from '../hooks/useActiveSection';
-import { useScrolledPast } from '../hooks/useScroll';
+import { useScrollFrame, useScrolledPast } from '../hooks/useScroll';
 import { useTheme } from '../hooks/useTheme';
 
 const SECTIONS = ['sobre', 'skills', 'projetos', 'curriculo', 'contato'] as const;
@@ -14,6 +14,12 @@ export function Navbar() {
   const scrolled = useScrolledPast(24);
   const active = useActiveSection(SECTIONS);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Atualiza a barra direto no DOM para não re-renderizar a navbar a cada frame
+  const progressRef = useRef<HTMLDivElement>(null);
+  useScrollFrame((_, progress) => {
+    progressRef.current?.style.setProperty('transform', `scaleX(${progress})`);
+  });
 
   const labels: Record<(typeof SECTIONS)[number], string> = {
     sobre: t.nav.about,
@@ -44,7 +50,7 @@ export function Navbar() {
         </ul>
 
         <div className="navbar-actions">
-          <button className="icon-btn" type="button" onClick={toggle} aria-label={t.nav.themeToggle}>
+          <button className="icon-btn" type="button" onClick={(e) => toggle(e.currentTarget)} aria-label={t.nav.themeToggle}>
             {theme === 'light' ? <Moon size={18} aria-hidden="true" /> : <Sun size={18} aria-hidden="true" />}
           </button>
 
@@ -73,6 +79,7 @@ export function Navbar() {
           </button>
         </div>
       </div>
+      <div className="scroll-progress" ref={progressRef} aria-hidden="true" />
     </nav>
   );
 }
