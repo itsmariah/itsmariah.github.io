@@ -1,4 +1,4 @@
-import { Bot, Braces, GraduationCap, Layers, ShieldCheck, type LucideIcon } from 'lucide-react';
+import { Bot, Braces, GraduationCap, Layers, ShieldCheck, Terminal, type LucideIcon } from 'lucide-react';
 import type { Localized } from '../i18n/I18nProvider';
 
 export interface Certificate {
@@ -14,6 +14,14 @@ const CERT_DIR = '/assets/certificados/';
 
 // Do mais recente para o mais antigo
 export const certificates: Certificate[] = [
+  {
+    id: 'python',
+    icon: Terminal,
+    platform: 'Hashtag Treinamentos',
+    name: { pt: 'Jornada Python', en: 'Python Journey' },
+    date: { pt: 'Out 2026', en: 'Oct 2026' },
+    file: CERT_DIR + 'Certificado Jornada Python - Hashtag Treinamentos.pdf',
+  },
   {
     id: 'web',
     icon: Layers,
