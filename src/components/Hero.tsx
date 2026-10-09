@@ -1,11 +1,35 @@
 import type { CSSProperties } from 'react';
-import { ArrowRight, Download, Mail, MapPin } from 'lucide-react';
+import { ArrowRight, Download, Mail } from 'lucide-react';
 import { useI18n } from '../i18n/I18nProvider';
 import { profile } from '../data/profile';
 import { GitHubIcon, LinkedInIcon } from './Icons';
+import { HeroPortrait } from './hero/HeroPortrait';
+import { MagneticLink } from './hero/MagneticLink';
+import { RotatingRole } from './hero/RotatingRole';
 
 // Atraso da animação de entrada de cada bloco (ver .hero-in no CSS)
 const stagger = (i: number) => ({ '--i': i }) as CSSProperties;
+
+/** Nome dividido em letras que sobem uma a uma (ver .hero-letter no CSS). */
+function SplitName({ name }: { name: string }) {
+  let letterIndex = 0;
+  return (
+    <span className="hero-name" aria-hidden="true">
+      {name.split(' ').map((word, w) => (
+        <span key={w}>
+          {w > 0 && ' '}
+          <span className="hero-name-word">
+            {[...word].map((char, c) => (
+              <span className="hero-letter" key={c} style={{ '--ci': letterIndex++ } as CSSProperties}>
+                {char}
+              </span>
+            ))}
+          </span>
+        </span>
+      ))}
+    </span>
+  );
+}
 
 export function Hero() {
   const { t } = useI18n();
@@ -19,27 +43,31 @@ export function Hero() {
             {t.hero.tag}
           </p>
 
-          <h1 className="hero-title hero-in" style={stagger(1)}>
-            {profile.name}
-            <span className="hero-role text-gradient">{t.hero.role}</span>
+          <h1 className="hero-title">
+            {/* Versão para leitores de tela; a parte visual é animada e fica oculta para eles */}
+            <span className="visually-hidden">{profile.name} — {t.hero.role}</span>
+            <SplitName name={profile.name} />
+            <span className="hero-role hero-in" style={stagger(3)}>
+              <RotatingRole roles={t.hero.roles} />
+            </span>
           </h1>
 
-          <p className="hero-description hero-in" style={stagger(2)}>
+          <p className="hero-description hero-in" style={stagger(4)}>
             {t.hero.description}
           </p>
 
-          <div className="hero-actions hero-in" style={stagger(3)}>
-            <a href="#projetos" className="btn btn-primary">
+          <div className="hero-actions hero-in" style={stagger(5)}>
+            <MagneticLink href="#projetos" className="btn btn-primary btn-shine">
               {t.hero.viewProjects}
               <ArrowRight size={18} aria-hidden="true" />
-            </a>
+            </MagneticLink>
             <a href={profile.cvUrl} className="btn btn-secondary" download>
               <Download size={18} aria-hidden="true" />
               {t.hero.downloadCv}
             </a>
           </div>
 
-          <ul className="hero-social hero-in" style={stagger(4)} aria-label={t.hero.social}>
+          <ul className="hero-social hero-in" style={stagger(6)} aria-label={t.hero.social}>
             <li>
               <a href={profile.links.github} target="_blank" rel="noopener noreferrer" className="icon-link" aria-label="GitHub">
                 <GitHubIcon size={20} />
@@ -58,20 +86,12 @@ export function Hero() {
           </ul>
         </div>
 
-        <figure className="hero-portrait hero-in" style={stagger(2)}>
-          <img
-            src="/assets/images/foto_profissional.webp"
-            alt={profile.name}
-            width={720}
-            height={720}
-            fetchPriority="high"
-          />
-          <figcaption className="hero-location">
-            <MapPin size={16} aria-hidden="true" />
-            {t.hero.location}
-          </figcaption>
-        </figure>
+        <HeroPortrait alt={profile.name} location={t.hero.location} style={stagger(2)} />
       </div>
+
+      <a href="#sobre" className="scroll-hint hero-in" style={stagger(8)} aria-label={t.hero.scrollHint}>
+        <span className="scroll-mouse" aria-hidden="true"><span className="scroll-wheel" /></span>
+      </a>
     </header>
   );
 }

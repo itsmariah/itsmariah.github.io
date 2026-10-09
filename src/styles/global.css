@@ -500,12 +500,58 @@ ul { list-style: none; }
   letter-spacing: -0.035em;
 }
 
+/* Nome: cada letra sobe e perde o desfoque, uma depois da outra */
+.hero-name-word { display: inline-block; white-space: nowrap; }
+
+.hero-letter {
+  display: inline-block;
+  animation: letter-in 0.8s var(--ease) backwards;
+  animation-delay: calc(120ms + var(--ci) * 40ms);
+  transition: transform 0.35s var(--ease), color 0.35s ease;
+}
+
+@keyframes letter-in {
+  from { opacity: 0; transform: translateY(0.45em) rotate(8deg); filter: blur(8px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+
+/* Detalhe para quem passa o mouse: a letra pula e ganha cor */
+@media (hover: hover) {
+  .hero-letter:hover { transform: translateY(-0.08em); color: var(--accent-text); }
+}
+
 .hero-role {
   display: block;
   margin-top: 12px;
   font-size: clamp(1.4rem, 3vw, 2.1rem);
   font-weight: 500;
   letter-spacing: -0.02em;
+}
+
+/* Frases do cargo empilhadas na mesma célula do grid (ver RotatingRole) */
+.rotating-role { display: grid; }
+.rotating-role > * { grid-area: 1 / 1; justify-self: start; }
+.rotating-ghost { visibility: hidden; }
+
+/* Brilho que atravessa o botão: uma vez após a entrada e a cada hover */
+.btn-shine { position: relative; overflow: hidden; isolation: isolate; }
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s var(--ease);
+  animation: shine-once 1.1s var(--ease) 1.4s;
+  pointer-events: none;
+}
+
+.btn-shine:hover::after { transform: translateX(120%); }
+
+@keyframes shine-once {
+  to { transform: translateX(120%); }
 }
 
 .hero-description {
@@ -531,6 +577,33 @@ ul { list-style: none; }
   position: relative;
   justify-self: end;
   width: min(100%, 360px);
+  perspective: 1000px;
+}
+
+/* Inclina com o mouse (HeroPortrait); selos e localização ficam "à frente" em 3D */
+.portrait-card {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+@property --frame-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* Borda em gradiente girando ao redor da foto */
+.portrait-frame {
+  position: relative;
+  padding: 3px;
+  border-radius: calc(var(--radius-lg) + 3px);
+  background: conic-gradient(from var(--frame-angle), var(--accent), var(--accent-2), var(--accent-3), var(--accent));
+  box-shadow: 0 24px 60px -24px var(--accent-glow), var(--shadow-lg);
+  animation: frame-spin 6s linear infinite;
+}
+
+@keyframes frame-spin {
+  to { --frame-angle: 360deg; }
 }
 
 .hero-portrait img {
@@ -539,13 +612,64 @@ ul { list-style: none; }
   object-fit: cover;
   object-position: center 20%;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-lg);
   background: var(--surface-2);
+}
+
+/* Reflexo de luz que segue o cursor */
+.portrait-glare {
+  position: absolute;
+  inset: 3px;
+  border-radius: var(--radius-lg);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.hero-portrait:hover .portrait-glare { opacity: 1; }
+
+.float-badge {
+  position: absolute;
+  transform: translateZ(50px);
+}
+
+.float-badge:nth-of-type(1) { top: 22px; right: -26px; }
+.float-badge:nth-of-type(2) { top: 42%; left: -38px; }
+.float-badge:nth-of-type(3) { bottom: -16px; right: 28px; }
+
+.float-badge-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--overlay);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  animation: float 5s ease-in-out infinite;
+}
+
+.float-badge:nth-of-type(2) .float-badge-inner { animation-delay: -1.7s; animation-duration: 6s; }
+.float-badge:nth-of-type(3) .float-badge-inner { animation-delay: -3.2s; animation-duration: 5.5s; }
+
+.float-badge-inner svg { width: 16px; height: 16px; fill: var(--brand); }
+
+/* No fundo claro, cores como o ciano do React quase somem: escurecemos um pouco */
+[data-theme="light"] .float-badge-inner svg { fill: color-mix(in srgb, var(--brand) 70%, #000); }
+
+/* `translate` (e não `transform`) para não brigar com o translateZ do selo */
+@keyframes float {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -8px; }
 }
 
 .hero-location {
   position: absolute;
+  transform: translateZ(30px);
   left: -20px;
   bottom: 28px;
   display: inline-flex;
@@ -563,6 +687,52 @@ ul { list-style: none; }
 }
 
 .hero-location svg { color: var(--accent-text); }
+
+/* Indicador de "role para baixo": um mouse com a rodinha descendo */
+.scroll-hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 28px;
+  z-index: 1;
+  width: fit-content;
+  margin-inline: auto;
+  padding: 6px;
+  border-radius: 999px;
+  color: var(--text-subtle);
+  transition: color 0.2s ease;
+}
+
+.scroll-hint:hover { color: var(--accent-text); }
+
+.scroll-mouse {
+  display: flex;
+  justify-content: center;
+  width: 24px;
+  height: 38px;
+  padding-top: 7px;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+}
+
+.scroll-wheel {
+  width: 3px;
+  height: 7px;
+  border-radius: 999px;
+  background: currentColor;
+  animation: scroll-wheel 1.8s var(--ease) infinite;
+}
+
+@keyframes scroll-wheel {
+  0%   { opacity: 0; transform: translateY(-3px); }
+  30%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(12px); }
+}
+
+/* Em telas baixas ou no layout empilhado, o indicador ficaria em cima do conteúdo */
+@media (max-height: 700px) {
+  .scroll-hint { display: none; }
+}
 
 /* ══════════════════════════════════════
    Seções
@@ -1650,6 +1820,10 @@ main:focus { outline: none; }
   .hero-portrait { justify-self: start; width: min(100%, 300px); order: -1; }
   .hero-portrait img { aspect-ratio: 1; }
   .hero-location { left: auto; right: -12px; bottom: 16px; }
+  .scroll-hint { display: none; }
+  /* Foto alinhada à esquerda: só cabem os selos do lado direito */
+  .float-badge:nth-of-type(2) { display: none; }
+  .float-badge:nth-of-type(3) { bottom: auto; top: 46%; right: -30px; }
 
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
 
@@ -1666,6 +1840,8 @@ main:focus { outline: none; }
 @media (max-width: 600px) {
   .hero-portrait { width: 200px; }
   .hero-location { font-size: 0.8rem; padding: 8px 12px; }
+  .float-badge-inner { padding: 5px 10px 5px 8px; font-size: 0.72rem; }
+  .float-badge-inner svg { width: 13px; height: 13px; }
   .hero-actions .btn { flex: 1 1 100%; }
 
   .skill-grid { grid-template-columns: 1fr 1fr; }

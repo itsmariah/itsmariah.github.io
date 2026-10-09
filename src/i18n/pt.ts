@@ -15,6 +15,9 @@ export const pt = {
   hero: {
     tag: 'Disponível para vagas Front-End Júnior',
     role: 'Desenvolvedora Front-End',
+    // Alternam no hero (a primeira é a principal); leitores de tela ouvem só `role`
+    roles: ['Desenvolvedora Front-End', 'Desenvolvedora React', 'Entusiasta de UI/UX', 'Construindo com TypeScript'],
+    scrollHint: 'Rolar até o conteúdo',
     description:
       'Bacharel em Ciência da Computação com foco em desenvolvimento web, apaixonada por transformar ideias em experiências digitais funcionais e intuitivas.',
     viewProjects: 'Ver projetos',

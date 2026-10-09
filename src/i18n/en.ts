@@ -16,6 +16,8 @@ export const en: Dictionary = {
   hero: {
     tag: 'Open to Junior Front-End roles',
     role: 'Front-End Developer',
+    roles: ['Front-End Developer', 'React Developer', 'UI/UX Enthusiast', 'Building with TypeScript'],
+    scrollHint: 'Scroll to content',
     description:
       'Computer Science graduate focused on web development, passionate about turning ideas into functional and intuitive digital experiences.',
     viewProjects: 'View projects',
