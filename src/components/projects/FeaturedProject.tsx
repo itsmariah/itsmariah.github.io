@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ArrowUpRight, Check } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useI18n } from '../../i18n/I18nProvider';
@@ -16,6 +17,8 @@ interface FeaturedProjectProps {
 export function FeaturedProject({ project, reversed, onOpen }: FeaturedProjectProps) {
   const { t, l } = useI18n();
   const { rotateX, rotateY, handlers } = useTilt(3.5);
+  // Mouse sobre a capa: ela passa pelas imagens da galeria
+  const [hovered, setHovered] = useState(false);
 
   return (
     <motion.article
@@ -26,7 +29,15 @@ export function FeaturedProject({ project, reversed, onOpen }: FeaturedProjectPr
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
       {/* O palco recebe o mouse e não gira; só a capa inclina */}
-      <div className="feature-media" {...handlers}>
+      <div
+        className="feature-media"
+        onPointerMove={handlers.onPointerMove}
+        onPointerEnter={(e) => e.pointerType === 'mouse' && setHovered(true)}
+        onPointerLeave={() => {
+          handlers.onPointerLeave();
+          setHovered(false);
+        }}
+      >
         <motion.button
           type="button"
           className="feature-cover"
@@ -34,7 +45,7 @@ export function FeaturedProject({ project, reversed, onOpen }: FeaturedProjectPr
           onClick={onOpen}
           aria-label={`${t.projects.viewDetails}: ${project.name}`}
         >
-          <ProjectCover project={project} />
+          <ProjectCover project={project} playing={hovered} />
         </motion.button>
       </div>
 

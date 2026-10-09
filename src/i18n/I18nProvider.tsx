@@ -30,7 +30,15 @@ interface I18nValue {
 
 const I18nContext = createContext<I18nValue | null>(null);
 
-export function I18nProvider({ children }: { children: ReactNode }) {
+interface I18nProviderProps {
+  children: ReactNode;
+  /** Título da aba em cada idioma (padrão: o título do site) */
+  pageTitle?: (t: Dictionary) => string;
+}
+
+const defaultTitle = (t: Dictionary) => t.meta.title;
+
+export function I18nProvider({ children, pageTitle = defaultTitle }: I18nProviderProps) {
   const [lang, setLangState] = useState<Lang>(initialLang);
 
   const setLang = useCallback((next: Lang) => {
@@ -40,8 +48,8 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = HTML_LANG[lang];
-    document.title = DICTIONARIES[lang].meta.title;
-  }, [lang]);
+    document.title = pageTitle(DICTIONARIES[lang]);
+  }, [lang, pageTitle]);
 
   const value = useMemo<I18nValue>(() => ({
     lang,

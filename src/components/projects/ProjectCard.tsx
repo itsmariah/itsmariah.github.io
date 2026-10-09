@@ -1,4 +1,4 @@
-import type { Ref } from 'react';
+import { useState, type Ref } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useI18n } from '../../i18n/I18nProvider';
@@ -16,18 +16,22 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, onOpen, ref }: ProjectCardProps) {
   const { t, l } = useI18n();
+  // Mouse sobre o card: a capa passa pelas imagens da galeria
+  const [hovered, setHovered] = useState(false);
 
   return (
     <motion.li
       ref={ref}
       layout
       className="project-card spotlight"
+      onPointerEnter={(e) => e.pointerType === 'mouse' && setHovered(true)}
+      onPointerLeave={() => setHovered(false)}
       initial={{ opacity: 0, scale: 0.96 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.96 }}
       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
     >
-      <ProjectCover project={project} />
+      <ProjectCover project={project} playing={hovered} />
 
       <div className="project-card-body">
         <ProjectBadges project={project} />

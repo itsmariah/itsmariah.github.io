@@ -128,6 +128,14 @@ export const pt = {
     localTime: 'Agora em João Pessoa',
     tip: 'Dica: {key} abre a paleta de comandos',
   },
+  easterEgg: { konami: 'Código Konami desbloqueado! Respeito quem conhece os clássicos.' },
+  notFound: {
+    title: 'Essa página se perdeu no caminho',
+    text: 'O link pode estar quebrado ou a página mudou de lugar. Que tal voltar para um lugar conhecido?',
+    home: 'Voltar ao início',
+    projects: 'Ver projetos',
+    contact: 'Falar comigo',
+  },
   a11y: { backToTop: 'Voltar ao topo', skipToContent: 'Pular para o conteúdo' },
 };
 

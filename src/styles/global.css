@@ -1223,6 +1223,48 @@ ul { list-style: none; }
 .frame-app .frame-screen img { height: 100%; }
 .frame-app .frame-screen img { width: auto; aspect-ratio: 402 / 632; object-fit: cover; }
 
+/* Prévia no hover: imagens da galeria empilhadas sobre a capa, trocando por opacidade */
+.frame-screen .cover-preview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.frame-screen .cover-preview.is-active { opacity: 1; }
+
+/* Indica qual imagem da prévia está na tela */
+.cover-dots {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: flex;
+  gap: 5px;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: rgba(10, 10, 16, 0.45);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.3s ease, transform 0.3s var(--ease);
+}
+
+.cover-dots.is-visible { opacity: 1; transform: none; }
+
+.cover-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+  transition: width 0.3s var(--ease), background 0.3s ease;
+}
+
+.cover-dots span.is-active { width: 16px; background: #fff; }
+
 /* Sem imagem: fundo escuro na cor do projeto nos dois temas, para o texto branco ter contraste */
 .cover:has(.empty-cover) {
   background: linear-gradient(135deg,
@@ -2027,6 +2069,58 @@ main:focus { outline: none; }
 
 .back-to-top.visible { opacity: 1; pointer-events: auto; transform: none; }
 .back-to-top:hover { background: var(--surface-hover); }
+
+/* ══════════════════════════════════════
+   Página 404
+══════════════════════════════════════ */
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: 48px 20px;
+  text-align: center;
+}
+
+.not-found .logo { margin-bottom: 24px; }
+
+.not-found-code {
+  font-family: var(--font-display);
+  font-size: clamp(7rem, 26vw, 13rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+/* Cada dígito flutua defasado dos outros (--ci vem do .hero-letter) */
+.not-found-digit {
+  display: inline-block;
+  animation: float 4s ease-in-out infinite;
+  animation-delay: calc(var(--ci) * -1.3s);
+}
+
+.not-found-title {
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.not-found-text {
+  max-width: 480px;
+  margin-top: 12px;
+  color: var(--text-muted);
+}
+
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+}
 
 /* ══════════════════════════════════════
    Paleta de comandos (Ctrl K / ⌘K)

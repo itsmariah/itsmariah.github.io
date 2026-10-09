@@ -6,6 +6,7 @@ import { CommandPalette } from './components/CommandPalette';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
+import { KonamiEasterEgg } from './components/KonamiEasterEgg';
 import { Navbar } from './components/Navbar';
 import { ProjectFilterProvider } from './components/projects/ProjectFilter';
 import { Projects } from './components/projects/Projects';
@@ -46,6 +47,7 @@ export function App() {
         <Footer />
         <BackToTop />
         <CommandPalette open={paletteOpen} onOpenChange={setPaletteOpen} />
+        <KonamiEasterEgg />
       </ProjectFilterProvider>
     </ToastProvider>
   );

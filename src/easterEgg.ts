@@ -20,6 +20,7 @@ export function printConsoleGreeting() {
       `🧩 Código-fonte / source: ${profile.links.github}/itsmariah.github.io`,
       `✉️  Vamos conversar? / Let's talk: ${profile.email}`,
       '⌨️  Dica / tip: Ctrl K (⌘K) abre a paleta de comandos.',
+      '🎮 Psst… ↑ ↑ ↓ ↓ ← → ← → B A',
     ].join('\n'),
     body,
   );

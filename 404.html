@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página não encontrada | Maria Mariah</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <!-- Mesmo script do index.html: aplica tema e idioma antes do primeiro paint -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('portfolio-theme');
+        var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+        var lang = localStorage.getItem('portfolio-lang');
+        if (lang !== 'pt' && lang !== 'en') lang = navigator.language.toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en';
+        if (lang === 'en') document.documentElement.lang = 'en';
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+  <noscript>
+    <p style="font-family: system-ui, sans-serif; padding: 24px;">
+      Página não encontrada. <a href="/">Voltar ao início</a>.
+    </p>
+  </noscript>
+  <script type="module" src="/src/notFound.tsx"></script>
+</body>
+</html>

@@ -127,5 +127,13 @@ export const en: Dictionary = {
     localTime: 'Now in João Pessoa',
     tip: 'Tip: {key} opens the command palette',
   },
+  easterEgg: { konami: 'Konami code unlocked! Respect for knowing the classics.' },
+  notFound: {
+    title: 'This page got lost along the way',
+    text: 'The link may be broken or the page has moved. How about heading back somewhere familiar?',
+    home: 'Back to home',
+    projects: 'See projects',
+    contact: 'Get in touch',
+  },
   a11y: { backToTop: 'Back to top', skipToContent: 'Skip to content' },
 };
