@@ -28,7 +28,10 @@ export function Projects() {
   return (
     <section id="projetos" className="section container">
       <div className="section-head reveal" ref={reveal}>
-        <h2 className="section-title">{t.projects.title}</h2>
+        <h2 className="section-title">
+          <span className="section-num" aria-hidden="true">03</span>
+          {t.projects.title}
+        </h2>
         <p className="section-intro">{t.projects.intro}</p>
       </div>
 

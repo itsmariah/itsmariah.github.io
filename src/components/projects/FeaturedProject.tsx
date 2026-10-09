@@ -2,6 +2,7 @@ import { ArrowUpRight, Check } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useI18n } from '../../i18n/I18nProvider';
 import type { Project } from '../../data/projects';
+import { useTilt } from '../../hooks/useTilt';
 import { GitHubIcon } from '../Icons';
 import { ProjectBadges, ProjectOrigin, TagList } from './ProjectBadges';
 import { ProjectCover } from './ProjectCover';
@@ -14,6 +15,7 @@ interface FeaturedProjectProps {
 
 export function FeaturedProject({ project, reversed, onOpen }: FeaturedProjectProps) {
   const { t, l } = useI18n();
+  const { rotateX, rotateY, handlers } = useTilt(3.5);
 
   return (
     <motion.article
@@ -23,9 +25,18 @@ export function FeaturedProject({ project, reversed, onOpen }: FeaturedProjectPr
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
-      <button type="button" className="feature-cover" onClick={onOpen} aria-label={`${t.projects.viewDetails}: ${project.name}`}>
-        <ProjectCover project={project} />
-      </button>
+      {/* O palco recebe o mouse e não gira; só a capa inclina */}
+      <div className="feature-media" {...handlers}>
+        <motion.button
+          type="button"
+          className="feature-cover"
+          style={{ rotateX, rotateY, transformPerspective: 1000 }}
+          onClick={onOpen}
+          aria-label={`${t.projects.viewDetails}: ${project.name}`}
+        >
+          <ProjectCover project={project} />
+        </motion.button>
+      </div>
 
       <div className="feature-body">
         <ProjectBadges project={project} showFeatured />

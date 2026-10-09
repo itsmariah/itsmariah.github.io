@@ -766,6 +766,55 @@ ul { list-style: none; }
 
 .reveal.visible { opacity: 1; transform: none; }
 
+/* Número da seção ("01") com um traço em gradiente que cresce quando o título aparece */
+.section-num {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--accent-text);
+}
+
+.section-num::after {
+  content: '';
+  width: 48px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gradient-brand);
+  transform-origin: left;
+  scale: 0 1;
+  transition: scale 0.9s var(--ease) 0.25s;
+}
+
+.visible .section-num::after { scale: 1 1; }
+
+/* Itens de lista entram um depois do outro quando o bloco .reveal aparece.
+   `translate` (e não `transform`) para não brigar com o hover dos itens. */
+.visible .stagger > *,
+.stagger.visible > * {
+  animation: stagger-in 0.55s var(--ease) backwards;
+  animation-delay: calc(120ms + var(--i, 0) * 55ms);
+}
+
+.stagger > :nth-child(2)  { --i: 1; }
+.stagger > :nth-child(3)  { --i: 2; }
+.stagger > :nth-child(4)  { --i: 3; }
+.stagger > :nth-child(5)  { --i: 4; }
+.stagger > :nth-child(6)  { --i: 5; }
+.stagger > :nth-child(7)  { --i: 6; }
+.stagger > :nth-child(8)  { --i: 7; }
+.stagger > :nth-child(9)  { --i: 8; }
+.stagger > :nth-child(10) { --i: 9; }
+.stagger > :nth-child(11) { --i: 10; }
+.stagger > :nth-child(n+12) { --i: 11; }
+
+@keyframes stagger-in {
+  from { opacity: 0; translate: 0 14px; }
+}
+
 /* ══════════════════════════════════════
    Sobre
 ══════════════════════════════════════ */
@@ -821,6 +870,44 @@ ul { list-style: none; }
 }
 
 .fact-value { display: block; font-weight: 500; line-height: 1.45; }
+
+.about-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-subtle);
+}
 
 .about-subtitle { margin: 14px 0 0; }
 
@@ -883,14 +970,20 @@ ul { list-style: none; }
 
 .skill-chip.is-link {
   cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s var(--ease);
+  transition: --spot-a 0.35s ease, transform 0.2s var(--ease);
 }
 
 .skill-chip.is-link:hover {
-  border-color: var(--accent-border);
-  background: var(--surface-hover);
+  --spot-surface: var(--surface-hover);
   transform: translateY(-2px);
 }
+
+/* Cor da marca legível em cada tema: clareada no escuro (logos pretos somem), escurecida no claro */
+.skill-chip,
+.marquee-item { --brand-ink: color-mix(in srgb, var(--brand, var(--accent-text)) 78%, #fff); }
+
+[data-theme="light"] .skill-chip,
+[data-theme="light"] .marquee-item { --brand-ink: color-mix(in srgb, var(--brand, var(--accent-text)) 72%, #000); }
 
 .skill-logo {
   flex-shrink: 0;
@@ -901,7 +994,50 @@ ul { list-style: none; }
   transition: color 0.2s ease;
 }
 
-.skill-chip.is-link:hover .skill-logo { color: var(--accent-text); }
+.skill-chip.is-link:hover .skill-logo { color: var(--brand-ink); }
+
+/* Faixa infinita de logos: duas cópias, anda metade da largura e recomeça */
+.marquee {
+  overflow: hidden;
+  margin: -8px 0 32px;
+  padding: 8px 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 45s linear infinite;
+}
+
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+.marquee-list {
+  display: flex;
+  gap: 12px;
+  padding-right: 12px;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 16px 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.marquee-item .skill-logo { width: 18px; height: 18px; color: var(--brand-ink); }
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
 
 .skill-monogram {
   display: grid;
@@ -1175,10 +1311,11 @@ ul { list-style: none; }
   align-items: center;
 }
 
-.feature.is-reversed .feature-cover { order: 2; }
+.feature.is-reversed .feature-media { order: 2; }
 
 .feature-cover {
   display: block;
+  width: 100%;
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -1266,7 +1403,7 @@ ul { list-style: none; }
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.project-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-lg); }
+.project-card:hover { box-shadow: var(--shadow-lg); }
 .project-card .frame { transition: transform 0.5s var(--ease); }
 .project-card:hover .frame { transform: translateY(-4px); }
 
@@ -1544,8 +1681,9 @@ ul { list-style: none; }
   list-style: none;
 }
 
-/* Linha vertical contínua ao lado dos itens */
-.timeline::before {
+/* Trilho vertical ao lado dos itens; o ::after preenche conforme o scroll (--progress, de 0 a 1) */
+.timeline::before,
+.timeline::after {
   content: '';
   position: absolute;
   top: 8px;
@@ -1554,6 +1692,12 @@ ul { list-style: none; }
   width: 2px;
   border-radius: 2px;
   background: var(--border);
+}
+
+.timeline::after {
+  background: linear-gradient(var(--accent), var(--accent-2));
+  transform-origin: top;
+  scale: 1 var(--progress, 0);
 }
 
 .timeline-item { position: relative; }
@@ -1565,9 +1709,18 @@ ul { list-style: none; }
   left: -28px;
   width: 10px;
   height: 10px;
+  border: 2px solid var(--border-strong);
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--bg);
   box-shadow: 0 0 0 4px var(--bg);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.4s ease;
+}
+
+/* O ponto acende quando o item cruza a linha de leitura (ver Resume.tsx) */
+.timeline-item.is-lit::before {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 14px 3px var(--accent-glow);
 }
 
 .timeline-period {
@@ -1641,7 +1794,7 @@ ul { list-style: none; }
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 
-.channel:hover { border-color: var(--border-strong); background: var(--surface-hover); }
+.channel:hover { --spot-surface: var(--surface-hover); }
 
 .channel-link {
   display: flex;
@@ -1794,6 +1947,35 @@ main:focus { outline: none; }
 .back-to-top:hover { background: var(--surface-hover); }
 
 /* ══════════════════════════════════════
+   Spotlight: brilho que segue o mouse em cards (posição em --mx/--my, ver useSpotlight)
+   Fica depois dos componentes para sobrescrever o fundo e a borda deles.
+══════════════════════════════════════ */
+@property --spot-a {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+/* Camadas: brilho interno, superfície, brilho da borda e borda normal.
+   A borda fica transparente para o fundo "border-box" aparecer no lugar dela. */
+.spotlight {
+  --spot-color: var(--brand, var(--accent));
+  --spot-x: var(--mx, 50%);
+  --spot-y: var(--my, 50%);
+  border-color: transparent;
+  background:
+    radial-gradient(360px circle at var(--spot-x) var(--spot-y),
+      color-mix(in srgb, var(--spot-color) calc(var(--spot-a) * 10%), transparent), transparent 60%) padding-box,
+    linear-gradient(var(--spot-surface, var(--surface)), var(--spot-surface, var(--surface))) padding-box,
+    radial-gradient(220px circle at var(--spot-x) var(--spot-y),
+      color-mix(in srgb, var(--spot-color) calc(var(--spot-a) * 80%), transparent), transparent 70%) border-box,
+    linear-gradient(var(--border), var(--border)) border-box;
+  transition: --spot-a 0.35s ease, box-shadow 0.25s ease, transform 0.2s var(--ease);
+}
+
+.spotlight:hover { --spot-a: 1; }
+
+/* ══════════════════════════════════════
    Responsivo
 ══════════════════════════════════════ */
 @media (max-width: 960px) {
@@ -1828,7 +2010,7 @@ main:focus { outline: none; }
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
 
   .feature { grid-template-columns: 1fr; }
-  .feature.is-reversed .feature-cover { order: 0; }
+  .feature.is-reversed .feature-media { order: 0; }
 
   .modal-body { grid-template-columns: 1fr; gap: 24px; }
   .modal-actions { flex-direction: row; flex-wrap: wrap; }
@@ -1845,6 +2027,9 @@ main:focus { outline: none; }
   .hero-actions .btn { flex: 1 1 100%; }
 
   .skill-grid { grid-template-columns: 1fr 1fr; }
+
+  .stat { padding: 14px; }
+  .stat-value { font-size: 1.8rem; }
   .skill-chip { padding: 12px; gap: 10px; }
 
   .form-row { grid-template-columns: 1fr; }

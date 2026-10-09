@@ -41,7 +41,7 @@ interface ChannelProps {
 
 function Channel({ icon, label, value, href, external = true, action }: ChannelProps) {
   return (
-    <li className="channel">
+    <li className="channel spotlight">
       <a
         href={href}
         className="channel-link"
@@ -84,7 +84,7 @@ function ContactForm() {
   const f = t.contact.form;
 
   return (
-    <div className="contact-form-wrap reveal" ref={reveal}>
+    <div className="contact-form-wrap spotlight reveal" ref={reveal}>
       <h3 className="contact-form-title">{t.contact.formTitle}</h3>
       {/* E-mails recebidos via https://formspree.io */}
       <form className="contact-form" action={profile.formspreeUrl} method="POST" onSubmit={handleSubmit}>
@@ -129,11 +129,14 @@ export function Contact() {
     <section id="contato" className="section container">
       <div className="contact-grid">
         <div className="contact-info reveal" ref={reveal}>
-          <h2 className="section-title">{t.contact.title}</h2>
+          <h2 className="section-title">
+            <span className="section-num" aria-hidden="true">05</span>
+            {t.contact.title}
+          </h2>
           <p className="section-intro">{t.contact.intro}</p>
 
           <h3 className="tier-title contact-subtitle">{t.contact.channels}</h3>
-          <ul className="channels">
+          <ul className="channels stagger">
             <Channel
               icon={<Mail size={20} />}
               label="E-mail"

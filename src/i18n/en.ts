@@ -30,6 +30,7 @@ export const en: Dictionary = {
     p1: "I'm a Computer Science graduate and I've been steering my path toward front-end and web development. I enjoy building organized, beautiful, and functional interfaces, with special attention to user experience.",
     p2: "I'm currently building practical projects that strengthen my skills in HTML, CSS, JavaScript, and front-end/back-end integration, with SkillUp Dev standing out — a platform focused on developing soft skills for developers.",
     softSkills: 'Soft skills',
+    stats: { projects: 'Projects', certificates: 'Certificates', technologies: 'Technologies' },
     facts: {
       education: 'Education',
       educationValue: "Bachelor's in Computer Science — UNIPÊ",

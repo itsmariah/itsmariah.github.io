@@ -10,10 +10,12 @@ import { ProjectFilterProvider } from './components/projects/ProjectFilter';
 import { Projects } from './components/projects/Projects';
 import { Resume } from './components/Resume';
 import { Skills } from './components/Skills';
+import { useSpotlight } from './hooks/useSpotlight';
 import { useI18n } from './i18n/I18nProvider';
 
 export function App() {
   const { t } = useI18n();
+  useSpotlight();
 
   // O conteúdo é montado depois do carregamento, então o navegador não acha a âncora
   // de links como /#projetos sozinho — rolamos até ela manualmente.

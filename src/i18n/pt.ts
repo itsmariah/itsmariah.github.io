@@ -30,6 +30,7 @@ export const pt = {
     p1: 'Sou bacharel em Ciência da Computação e tenho direcionado minha trajetória para a área de desenvolvimento front-end e web. Gosto de construir interfaces organizadas, bonitas e funcionais, com atenção especial à experiência do usuário.',
     p2: 'Atualmente, venho desenvolvendo projetos práticos que fortalecem minhas habilidades com HTML, CSS, JavaScript e integração entre front-end e back-end, com destaque para o SkillUp Dev, plataforma voltada ao desenvolvimento de soft skills para desenvolvedores.',
     softSkills: 'Soft skills',
+    stats: { projects: 'Projetos', certificates: 'Certificados', technologies: 'Tecnologias' },
     facts: {
       education: 'Formação',
       educationValue: 'Bacharel em Ciência da Computação — UNIPÊ',

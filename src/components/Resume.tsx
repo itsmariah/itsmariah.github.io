@@ -1,8 +1,15 @@
+import { useRef } from 'react';
 import { Award, Briefcase, ExternalLink, GraduationCap, type LucideIcon } from 'lucide-react';
+import { motion, useInView, useScroll, type MotionStyle } from 'motion/react';
 import { useI18n } from '../i18n/I18nProvider';
 import { education, experience, type TimelineItem } from '../data/resume';
 import { certificates } from '../data/certificates';
 import { reveal } from '../hooks/reveal';
+
+// Linha imaginária a 65% da altura da tela: a linha da timeline cresce até ela
+// e cada ponto acende quando o item a cruza (os dois valores abaixo andam juntos)
+const SCROLL_OFFSET = ['start 65%', 'end 65%'] as const;
+const LIT_MARGIN = '0px 0px -35% 0px';
 
 function ColumnTitle({ icon: Icon, children, id }: { icon: LucideIcon; children: string; id?: string }) {
   return (
@@ -13,18 +20,28 @@ function ColumnTitle({ icon: Icon, children, id }: { icon: LucideIcon; children:
   );
 }
 
-function Timeline({ items }: { items: TimelineItem[] }) {
+function TimelineEntry({ item }: { item: TimelineItem }) {
   const { l } = useI18n();
+  const ref = useRef<HTMLLIElement>(null);
+  const lit = useInView(ref, { margin: LIT_MARGIN });
+
   return (
-    <ol className="timeline">
-      {items.map((item) => (
-        <li className="timeline-item" key={item.id}>
-          <span className="timeline-period">{l(item.period)}</span>
-          <h4 className="timeline-role">{l(item.title)}</h4>
-          <p className="timeline-description">{l(item.description)}</p>
-        </li>
-      ))}
-    </ol>
+    <li className={`timeline-item${lit ? ' is-lit' : ''}`} ref={ref}>
+      <span className="timeline-period">{l(item.period)}</span>
+      <h4 className="timeline-role">{l(item.title)}</h4>
+      <p className="timeline-description">{l(item.description)}</p>
+    </li>
+  );
+}
+
+function Timeline({ items }: { items: TimelineItem[] }) {
+  const ref = useRef<HTMLOListElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: [...SCROLL_OFFSET] });
+
+  return (
+    <motion.ol className="timeline" ref={ref} style={{ '--progress': scrollYProgress } as MotionStyle}>
+      {items.map((item) => <TimelineEntry item={item} key={item.id} />)}
+    </motion.ol>
   );
 }
 
@@ -34,7 +51,10 @@ export function Resume() {
   return (
     <section id="curriculo" className="section container">
       <div className="section-head reveal" ref={reveal}>
-        <h2 className="section-title">{t.resume.title}</h2>
+        <h2 className="section-title">
+          <span className="section-num" aria-hidden="true">04</span>
+          {t.resume.title}
+        </h2>
         <p className="section-intro">{t.resume.intro}</p>
       </div>
 
@@ -50,7 +70,7 @@ export function Resume() {
 
           {/* id mantido para links antigos que apontavam para /#certificados */}
           <ColumnTitle icon={Award} id="certificados">{t.resume.courses}</ColumnTitle>
-          <ul className="cert-list">
+          <ul className="cert-list spotlight stagger">
             {certificates.map(({ id, icon: Icon, platform, name, date, file }) => (
               <li className="cert-item" key={id}>
                 <span className="cert-icon" aria-hidden="true"><Icon size={18} /></span>
