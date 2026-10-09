@@ -1342,6 +1342,7 @@ ul { list-style: none; }
 
 .project-origin strong { color: var(--text); font-weight: 600; }
 
+/* "Do problema ao resultado": passos ligados por uma linha em gradiente */
 .badge-status::before {
   content: '';
   width: 6px;

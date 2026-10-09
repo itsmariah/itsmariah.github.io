@@ -16,6 +16,8 @@ export interface Project {
   team?: boolean;
   /** Como o projeto começou/evoluiu — aparece no destaque e no modal */
   origin?: Localized;
+  /** Do problema ao resultado — aparece no modal. Só fatos reais, sem números inventados. */
+  story?: { problem: Localized; solution: Localized; result: Localized };
   /** Selos extras, como "em breve" ou "app em desenvolvimento" */
   notes?: Localized[];
   description: Localized;
@@ -44,6 +46,24 @@ export const projects: Project[] = [
     name: 'SkillUp Dev',
     status: 'published',
     featured: true,
+    origin: {
+      pt: 'Nasceu como meu Trabalho de Conclusão de Curso em Ciência da Computação, com uma pesquisa extensa e bem estruturada sobre o gap de soft skills na área de TI.',
+      en: 'It started as my Computer Science capstone project, backed by extensive, well-structured research on the soft skills gap in tech.',
+    },
+    story: {
+      problem: {
+        pt: 'Boa parte dos profissionais de TI concentra os estudos nas habilidades técnicas e deixa de lado as comportamentais, como comunicação e trabalho em equipe, que pesam tanto quanto na carreira e na vida pessoal.',
+        en: 'Many tech professionals focus their learning on technical skills and leave behavioral ones, like communication and teamwork, aside, even though they matter just as much for their careers and personal lives.',
+      },
+      solution: {
+        pt: 'Desafios práticos e gamificados, organizados por categoria (comunicação, trabalho em equipe, empatia e outras), com um agente de IA que avalia as respostas dos desafios abertos.',
+        en: 'Hands-on, gamified challenges organized by category (communication, teamwork, empathy, and more), with an AI agent that evaluates answers to open-ended challenges.',
+      },
+      result: {
+        pt: 'Quem testou elogiou a proposta, o sistema de gamificação, a estrutura dos desafios e a avaliação das respostas por IA.',
+        en: 'Users praised the concept, the gamification system, the structure of the challenges, and the AI evaluation of their answers.',
+      },
+    },
     description: {
       pt: 'Plataforma web gamificada voltada ao aprimoramento de soft skills para desenvolvedores, com desafios interativos e feedback automatizado com apoio de IA.',
       en: 'A gamified web platform focused on developing soft skills for developers, with interactive challenges and AI-powered automated feedback.',
@@ -78,6 +98,20 @@ export const projects: Project[] = [
       en: 'It started as MoneyTrack, a group project in a Computer Programming course. I chose to keep building it on my own, and today I develop and maintain GeldTrack as a product.',
     },
     notes: [{ pt: 'App mobile em desenvolvimento', en: 'Mobile app in progress' }],
+    story: {
+      problem: {
+        pt: 'Quem quer organizar as finanças, sozinho, em família ou em grupo, costuma precisar de vários apps para acompanhar receitas e despesas, conectar contas e criar metas, orçamentos e recorrências.',
+        en: 'People trying to get their finances in order, alone, as a family, or in a group, usually need several apps to track income and expenses, connect accounts, and set up goals, budgets, and recurring items.',
+      },
+      solution: {
+        pt: 'Tudo isso num app só, sincronizado entre a versão web, o app instalável para Windows, macOS e Linux e, em breve, o app mobile para Android e iOS.',
+        en: 'All of it in a single app, synced across the web version, an installable app for Windows, macOS, and Linux, and soon a mobile app for Android and iOS.',
+      },
+      result: {
+        pt: 'Ainda não foi divulgado amplamente, mas os primeiros usuários elogiam o layout moderno e a variedade de funcionalidades.',
+        en: "It hasn't been widely promoted yet, but early users praise its modern layout and wide range of features.",
+      },
+    },
     description: {
       pt: 'Plataforma de gestão financeira pessoal e compartilhada: contas em várias moedas, sincronização bancária via Open Finance, insights automáticos, relatórios, metas, orçamentos e divisão de despesas em grupo. Funciona na web, como PWA e como app desktop.',
       en: 'A personal and shared finance platform: multi-currency accounts, bank sync via Open Finance, automatic insights, reports, goals, budgets, and group expense splitting. Runs on the web, as a PWA, and as a desktop app.',
@@ -111,14 +145,31 @@ export const projects: Project[] = [
     id: 'mistydoces',
     name: 'MistyDoces',
     status: 'in-progress',
+    notes: [{ pt: 'Lançamento em breve', en: 'Launching soon' }],
+    story: {
+      problem: {
+        pt: 'Uma loja de doces artesanais precisava de uma plataforma própria para receber e acompanhar seus pedidos.',
+        en: 'An artisan sweets shop needed its own platform to take and track orders.',
+      },
+      solution: {
+        pt: 'Para os clientes, um site com cardápio, horários e contato. Para a equipe, um painel com níveis de acesso para acompanhar pedidos, avaliações e faturamento, gerenciar cupons e frete, e um módulo financeiro para registrar despesas e compará-las com o faturamento.',
+        en: 'For customers, a site with the menu, opening hours, and contact info. For the team, a dashboard with access levels to track orders, reviews, and revenue, manage coupons and shipping, plus a finance module to log expenses and compare them with revenue.',
+      },
+      result: {
+        pt: 'Aprovado pelos proprietários. O lançamento aguarda o registro do domínio e outros trâmites legais.',
+        en: 'Approved by the owners. Launch is pending domain registration and other legal steps.',
+      },
+    },
     description: {
       pt: 'Sistema web completo para uma confeitaria artesanal real: cardápio, pedidos online, pagamento por Pix e cartão via Mercado Pago e painel administrativo com níveis de acesso.',
       en: 'A full web system for a real artisan bakery: menu, online ordering, Pix and credit card payments via Mercado Pago, and an admin dashboard with role-based access.',
     },
     highlights: [
-      { pt: 'Cardápio e pedidos online para uma cliente real', en: 'Menu and online ordering for a real client' },
+      { pt: 'Cardápio e pedidos online para uma loja real', en: 'Menu and online ordering for a real shop' },
       { pt: 'Pagamento por Pix e cartão via Mercado Pago', en: 'Pix and credit card payments via Mercado Pago' },
-      { pt: 'Painel administrativo com níveis de acesso', en: 'Admin dashboard with role-based access' },
+      { pt: 'Painel com níveis de acesso para atendente, gerente e proprietários', en: 'Dashboard with access levels for staff, managers, and owners' },
+      { pt: 'Gestão de pedidos, avaliações, cupons de desconto e frete', en: 'Management of orders, reviews, discount coupons, and shipping' },
+      { pt: 'Painel financeiro com despesas comparadas ao faturamento', en: 'Finance dashboard comparing expenses with revenue' },
     ],
     tags: ['TypeScript', 'Next.js', 'React', 'Tailwind CSS', 'PostgreSQL'],
     repoUrl: 'https://github.com/itsmariah/mistydoces',

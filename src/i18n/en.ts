@@ -69,6 +69,7 @@ export const en: Dictionary = {
     close: 'Close',
     copyLink: 'Copy link',
     updated: 'Updated {when}',
+    story: { title: 'From problem to result', problem: 'The problem', solution: 'The solution', result: 'The result' },
     linkCopied: 'Project link copied',
   },
   status: { published: 'Published', inProgress: 'In progress', featured: 'Featured' },

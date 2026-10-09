@@ -69,6 +69,7 @@ export const pt = {
     close: 'Fechar',
     copyLink: 'Copiar link',
     updated: 'Atualizado {when}',
+    story: { title: 'Do problema ao resultado', problem: 'O problema', solution: 'A solução', result: 'Resultado' },
     linkCopied: 'Link do projeto copiado',
   },
   status: { published: 'Publicado', inProgress: 'Em desenvolvimento', featured: 'Destaque' },

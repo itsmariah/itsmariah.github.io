@@ -7,7 +7,7 @@ import { useCopyText } from '../../hooks/useClipboard';
 import { useModal } from '../../hooks/useModal';
 import { projectUrl } from '../../hooks/useProjectRoute';
 import { GitHubIcon } from '../Icons';
-import { ProjectBadges, ProjectOrigin, TagList } from './ProjectBadges';
+import { ProjectBadges, ProjectOrigin, ProjectStory, TagList } from './ProjectBadges';
 import { EmptyCover, Frame } from './ProjectCover';
 import { RepoActivity } from './RepoActivity';
 
@@ -140,6 +140,13 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             <h2 id={titleId} className="modal-title">{project.name}</h2>
             <p className="modal-description">{l(project.description)}</p>
             <ProjectOrigin project={project} />
+
+            {project.story && (
+              <>
+                <h3 className="modal-subtitle">{t.projects.story.title}</h3>
+                <ProjectStory project={project} />
+              </>
+            )}
 
             <h3 className="modal-subtitle">{t.projects.highlights}</h3>
             <ul className="highlights">
