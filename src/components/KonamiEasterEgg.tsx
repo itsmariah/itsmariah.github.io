@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useI18n } from '../i18n/I18nProvider';
 import { burstConfetti } from '../effects/confetti';
+import { createSequenceMatcher } from '../utils/sequence';
 import { useToast } from './Toast';
 
 // ↑ ↑ ↓ ↓ ← → ← → B A
@@ -12,21 +13,10 @@ export function KonamiEasterEgg() {
   const notify = useToast();
 
   useEffect(() => {
-    let position = 0;
+    const matches = createSequenceMatcher(SEQUENCE);
 
     const onKeyDown = (e: KeyboardEvent) => {
-      const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
-      if (key === SEQUENCE[position]) {
-        position++;
-      } else if (key === 'ArrowUp') {
-        // Um ↑ a mais no começo (↑↑↑↓…) ainda conta como início válido
-        position = position === 2 ? 2 : 1;
-      } else {
-        position = 0;
-      }
-
-      if (position === SEQUENCE.length) {
-        position = 0;
+      if (matches(e.key)) {
         notify(t.easterEgg.konami);
         if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) burstConfetti();
       }

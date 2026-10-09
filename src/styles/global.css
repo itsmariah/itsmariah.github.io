@@ -211,19 +211,13 @@ ul { list-style: none; }
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1.4 -0.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Texto com o gradiente da marca, passeando devagar */
+/* Texto com o gradiente da marca. Fica parado de propósito: animar background-position
+   obriga o navegador a repintar o texto a cada quadro, o que pesa em celulares mais simples. */
 .text-gradient {
   background: var(--gradient-brand);
-  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: gradient-pan 8s ease-in-out infinite alternate;
-}
-
-@keyframes gradient-pan {
-  from { background-position: 0% 50%; }
-  to   { background-position: 100% 50%; }
 }
 
 /* ══════════════════════════════════════
@@ -634,24 +628,33 @@ ul { list-style: none; }
   transform-style: preserve-3d;
 }
 
-@property --frame-angle {
-  syntax: '<angle>';
-  inherits: false;
-  initial-value: 0deg;
-}
-
-/* Borda em gradiente girando ao redor da foto */
+/* Borda em gradiente girando ao redor da foto: um quadrado com o gradiente gira por trás
+   e a moldura recorta só a borda. Girar com `rotate` roda na GPU, sem repintar a cada quadro. */
 .portrait-frame {
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
   padding: 3px;
   border-radius: calc(var(--radius-lg) + 3px);
-  background: conic-gradient(from var(--frame-angle), var(--accent), var(--accent-2), var(--accent-3), var(--accent));
   box-shadow: 0 24px 60px -24px var(--accent-glow), var(--shadow-lg);
+}
+
+.portrait-frame::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  /* Maior que a diagonal da moldura (4:5), para nunca aparecer um canto vazio ao girar */
+  width: 170%;
+  aspect-ratio: 1;
+  background: conic-gradient(var(--accent), var(--accent-2), var(--accent-3), var(--accent));
+  translate: -50% -50%;
   animation: frame-spin 6s linear infinite;
 }
 
 @keyframes frame-spin {
-  to { --frame-angle: 360deg; }
+  to { rotate: 1turn; }
 }
 
 .portrait-frame picture { display: block; }
@@ -1343,6 +1346,65 @@ ul { list-style: none; }
 .project-origin strong { color: var(--text); font-weight: 600; }
 
 /* "Do problema ao resultado": passos ligados por uma linha em gradiente */
+.project-story {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+}
+
+.project-story::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  bottom: 16px;
+  left: 15px;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(var(--accent), var(--accent-2), var(--success));
+  opacity: 0.5;
+}
+
+.story-step {
+  position: relative;
+  display: flex;
+  gap: 14px;
+}
+
+.story-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--accent-border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--accent-text);
+}
+
+.story-step:last-child .story-icon {
+  border-color: color-mix(in srgb, var(--success) 40%, transparent);
+  color: var(--success);
+}
+
+.story-label {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.story-text {
+  margin-top: 2px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
 .badge-status::before {
   content: '';
   width: 6px;

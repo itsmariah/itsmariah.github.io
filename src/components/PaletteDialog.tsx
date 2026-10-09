@@ -9,6 +9,7 @@ import { SECTIONS, sectionLabel, type SectionId } from '../data/sections';
 import { useCopyEmail } from '../hooks/useClipboard';
 import { useModal } from '../hooks/useModal';
 import { useTheme } from '../hooks/useTheme';
+import { matchesQuery } from '../utils/search';
 import { GitHubIcon, LinkedInIcon } from './Icons';
 
 type Group = 'navigate' | 'actions' | 'links';
@@ -31,9 +32,6 @@ const SECTION_META: Record<SectionId, { icon: ReactNode; keywords: string }> = {
   curriculo: { icon: <Route size={17} />, keywords: 'resume curriculo trajetoria experiencia formacao certificados' },
   contato: { icon: <Mail size={17} />, keywords: 'contact contato email mensagem' },
 };
-
-// Busca sem diferenciar maiúsculas e acentos
-const normalize = (text: string) => text.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
 
 function scrollToSection(id: SectionId | null) {
   if (id) document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -76,11 +74,8 @@ export function PaletteDialog({ onClose }: { onClose: () => void }) {
     { id: 'linkedin', group: 'links', label: 'LinkedIn', icon: <LinkedInIcon size={17} />, keywords: 'linkedin perfil profile', run: () => window.open(profile.links.linkedin, '_blank', 'noopener') },
   ];
 
-  const terms = normalize(query).split(/\s+/).filter(Boolean);
-  const filtered = commands.filter((cmd) => {
-    const haystack = normalize(`${cmd.label} ${cmd.keywords}`);
-    return terms.every((term) => haystack.includes(term));
-  });
+  // Busca sem diferenciar maiúsculas e acentos, em qualquer ordem
+  const filtered = commands.filter((cmd) => matchesQuery(`${cmd.label} ${cmd.keywords}`, query));
   const current = filtered[Math.min(active, filtered.length - 1)];
   const optionId = (cmd: Command) => `palette-option-${cmd.id}`;
 

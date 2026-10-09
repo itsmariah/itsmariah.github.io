@@ -7,8 +7,9 @@ from pathlib import Path
 
 from PIL import Image
 
-SOURCE = Path('public/assets/images/foto_profissional.jpg')
-OUT_DIR = SOURCE.parent
+SOURCE = Path('scripts/source/foto_profissional.jpg')
+OUT_DIR = Path('public/assets/images')
+
 SIZES = (400, 720)
 QUALITY = {'AVIF': 55, 'WEBP': 80}
 
