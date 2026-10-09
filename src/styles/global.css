@@ -654,6 +654,8 @@ ul { list-style: none; }
   to { --frame-angle: 360deg; }
 }
 
+.portrait-frame picture { display: block; }
+
 .hero-portrait img {
   width: 100%;
   aspect-ratio: 4 / 5;
@@ -1545,8 +1547,46 @@ ul { list-style: none; }
 
 .project-card-links {
   display: flex;
-  gap: 18px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 18px;
   margin-top: 4px;
+}
+
+/* "Atualizado há 2 dias" (último push no GitHub). A altura fica reservada enquanto carrega. */
+.repo-activity {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 1.4em;
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.repo-activity.is-ready { opacity: 1; }
+
+/* No card, sempre numa linha própria abaixo dos links: todos os cards ficam alinhados */
+.project-card-links .repo-activity { flex-basis: 100%; }
+
+.repo-activity-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--text-subtle);
+}
+
+/* Push nesta semana: ponto verde pulsando, sinal de projeto em andamento */
+.repo-activity.is-recent .repo-activity-dot {
+  background: var(--success);
+  animation: repo-pulse 2.4s ease-out infinite;
+}
+
+@keyframes repo-pulse {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--success) 55%, transparent); }
+  70%  { box-shadow: 0 0 0 6px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
 }
 
 /* Links ficam acima do botão que cobre o card */

@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { MotionConfig } from 'motion/react';
+import { LazyMotion, MotionConfig } from 'motion/react';
 import { I18nProvider } from './i18n/I18nProvider';
 import { App } from './App';
 import { printConsoleGreeting } from './easterEgg';
@@ -11,13 +11,19 @@ import './styles/global.css';
 
 printConsoleGreeting();
 
+// Os componentes usam <m.*>, que só ganham animação quando estes recursos chegam
+const loadMotionFeatures = () => import('./motionFeatures').then((mod) => mod.default);
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     {/* reducedMotion="user": respeita o "reduzir movimento" do sistema */}
-    <MotionConfig reducedMotion="user">
-      <I18nProvider>
-        <App />
-      </I18nProvider>
-    </MotionConfig>
+    {/* strict: acusa erro se algum componente usar <motion.*> e trouxer tudo de volta ao bundle inicial */}
+    <LazyMotion features={loadMotionFeatures} strict>
+      <MotionConfig reducedMotion="user">
+        <I18nProvider>
+          <App />
+        </I18nProvider>
+      </MotionConfig>
+    </LazyMotion>
   </StrictMode>,
 );

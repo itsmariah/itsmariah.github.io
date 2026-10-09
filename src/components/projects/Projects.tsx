@@ -1,12 +1,13 @@
+import { lazy, Suspense, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { AnimatePresence, LayoutGroup } from 'motion/react';
 import { format, useI18n } from '../../i18n/I18nProvider';
 import { projects } from '../../data/projects';
 import { reveal } from '../../hooks/reveal';
 import { useProjectRoute } from '../../hooks/useProjectRoute';
+import { prefetchWhenIdle } from '../../utils/prefetch';
 import { FeaturedProject } from './FeaturedProject';
 import { ProjectCard } from './ProjectCard';
-import { ProjectModal } from './ProjectModal';
 import { projectCountByTag, useProjectFilter } from './ProjectFilter';
 
 const tags = [...projectCountByTag.keys()];
@@ -14,12 +15,18 @@ const featured = projects.filter((p) => p.featured);
 const others = projects.filter((p) => !p.featured);
 const projectIds = new Set(projects.map((p) => p.id));
 
+// O modal só é baixado quando o navegador fica ocioso (ou no primeiro clique)
+const loadModal = () => import('./ProjectModal');
+const ProjectModal = lazy(() => loadModal().then((mod) => ({ default: mod.ProjectModal })));
+
 export function Projects() {
   const { t } = useI18n();
   const { filter, setFilter } = useProjectFilter();
   // O projeto aberto fica no hash da URL (#projeto/<id>), então dá para compartilhar o link
   const { openId, open, close } = useProjectRoute(projectIds);
   const openProject = projects.find((p) => p.id === openId) ?? null;
+
+  useEffect(() => prefetchWhenIdle(loadModal), []);
 
   // Com filtro ativo, todos os projetos que batem viram cards numa grade só
   const grid = filter === null ? others : projects.filter((p) => p.tags.includes(filter));
@@ -87,9 +94,11 @@ export function Projects() {
           </AnimatePresence>
         </ul>
 
-        <AnimatePresence>
-          {openProject && <ProjectModal key={openProject.id} project={openProject} onClose={close} />}
-        </AnimatePresence>
+        <Suspense fallback={null}>
+          <AnimatePresence>
+            {openProject && <ProjectModal key={openProject.id} project={openProject} onClose={close} />}
+          </AnimatePresence>
+        </Suspense>
       </LayoutGroup>
     </section>
   );

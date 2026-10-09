@@ -37,7 +37,14 @@
     })();
   </script>
   <!-- A foto do hero é o maior elemento da primeira tela: começa a baixar antes do JavaScript -->
-  <link rel="preload" as="image" href="/assets/images/foto_profissional.webp" type="image/webp" fetchpriority="high" />
+  <link
+    rel="preload"
+    as="image"
+    type="image/avif"
+    imagesrcset="/assets/images/foto_profissional-400.avif 400w, /assets/images/foto_profissional-720.avif 720w"
+    imagesizes="(max-width: 600px) 200px, (max-width: 960px) 300px, 360px"
+    fetchpriority="high"
+  />
 </head>
 <body>
   <div id="root"></div>

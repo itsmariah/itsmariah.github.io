@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { AnimatePresence, m, useReducedMotion } from 'motion/react';
 
 const INTERVAL_MS = 2800;
 
@@ -24,7 +24,7 @@ export function RotatingRole({ roles }: { roles: string[] }) {
       {/* Cópias invisíveis reservam o espaço da frase mais longa: nada "pula" na troca */}
       {roles.map((role) => <span className="rotating-ghost" key={role}>{role}</span>)}
       <AnimatePresence initial={false}>
-        <motion.span
+        <m.span
           key={current}
           className="rotating-word text-gradient"
           initial={{ opacity: 0, y: '0.6em', filter: 'blur(6px)' }}
@@ -33,7 +33,7 @@ export function RotatingRole({ roles }: { roles: string[] }) {
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
           {current}
-        </motion.span>
+        </m.span>
       </AnimatePresence>
     </span>
   );

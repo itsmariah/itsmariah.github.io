@@ -1,11 +1,12 @@
 import { useState, type Ref } from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 import { useI18n } from '../../i18n/I18nProvider';
 import type { Project } from '../../data/projects';
 import { GitHubIcon } from '../Icons';
 import { ProjectBadges, TagList } from './ProjectBadges';
 import { ProjectCover } from './ProjectCover';
+import { RepoActivity } from './RepoActivity';
 
 interface ProjectCardProps {
   project: Project;
@@ -20,7 +21,7 @@ export function ProjectCard({ project, onOpen, ref }: ProjectCardProps) {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <motion.li
+    <m.li
       ref={ref}
       layout
       className="project-card spotlight"
@@ -56,8 +57,9 @@ export function ProjectCard({ project, onOpen, ref }: ProjectCardProps) {
             <GitHubIcon size={15} />
             {t.projects.code}
           </a>
+          <RepoActivity repoUrl={project.repoUrl} />
         </div>
       </div>
-    </motion.li>
+    </m.li>
   );
 }

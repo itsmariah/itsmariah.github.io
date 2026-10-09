@@ -68,6 +68,7 @@ export const en: Dictionary = {
     noImages: 'Screenshots coming soon',
     close: 'Close',
     copyLink: 'Copy link',
+    updated: 'Updated {when}',
     linkCopied: 'Project link copied',
   },
   status: { published: 'Published', inProgress: 'In progress', featured: 'Featured' },

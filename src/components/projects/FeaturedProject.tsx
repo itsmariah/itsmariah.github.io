@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { ArrowUpRight, Check } from 'lucide-react';
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 import { useI18n } from '../../i18n/I18nProvider';
 import type { Project } from '../../data/projects';
 import { useTilt } from '../../hooks/useTilt';
 import { GitHubIcon } from '../Icons';
 import { ProjectBadges, ProjectOrigin, TagList } from './ProjectBadges';
 import { ProjectCover } from './ProjectCover';
+import { RepoActivity } from './RepoActivity';
 
 interface FeaturedProjectProps {
   project: Project;
@@ -21,7 +22,7 @@ export function FeaturedProject({ project, reversed, onOpen }: FeaturedProjectPr
   const [hovered, setHovered] = useState(false);
 
   return (
-    <motion.article
+    <m.article
       className={`feature${reversed ? ' is-reversed' : ''}`}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -38,7 +39,7 @@ export function FeaturedProject({ project, reversed, onOpen }: FeaturedProjectPr
           setHovered(false);
         }}
       >
-        <motion.button
+        <m.button
           type="button"
           className="feature-cover"
           style={{ rotateX, rotateY, transformPerspective: 1000 }}
@@ -46,7 +47,7 @@ export function FeaturedProject({ project, reversed, onOpen }: FeaturedProjectPr
           aria-label={`${t.projects.viewDetails}: ${project.name}`}
         >
           <ProjectCover project={project} playing={hovered} />
-        </motion.button>
+        </m.button>
       </div>
 
       <div className="feature-body">
@@ -65,6 +66,7 @@ export function FeaturedProject({ project, reversed, onOpen }: FeaturedProjectPr
         </ul>
 
         <TagList tags={project.tags} />
+        <RepoActivity repoUrl={project.repoUrl} />
 
         <div className="feature-actions">
           <button type="button" className="btn btn-primary" onClick={onOpen}>
@@ -87,6 +89,6 @@ export function FeaturedProject({ project, reversed, onOpen }: FeaturedProjectPr
           </a>
         </div>
       </div>
-    </motion.article>
+    </m.article>
   );
 }

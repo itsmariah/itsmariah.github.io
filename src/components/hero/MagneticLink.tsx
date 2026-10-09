@@ -1,5 +1,5 @@
 import type { PointerEvent } from 'react';
-import { motion, useReducedMotion, useSpring, type HTMLMotionProps } from 'motion/react';
+import { m, useReducedMotion, useSpring, type HTMLMotionProps } from 'motion/react';
 
 const SPRING = { stiffness: 220, damping: 15, mass: 0.4 };
 
@@ -21,5 +21,5 @@ export function MagneticLink({ strength = 0.3, ...props }: HTMLMotionProps<'a'> 
     y.set(0);
   };
 
-  return <motion.a {...props} style={{ x, y }} onPointerMove={onPointerMove} onPointerLeave={reset} />;
+  return <m.a {...props} style={{ x, y }} onPointerMove={onPointerMove} onPointerLeave={reset} />;
 }

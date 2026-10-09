@@ -1,5 +1,5 @@
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import { m, useReducedMotion } from 'motion/react';
 import { useI18n } from '../../i18n/I18nProvider';
 import type { Project } from '../../data/projects';
 
@@ -11,7 +11,7 @@ interface FrameProps {
 /** Moldura de navegador (sites) ou janela vertical (app/jogo). O layoutId liga a capa do card à galeria do modal. */
 export function Frame({ project, children }: FrameProps) {
   return (
-    <motion.div
+    <m.div
       layoutId={`frame-${project.id}`}
       className={`frame frame-${project.frame}`}
       transition={{ type: 'spring', bounce: 0.15, duration: 0.5 }}
@@ -22,7 +22,7 @@ export function Frame({ project, children }: FrameProps) {
         </div>
       )}
       <div className="frame-screen">{children}</div>
-    </motion.div>
+    </m.div>
   );
 }
 

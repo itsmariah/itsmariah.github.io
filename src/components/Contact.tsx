@@ -1,6 +1,6 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
 import { ArrowUpRight, Check, Copy, Mail } from 'lucide-react';
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 import { useI18n } from '../i18n/I18nProvider';
 import { profile } from '../data/profile';
 import { reveal } from '../hooks/reveal';
@@ -70,7 +70,7 @@ function SuccessCheck() {
     transition: { duration: 0.45, delay, ease: [0.22, 1, 0.36, 1] as const },
   });
   return (
-    <motion.svg
+    <m.svg
       className="success-check"
       viewBox="0 0 24 24"
       aria-hidden="true"
@@ -78,9 +78,9 @@ function SuccessCheck() {
       animate={{ scale: 1, opacity: 1 }}
       transition={{ type: 'spring', stiffness: 400, damping: 18 }}
     >
-      <motion.circle cx="12" cy="12" r="10" {...draw(0)} />
-      <motion.path d="M7.5 12.5l3 3 6-6.5" {...draw(0.3)} />
-    </motion.svg>
+      <m.circle cx="12" cy="12" r="10" {...draw(0)} />
+      <m.path d="M7.5 12.5l3 3 6-6.5" {...draw(0.3)} />
+    </m.svg>
   );
 }
 

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { ArrowUpRight, Check, ChevronLeft, ChevronRight, Link2, X } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, m } from 'motion/react';
 import { format, useI18n } from '../../i18n/I18nProvider';
 import type { Project } from '../../data/projects';
 import { useCopyText } from '../../hooks/useClipboard';
@@ -9,6 +9,7 @@ import { projectUrl } from '../../hooks/useProjectRoute';
 import { GitHubIcon } from '../Icons';
 import { ProjectBadges, ProjectOrigin, TagList } from './ProjectBadges';
 import { EmptyCover, Frame } from './ProjectCover';
+import { RepoActivity } from './RepoActivity';
 
 function Gallery({ project }: { project: Project }) {
   const { t, l } = useI18n();
@@ -43,7 +44,7 @@ function Gallery({ project }: { project: Project }) {
       <div className="cover cover-modal">
         <Frame project={project}>
           <AnimatePresence initial={false} mode="popLayout">
-            <motion.img
+            <m.img
               key={image.src}
               src={image.src}
               alt={`${project.name} — ${l(image.caption)}`}
@@ -107,7 +108,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   return (
     <div className="modal-root">
-      <motion.div
+      <m.div
         className="modal-backdrop"
         onClick={onClose}
         initial={{ opacity: 0 }}
@@ -115,7 +116,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.25 }}
       />
-      <motion.div
+      <m.div
         ref={dialogRef}
         className="modal"
         role="dialog"
@@ -154,6 +155,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           <aside className="modal-aside">
             <h3 className="modal-subtitle">{t.projects.stack}</h3>
             <TagList tags={project.tags} />
+            <RepoActivity repoUrl={project.repoUrl} />
             <div className="modal-actions">
               {project.liveUrl && (
                 <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
@@ -176,7 +178,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
           </aside>
         </div>
-      </motion.div>
+      </m.div>
     </div>
   );
 }

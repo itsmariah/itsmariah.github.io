@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Menu, Moon, Search, Sun, X } from 'lucide-react';
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 import { useI18n, type Lang } from '../i18n/I18nProvider';
 import { SECTIONS, sectionLabel } from '../data/sections';
 import { useActiveSection } from '../hooks/useActiveSection';
@@ -40,7 +40,7 @@ export function Navbar({ onOpenPalette }: { onOpenPalette: () => void }) {
               >
                 {/* Pílula que desliza até a seção ativa */}
                 {active === id && (
-                  <motion.span
+                  <m.span
                     layoutId="nav-indicator"
                     className="nav-indicator"
                     transition={{ type: 'spring', stiffness: 380, damping: 32 }}

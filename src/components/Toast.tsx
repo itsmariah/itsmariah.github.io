@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { CircleCheck } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, m } from 'motion/react';
 
 const DURATION_MS = 2400;
 
@@ -29,7 +29,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
       <div className="toast-region" role="status" aria-live="polite">
         <AnimatePresence>
           {toast && (
-            <motion.div
+            <m.div
               key={toast.id}
               className="toast"
               initial={{ opacity: 0, y: 16, scale: 0.96 }}
@@ -39,7 +39,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
             >
               <CircleCheck size={18} aria-hidden="true" />
               {toast.message}
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>

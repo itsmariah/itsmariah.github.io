@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Award, Briefcase, ExternalLink, GraduationCap, type LucideIcon } from 'lucide-react';
-import { motion, useInView, useScroll, type MotionStyle } from 'motion/react';
+import { m, useInView, useScroll, type MotionStyle } from 'motion/react';
 import { useI18n } from '../i18n/I18nProvider';
 import { education, experience, type TimelineItem } from '../data/resume';
 import { certificates } from '../data/certificates';
@@ -39,9 +39,9 @@ function Timeline({ items }: { items: TimelineItem[] }) {
   const { scrollYProgress } = useScroll({ target: ref, offset: [...SCROLL_OFFSET] });
 
   return (
-    <motion.ol className="timeline" ref={ref} style={{ '--progress': scrollYProgress } as MotionStyle}>
+    <m.ol className="timeline" ref={ref} style={{ '--progress': scrollYProgress } as MotionStyle}>
       {items.map((item) => <TimelineEntry item={item} key={item.id} />)}
-    </motion.ol>
+    </m.ol>
   );
 }
 

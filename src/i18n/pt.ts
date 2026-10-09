@@ -68,6 +68,7 @@ export const pt = {
     noImages: 'Imagens em breve',
     close: 'Fechar',
     copyLink: 'Copiar link',
+    updated: 'Atualizado {when}',
     linkCopied: 'Link do projeto copiado',
   },
   status: { published: 'Publicado', inProgress: 'Em desenvolvimento', featured: 'Destaque' },
