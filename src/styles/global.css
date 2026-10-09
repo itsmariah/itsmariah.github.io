@@ -298,39 +298,50 @@ ul { list-style: none; }
 /* ══════════════════════════════════════
    Navbar
 ══════════════════════════════════════ */
+/* No topo a navbar é transparente; ao rolar, ela vira uma pílula de vidro flutuante */
 .navbar {
   position: fixed;
   inset: 0 0 auto;
   z-index: 100;
-  border-bottom: 1px solid transparent;
-  transition: background 0.3s ease, border-color 0.3s ease;
+  transition: padding 0.45s var(--ease);
 }
 
-/* Progresso de leitura: a escala é atualizada pelo Navbar a cada frame de scroll */
+.navbar.scrolled { padding-top: 12px; }
+
+/* Progresso de leitura no topo da tela: a escala é atualizada pelo Navbar a cada frame */
 .scroll-progress {
   position: absolute;
+  top: 0;
   left: 0;
   right: 0;
-  bottom: -1px;
   height: 2px;
   background: var(--gradient-brand);
   transform: scaleX(0);
   transform-origin: left;
 }
 
-.navbar.scrolled {
-  background: var(--overlay);
-  border-bottom-color: var(--border);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-}
-
 .navbar-inner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   height: 68px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: width 0.45s var(--ease), height 0.45s var(--ease), padding 0.45s var(--ease),
+    background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar.scrolled .navbar-inner {
+  width: min(1080px, 100% - 24px);
+  height: 58px;
+  padding-inline: 22px 9px;
+  border-color: var(--border);
+  background: var(--overlay);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
+  box-shadow: var(--shadow);
 }
 
 .logo {
@@ -355,9 +366,11 @@ ul { list-style: none; }
 }
 
 .nav-links a {
+  position: relative;
+  isolation: isolate;
   display: block;
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
+  padding: 6px 14px;
+  border-radius: 999px;
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-muted);
@@ -367,6 +380,41 @@ ul { list-style: none; }
 
 .nav-links a:hover { color: var(--text); background: var(--surface-2); }
 .nav-links a.active { color: var(--text); }
+
+.nav-indicator {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: 1px solid var(--accent-border);
+  border-radius: inherit;
+  background: var(--accent-soft);
+}
+
+/* Tecla de atalho (Ctrl K, esc, ↵…) */
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border: 1px solid var(--border-strong);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  background: var(--surface-2);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--text-muted);
+  vertical-align: middle;
+}
+
+.palette-trigger {
+  width: auto;
+  gap: 8px;
+  padding: 0 8px 0 11px;
+}
 
 .navbar-actions {
   display: flex;
@@ -1882,7 +1930,24 @@ ul { list-style: none; }
   font-size: 0.9rem;
 }
 
-.form-feedback.success { background: var(--success-soft); color: var(--success); }
+.form-feedback.success {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.success-check {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 .form-feedback.error { background: var(--danger-soft); color: var(--danger); }
 
 /* ══════════════════════════════════════
@@ -1899,8 +1964,25 @@ ul { list-style: none; }
 .footer-inner {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
   gap: 8px 24px;
+}
+
+.footer-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-time time { font-variant-numeric: tabular-nums; color: var(--text-muted); }
+
+.footer-tip { margin-top: 14px; font-size: 0.8rem; }
+.footer-tip .kbd { margin: 0 2px; }
+
+/* Sem teclado físico, a dica do atalho não ajuda */
+@media (hover: none) {
+  .footer-tip { display: none; }
 }
 
 /* Link "pular para o conteúdo": só aparece ao receber foco pelo teclado */
@@ -1947,6 +2029,176 @@ main:focus { outline: none; }
 .back-to-top:hover { background: var(--surface-hover); }
 
 /* ══════════════════════════════════════
+   Paleta de comandos (Ctrl K / ⌘K)
+══════════════════════════════════════ */
+.palette-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: min(14vh, 120px) 16px 16px;
+}
+
+.palette-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 5, 10, 0.55);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+[data-theme="light"] .palette-backdrop { background: rgba(20, 20, 40, 0.22); }
+
+.palette {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(600px, 100%);
+  max-height: min(72vh, 560px);
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg), 0 30px 80px -30px var(--accent-glow);
+}
+
+.palette:focus { outline: none; }
+
+.palette-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 58px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-subtle);
+}
+
+.palette-search input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+  outline: none;
+}
+
+.palette-search input::placeholder { color: var(--text-subtle); }
+
+.palette-list {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 6px 8px 8px;
+}
+
+.palette-group {
+  padding: 10px 10px 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.palette-item {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px 9px 9px;
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  cursor: pointer;
+  scroll-margin: 8px;
+}
+
+.palette-item.is-active { color: var(--text); }
+
+/* Fundo da opção ativa; o layoutId do Motion faz ele deslizar entre as opções */
+.palette-highlight {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: 1px solid var(--accent-border);
+  border-radius: inherit;
+  background: var(--accent-soft);
+}
+
+.palette-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  transition: color 0.2s ease;
+}
+
+.palette-item.is-active .palette-icon { color: var(--accent-text); }
+
+.palette-label { flex: 1; min-width: 0; }
+.palette-enter { flex-shrink: 0; color: var(--accent-text); }
+
+.palette-empty {
+  padding: 28px 12px;
+  text-align: center;
+  color: var(--text-subtle);
+}
+
+.palette-footer {
+  display: flex;
+  gap: 18px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+}
+
+.palette-footer span { display: inline-flex; align-items: center; gap: 6px; }
+
+@media (hover: none) {
+  .palette-footer { display: none; }
+}
+
+/* ══════════════════════════════════════
+   Toast
+══════════════════════════════════════ */
+.toast-region {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 24px;
+  z-index: 1100;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px;
+  pointer-events: none;
+}
+
+.toast {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px 10px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.toast svg { color: var(--success); }
+
+/* ══════════════════════════════════════
    Spotlight: brilho que segue o mouse em cards (posição em --mx/--my, ver useSpotlight)
    Fica depois dos componentes para sobrescrever o fundo e a borda deles.
 ══════════════════════════════════════ */
@@ -1981,21 +2233,27 @@ main:focus { outline: none; }
 @media (max-width: 960px) {
   .hamburger { display: inline-flex; }
 
+  /* Menu aberto: cartão logo abaixo da pílula */
   .nav-links {
     position: absolute;
-    top: 68px;
+    top: calc(100% + 8px);
     left: 0;
     right: 0;
     display: none;
     flex-direction: column;
-    gap: 0;
-    padding: 8px 20px 16px;
-    border-bottom: 1px solid var(--border);
-    background: var(--bg);
+    gap: 2px;
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    box-shadow: var(--shadow-lg);
   }
 
   .nav-links.open { display: flex; }
-  .nav-links a { padding: 12px 8px; font-size: 1rem; }
+  .nav-links a { padding: 12px 14px; border-radius: var(--radius); font-size: 1rem; }
+
+  .palette-trigger { width: 38px; padding: 0; }
+  .palette-trigger .kbd { display: none; }
 
   .hero { min-height: auto; padding-top: 104px; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }

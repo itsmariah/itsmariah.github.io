@@ -1,14 +1,16 @@
 import { useRef, useState } from 'react';
-import { Menu, Moon, Sun, X } from 'lucide-react';
+import { Menu, Moon, Search, Sun, X } from 'lucide-react';
+import { motion } from 'motion/react';
 import { useI18n, type Lang } from '../i18n/I18nProvider';
+import { SECTIONS, sectionLabel } from '../data/sections';
 import { useActiveSection } from '../hooks/useActiveSection';
 import { useScrollFrame, useScrolledPast } from '../hooks/useScroll';
 import { useTheme } from '../hooks/useTheme';
+import { shortcutLabel } from './CommandPalette';
 
-const SECTIONS = ['sobre', 'skills', 'projetos', 'curriculo', 'contato'] as const;
 const LANGS: Lang[] = ['pt', 'en'];
 
-export function Navbar() {
+export function Navbar({ onOpenPalette }: { onOpenPalette: () => void }) {
   const { t, lang, setLang } = useI18n();
   const { theme, toggle } = useTheme();
   const scrolled = useScrolledPast(24);
@@ -21,16 +23,9 @@ export function Navbar() {
     progressRef.current?.style.setProperty('transform', `scaleX(${progress})`);
   });
 
-  const labels: Record<(typeof SECTIONS)[number], string> = {
-    sobre: t.nav.about,
-    skills: t.nav.skills,
-    projetos: t.nav.projects,
-    curriculo: t.nav.resume,
-    contato: t.nav.contact,
-  };
-
   return (
     <nav className={`navbar${scrolled || menuOpen ? ' scrolled' : ''}`}>
+      <div className="scroll-progress" ref={progressRef} aria-hidden="true" />
       <div className="container navbar-inner">
         <a href="#" className="logo">itsmariah<span aria-hidden="true">.</span></a>
 
@@ -43,13 +38,32 @@ export function Navbar() {
                 aria-current={active === id ? 'true' : undefined}
                 onClick={() => setMenuOpen(false)}
               >
-                {labels[id]}
+                {/* Pílula que desliza até a seção ativa */}
+                {active === id && (
+                  <motion.span
+                    layoutId="nav-indicator"
+                    className="nav-indicator"
+                    transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                  />
+                )}
+                {sectionLabel(t, id)}
               </a>
             </li>
           ))}
         </ul>
 
         <div className="navbar-actions">
+          <button
+            className="icon-btn palette-trigger"
+            type="button"
+            onClick={onOpenPalette}
+            aria-label={`${t.nav.commandPalette} (${shortcutLabel})`}
+            aria-haspopup="dialog"
+          >
+            <Search size={16} aria-hidden="true" />
+            <kbd className="kbd" aria-hidden="true">{shortcutLabel}</kbd>
+          </button>
+
           <button className="icon-btn" type="button" onClick={(e) => toggle(e.currentTarget)} aria-label={t.nav.themeToggle}>
             {theme === 'light' ? <Moon size={18} aria-hidden="true" /> : <Sun size={18} aria-hidden="true" />}
           </button>
@@ -79,7 +93,6 @@ export function Navbar() {
           </button>
         </div>
       </div>
-      <div className="scroll-progress" ref={progressRef} aria-hidden="true" />
     </nav>
   );
 }

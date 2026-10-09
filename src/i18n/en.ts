@@ -12,6 +12,7 @@ export const en: Dictionary = {
     closeMenu: 'Close menu',
     themeToggle: 'Toggle theme',
     language: 'Language',
+    commandPalette: 'Open command palette',
   },
   hero: {
     tag: 'Open to Junior Front-End roles',
@@ -104,9 +105,25 @@ export const en: Dictionary = {
     success: "Message sent successfully! I'll get back to you soon.",
     error: 'Oops! Something went wrong. Try reaching me directly by email.',
   },
+  palette: {
+    title: 'Command palette',
+    placeholder: 'Where to? Search a section or action…',
+    empty: 'Nothing found for “{query}”',
+    groups: { navigate: 'Navigate', actions: 'Actions', links: 'Links' },
+    home: 'Home',
+    toggleTheme: 'Toggle light/dark theme',
+    switchLang: 'Mudar para português',
+    copyEmail: 'Copy email',
+    downloadCv: 'Download résumé (PDF)',
+    hintNavigate: 'navigate',
+    hintSelect: 'select',
+    hintClose: 'close',
+  },
   footer: {
     text: 'Maria Mariah Queiroga Fernandes Soares',
     built: 'Built with React, TypeScript, and Vite',
+    localTime: 'Now in João Pessoa',
+    tip: 'Tip: {key} opens the command palette',
   },
   a11y: { backToTop: 'Back to top', skipToContent: 'Skip to content' },
 };

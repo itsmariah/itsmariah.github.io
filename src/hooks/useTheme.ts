@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useSyncExternalStore } from 'react';
 import { flushSync } from 'react-dom';
 
 type Theme = 'light' | 'dark';
@@ -10,20 +10,29 @@ function currentTheme(): Theme {
   return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
 }
 
+// Store mínima: a navbar e a paleta de comandos trocam o tema e todos os usos se atualizam
+const listeners = new Set<() => void>();
+
+function subscribe(listener: () => void) {
+  listeners.add(listener);
+  return () => { listeners.delete(listener); };
+}
+
+function setTheme(next: Theme) {
+  document.documentElement.setAttribute('data-theme', next);
+  try { localStorage.setItem(STORAGE_KEY, next); } catch { /* storage bloqueado */ }
+  listeners.forEach((listener) => listener());
+}
+
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>(currentTheme);
+  const theme = useSyncExternalStore(subscribe, currentTheme);
 
   /** Troca o tema. Com `origin`, o novo tema se revela num círculo que nasce no centro do elemento. */
   const toggle = useCallback((origin?: HTMLElement) => {
     const root = document.documentElement;
     const next: Theme = currentTheme() === 'light' ? 'dark' : 'light';
-    try { localStorage.setItem(STORAGE_KEY, next); } catch { /* storage bloqueado */ }
-
-    const apply = () => {
-      root.setAttribute('data-theme', next);
-      // O ícone do botão precisa estar atualizado no "retrato" do novo tema
-      flushSync(() => setTheme(next));
-    };
+    // O ícone do botão precisa estar atualizado no "retrato" do novo tema
+    const apply = () => flushSync(() => setTheme(next));
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!origin || reduceMotion || !('startViewTransition' in document)) {

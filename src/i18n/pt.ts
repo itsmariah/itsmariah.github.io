@@ -11,6 +11,7 @@ export const pt = {
     closeMenu: 'Fechar menu',
     themeToggle: 'Alternar tema',
     language: 'Idioma',
+    commandPalette: 'Abrir paleta de comandos',
   },
   hero: {
     tag: 'Disponível para vagas Front-End Júnior',
@@ -105,9 +106,25 @@ export const pt = {
     success: 'Mensagem enviada com sucesso! Responderei em breve.',
     error: 'Ops! Não foi possível enviar. Tente me contatar diretamente pelo e-mail.',
   },
+  palette: {
+    title: 'Paleta de comandos',
+    placeholder: 'Para onde vamos? Busque uma seção ou ação…',
+    empty: 'Nada encontrado para “{query}”',
+    groups: { navigate: 'Navegar', actions: 'Ações', links: 'Links' },
+    home: 'Início',
+    toggleTheme: 'Alternar tema claro/escuro',
+    switchLang: 'Switch to English',
+    copyEmail: 'Copiar e-mail',
+    downloadCv: 'Baixar currículo (PDF)',
+    hintNavigate: 'navegar',
+    hintSelect: 'selecionar',
+    hintClose: 'fechar',
+  },
   footer: {
     text: 'Maria Mariah Queiroga Fernandes Soares',
     built: 'Feito com React, TypeScript e Vite',
+    localTime: 'Agora em João Pessoa',
+    tip: 'Dica: {key} abre a paleta de comandos',
   },
   a11y: { backToTop: 'Voltar ao topo', skipToContent: 'Pular para o conteúdo' },
 };

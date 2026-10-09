@@ -1,14 +1,17 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
 import { ArrowUpRight, Check, Copy, Mail } from 'lucide-react';
+import { motion } from 'motion/react';
 import { useI18n } from '../i18n/I18nProvider';
 import { profile } from '../data/profile';
 import { reveal } from '../hooks/reveal';
+import { useCopyEmail } from '../hooks/useCopyEmail';
 import { GitHubIcon, LinkedInIcon, WhatsAppIcon } from './Icons';
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error';
 
 function CopyEmailButton() {
   const { t } = useI18n();
+  const copyEmail = useCopyEmail();
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -23,7 +26,7 @@ function CopyEmailButton() {
       className={`icon-btn copy-btn${copied ? ' copied' : ''}`}
       title={copied ? t.contact.copied : t.contact.copyEmail}
       aria-label={copied ? t.contact.copied : t.contact.copyEmail}
-      onClick={() => navigator.clipboard.writeText(profile.email).then(() => setCopied(true), () => {})}
+      onClick={() => copyEmail().then(setCopied)}
     >
       {copied ? <Check size={16} aria-hidden="true" /> : <Copy size={16} aria-hidden="true" />}
     </button>
@@ -56,6 +59,28 @@ function Channel({ icon, label, value, href, external = true, action }: ChannelP
       </a>
       {action}
     </li>
+  );
+}
+
+/** Check que se desenha dentro de um círculo, para comemorar o envio. */
+function SuccessCheck() {
+  const draw = (delay: number) => ({
+    initial: { pathLength: 0 },
+    animate: { pathLength: 1 },
+    transition: { duration: 0.45, delay, ease: [0.22, 1, 0.36, 1] as const },
+  });
+  return (
+    <motion.svg
+      className="success-check"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      initial={{ scale: 0.6, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+    >
+      <motion.circle cx="12" cy="12" r="10" {...draw(0)} />
+      <motion.path d="M7.5 12.5l3 3 6-6.5" {...draw(0.3)} />
+    </motion.svg>
   );
 }
 
@@ -114,7 +139,7 @@ function ContactForm() {
           {status === 'sending' ? f.submitting : f.submit}
         </button>
         <p className={`form-feedback ${status}`} role="status" hidden={status !== 'success' && status !== 'error'}>
-          {status === 'success' && t.contact.success}
+          {status === 'success' && <><SuccessCheck />{t.contact.success}</>}
           {status === 'error' && t.contact.error}
         </p>
       </form>
