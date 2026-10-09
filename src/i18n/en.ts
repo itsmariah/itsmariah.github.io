@@ -29,7 +29,7 @@ export const en: Dictionary = {
   about: {
     title: 'About me',
     p1: "I'm a Computer Science graduate and I've been steering my path toward front-end and web development. I enjoy building organized, beautiful, and functional interfaces, with special attention to user experience.",
-    p2: "I'm currently building practical projects that strengthen my skills in HTML, CSS, JavaScript, and front-end/back-end integration, with SkillUp Dev standing out — a platform focused on developing soft skills for developers.",
+    p2: "I've been building practical projects that span front-end and back-end, like SkillUp Dev, a soft skills platform for developers, and GeldTrack, a personal finance app. Right now I'm focused on MistyDoces, a full system for a real bakery.",
     softSkills: 'Soft skills',
     stats: { projects: 'Projects', certificates: 'Certificates', technologies: 'Technologies' },
     facts: {
@@ -67,6 +67,8 @@ export const en: Dictionary = {
     origin: 'How it started:',
     noImages: 'Screenshots coming soon',
     close: 'Close',
+    copyLink: 'Copy link',
+    linkCopied: 'Project link copied',
   },
   status: { published: 'Published', inProgress: 'In progress', featured: 'Featured' },
   slideshow: {

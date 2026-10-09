@@ -10,12 +10,14 @@ const STORAGE_KEY = 'portfolio-lang';
 const DICTIONARIES: Record<Lang, Dictionary> = { pt, en };
 const HTML_LANG: Record<Lang, string> = { pt: 'pt-BR', en: 'en' };
 
-function readStoredLang(): Lang {
+// Sem escolha salva, segue o idioma do navegador: português abre em PT, o resto em EN
+// (mesma regra do script inline do index.html)
+function initialLang(): Lang {
   try {
-    return localStorage.getItem(STORAGE_KEY) === 'en' ? 'en' : 'pt';
-  } catch {
-    return 'pt';
-  }
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === 'pt' || stored === 'en') return stored;
+  } catch { /* storage bloqueado */ }
+  return navigator.language.toLowerCase().startsWith('pt') ? 'pt' : 'en';
 }
 
 interface I18nValue {
@@ -29,7 +31,7 @@ interface I18nValue {
 const I18nContext = createContext<I18nValue | null>(null);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(readStoredLang);
+  const [lang, setLangState] = useState<Lang>(initialLang);
 
   const setLang = useCallback((next: Lang) => {
     setLangState(next);

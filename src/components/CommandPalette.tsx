@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { format, useI18n } from '../i18n/I18nProvider';
 import { profile } from '../data/profile';
 import { SECTIONS, sectionLabel, type SectionId } from '../data/sections';
-import { useCopyEmail } from '../hooks/useCopyEmail';
+import { useCopyEmail } from '../hooks/useClipboard';
 import { useModal } from '../hooks/useModal';
 import { useTheme } from '../hooks/useTheme';
 import { GitHubIcon, LinkedInIcon } from './Icons';

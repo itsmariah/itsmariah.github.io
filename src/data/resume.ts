@@ -23,7 +23,7 @@ export const education: TimelineItem[] = [
 export const experience: TimelineItem[] = [
   {
     id: 'teeva',
-    period: { pt: '2023 – 2023', en: '2023 – 2023' },
+    period: { pt: '2023', en: '2023' },
     title: { pt: 'Assistente Administrativo', en: 'Administrative Assistant' },
     description: {
       pt: 'Teeva · Efetivo em venda de produtos online, suporte ao cliente, emissão de documentos e administração de controle de estoque.',

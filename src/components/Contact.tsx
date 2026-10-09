@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import { useI18n } from '../i18n/I18nProvider';
 import { profile } from '../data/profile';
 import { reveal } from '../hooks/reveal';
-import { useCopyEmail } from '../hooks/useCopyEmail';
+import { useCopyEmail } from '../hooks/useClipboard';
 import { GitHubIcon, LinkedInIcon, WhatsAppIcon } from './Icons';
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error';

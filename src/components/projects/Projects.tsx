@@ -1,9 +1,9 @@
-import { useCallback, useState } from 'react';
 import { X } from 'lucide-react';
 import { AnimatePresence, LayoutGroup } from 'motion/react';
 import { format, useI18n } from '../../i18n/I18nProvider';
 import { projects } from '../../data/projects';
 import { reveal } from '../../hooks/reveal';
+import { useProjectRoute } from '../../hooks/useProjectRoute';
 import { FeaturedProject } from './FeaturedProject';
 import { ProjectCard } from './ProjectCard';
 import { ProjectModal } from './ProjectModal';
@@ -12,14 +12,14 @@ import { projectCountByTag, useProjectFilter } from './ProjectFilter';
 const tags = [...projectCountByTag.keys()];
 const featured = projects.filter((p) => p.featured);
 const others = projects.filter((p) => !p.featured);
+const projectIds = new Set(projects.map((p) => p.id));
 
 export function Projects() {
   const { t } = useI18n();
   const { filter, setFilter } = useProjectFilter();
-  const [openId, setOpenId] = useState<string | null>(null);
-
+  // O projeto aberto fica no hash da URL (#projeto/<id>), então dá para compartilhar o link
+  const { openId, open, close } = useProjectRoute(projectIds);
   const openProject = projects.find((p) => p.id === openId) ?? null;
-  const closeModal = useCallback(() => setOpenId(null), []);
 
   // Com filtro ativo, todos os projetos que batem viram cards numa grade só
   const grid = filter === null ? others : projects.filter((p) => p.tags.includes(filter));
@@ -57,7 +57,7 @@ export function Projects() {
                 key={project.id}
                 project={project}
                 reversed={i % 2 === 1}
-                onOpen={() => setOpenId(project.id)}
+                onOpen={() => open(project.id)}
               />
             ))}
           </div>
@@ -82,13 +82,13 @@ export function Projects() {
         <ul className="projects-grid">
           <AnimatePresence mode="popLayout" initial={false}>
             {grid.map((project) => (
-              <ProjectCard key={project.id} project={project} onOpen={() => setOpenId(project.id)} />
+              <ProjectCard key={project.id} project={project} onOpen={() => open(project.id)} />
             ))}
           </AnimatePresence>
         </ul>
 
         <AnimatePresence>
-          {openProject && <ProjectModal key={openProject.id} project={openProject} onClose={closeModal} />}
+          {openProject && <ProjectModal key={openProject.id} project={openProject} onClose={close} />}
         </AnimatePresence>
       </LayoutGroup>
     </section>

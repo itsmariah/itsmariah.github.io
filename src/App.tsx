@@ -12,6 +12,7 @@ import { Projects } from './components/projects/Projects';
 import { Resume } from './components/Resume';
 import { Skills } from './components/Skills';
 import { ToastProvider } from './components/Toast';
+import { projectIdFromHash } from './hooks/useProjectRoute';
 import { useSpotlight } from './hooks/useSpotlight';
 import { useI18n } from './i18n/I18nProvider';
 
@@ -22,8 +23,9 @@ export function App() {
 
   // O conteúdo é montado depois do carregamento, então o navegador não acha a âncora
   // de links como /#projetos sozinho — rolamos até ela manualmente.
+  // Link de projeto (#projeto/<id>): rola até Projetos, e a seção abre o modal.
   useEffect(() => {
-    const id = decodeURIComponent(window.location.hash.slice(1));
+    const id = projectIdFromHash() ? 'projetos' : decodeURIComponent(window.location.hash.slice(1));
     if (id) document.getElementById(id)?.scrollIntoView();
   }, []);
 

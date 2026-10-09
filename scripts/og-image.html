@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!--
+  Modelo da imagem de compartilhamento (public/og-image.jpg, 1200×630).
+  Para regerar depois de mudar algo aqui, na raiz do projeto (Git Bash; o Chrome exige caminhos absolutos):
+    "C:/Program Files/Google/Chrome/Application/chrome.exe" --headless=new --hide-scrollbars \
+      --window-size=1200,630 --virtual-time-budget=2000 \
+      --screenshot="$(pwd -W)/public/og-image.jpg" "file:///$(pwd -W)/scripts/og-image.html"
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>og-image</title>
+  <style>
+    @font-face {
+      font-family: 'Space Grotesk';
+      src: url('../node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2') format('woff2');
+      font-weight: 300 700;
+    }
+    @font-face {
+      font-family: 'Inter';
+      src: url('../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2') format('woff2');
+      font-weight: 100 900;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body { width: 1200px; height: 630px; overflow: hidden; }
+
+    body {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      padding: 0 80px;
+      background: #0b0b12;
+      color: #ececf3;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    /* Mesmo fundo do site: aurora, grade de pontos e granulação */
+    .aurora, .grid, .grain { position: absolute; inset: 0; pointer-events: none; }
+
+    .aurora {
+      background:
+        radial-gradient(520px circle at 8% 0%, rgba(109, 90, 230, 0.42), transparent 70%),
+        radial-gradient(520px circle at 92% 8%, rgba(219, 39, 119, 0.28), transparent 70%),
+        radial-gradient(560px circle at 60% 115%, rgba(34, 211, 238, 0.18), transparent 70%);
+    }
+
+    .grid {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1.2px, transparent 1.6px);
+      background-size: 28px 28px;
+      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 40% 45%, #000 20%, transparent 75%);
+    }
+
+    .grain {
+      opacity: 0.06;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1.4 -0.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .text { position: relative; flex: 1; }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .gradient {
+      background: linear-gradient(100deg, #b4a9ff, #f472b6 50%, #22d3ee);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 40px;
+      padding: 8px 18px 8px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      background: rgba(18, 18, 27, 0.8);
+      font-size: 19px;
+      font-weight: 500;
+      color: #a3a3b8;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.18);
+    }
+
+    h1 {
+      margin-top: 22px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 92px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.035em;
+    }
+
+    .role {
+      margin-top: 14px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 44px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .stack {
+      margin-top: 26px;
+      font-size: 22px;
+      color: #a3a3b8;
+    }
+
+    .url {
+      margin-top: 40px;
+      font-size: 20px;
+      font-weight: 500;
+      color: #7e7e95;
+    }
+
+    /* Foto com a borda em gradiente do hero */
+    .photo {
+      position: relative;
+      flex-shrink: 0;
+      width: 330px;
+      padding: 4px;
+      border-radius: 28px;
+      background: conic-gradient(from 200deg, #8b7cf6, #f472b6, #22d3ee, #8b7cf6);
+      box-shadow: 0 30px 80px -24px rgba(139, 124, 246, 0.6);
+    }
+
+    .photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 20%;
+      border-radius: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="aurora"></div>
+  <div class="grid"></div>
+  <div class="grain"></div>
+
+  <div class="text">
+    <p class="logo">itsmariah<span class="gradient">.</span></p>
+    <p class="pill"><span class="dot"></span>Disponível para vagas Front-End Júnior</p>
+    <h1>Maria Mariah</h1>
+    <p class="role gradient">Desenvolvedora Front-End</p>
+    <p class="stack">React · TypeScript · Next.js · Node.js</p>
+    <p class="url">itsmariah.github.io</p>
+  </div>
+
+  <div class="photo">
+    <img src="../public/assets/images/foto_profissional.webp" alt="" />
+  </div>
+</body>
+</html>

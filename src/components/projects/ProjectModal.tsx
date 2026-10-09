@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { ArrowUpRight, Check, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { ArrowUpRight, Check, ChevronLeft, ChevronRight, Link2, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { format, useI18n } from '../../i18n/I18nProvider';
 import type { Project } from '../../data/projects';
+import { useCopyText } from '../../hooks/useClipboard';
 import { useModal } from '../../hooks/useModal';
+import { projectUrl } from '../../hooks/useProjectRoute';
 import { GitHubIcon } from '../Icons';
 import { ProjectBadges, ProjectOrigin, TagList } from './ProjectBadges';
 import { EmptyCover, Frame } from './ProjectCover';
@@ -99,6 +101,7 @@ interface ProjectModalProps {
 export function ProjectModal({ project, onClose }: ProjectModalProps) {
   const { t, l } = useI18n();
   const dialogRef = useRef<HTMLDivElement>(null);
+  const copyText = useCopyText();
   useModal(dialogRef, onClose);
   const titleId = `modal-title-${project.id}`;
 
@@ -162,6 +165,14 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 <GitHubIcon size={18} />
                 {t.projects.code}
               </a>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => copyText(projectUrl(project.id), t.projects.linkCopied)}
+              >
+                <Link2 size={18} aria-hidden="true" />
+                {t.projects.copyLink}
+              </button>
             </div>
           </aside>
         </div>
