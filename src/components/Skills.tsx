@@ -26,13 +26,17 @@ function SkillChip({ skill }: { skill: Skill }) {
   const { showProjectsWith } = useProjectFilter();
   const tag = skill.tag ?? skill.name;
   const count = projectCountByTag.get(tag) ?? 0;
+  const category = <span className="skill-category">{t.skills.categories[skill.category]}</span>;
 
   // Tecnologias sem projeto no portfólio aparecem, mas não são clicáveis
   if (count === 0) {
     return (
       <div className="skill-chip spotlight">
         <SkillLogo skill={skill} />
-        <span className="skill-name">{skill.name}</span>
+        <span className="skill-text">
+          {category}
+          <span className="skill-name">{skill.name}</span>
+        </span>
       </div>
     );
   }
@@ -50,6 +54,7 @@ function SkillChip({ skill }: { skill: Skill }) {
     >
       <SkillLogo skill={skill} />
       <span className="skill-text">
+        {category}
         <span className="skill-name">{skill.name}</span>
         <span className="skill-count">{countLabel}</span>
       </span>

@@ -46,6 +46,10 @@ export const pt = {
     title: 'Tecnologias',
     intro: 'Clique em uma tecnologia para ver os projetos em que ela aparece.',
     tiers: { daily: 'Uso no dia a dia', familiar: 'Já trabalhei com', practices: 'Práticas' },
+    categories: {
+      frontend: 'Front-end', backend: 'Back-end', desktop: 'Desktop', testing: 'Testes',
+      tools: 'Ferramentas', games: 'Jogos', languages: 'Linguagem',
+    },
     projectCount: { one: '1 projeto', other: '{count} projetos' },
     showProjects: 'Ver projetos com {name}',
   },

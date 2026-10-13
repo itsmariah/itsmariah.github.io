@@ -46,6 +46,10 @@ export const en: Dictionary = {
     title: 'Skills',
     intro: 'Click a technology to see the projects where it shows up.',
     tiers: { daily: 'Daily drivers', familiar: "I've worked with", practices: 'Practices' },
+    categories: {
+      frontend: 'Front-end', backend: 'Back-end', desktop: 'Desktop', testing: 'Testing',
+      tools: 'Tooling', games: 'Games', languages: 'Language',
+    },
     projectCount: { one: '1 project', other: '{count} projects' },
     showProjects: 'Show projects with {name}',
   },
