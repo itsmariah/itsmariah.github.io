@@ -2181,6 +2181,28 @@ main:focus { outline: none; }
 .back-to-top.visible { opacity: 1; pointer-events: auto; transform: none; }
 .back-to-top:hover { background: var(--surface-hover); }
 
+/* Anel que acompanha o scroll, desenhado por cima da borda do botão */
+.back-to-top-ring {
+  position: absolute;
+  inset: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+.back-to-top-ring circle {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.ring-stop-1 { stop-color: var(--accent-text); }
+.ring-stop-2 { stop-color: var(--accent-2); }
+.ring-stop-3 { stop-color: var(--accent-3); }
+
 /* ══════════════════════════════════════
    Página 404
 ══════════════════════════════════════ */
